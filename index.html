@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Observatorio Trabajo & Salud Mental | 23 Ciudades Colombia</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,7 +114,7 @@
 <body class="flex flex-col lg:flex-row min-h-screen overflow-x-hidden">
 
     <div id="sidebar-backdrop" onclick="toggleSidebar()"></div>
-    
+
     <!-- SIDEBAR NAVIGATION -->
     <aside id="sidebar" class="w-full lg:w-72 bg-sidebarBg border-r border-[#e2dacd] p-5 flex flex-col justify-between shrink-0 fixed lg:sticky top-0 lg:h-screen z-30 shadow-lg lg:shadow-none">
         <div class="space-y-6">
@@ -183,7 +183,7 @@
                     <span class="hidden sm:inline">Si tú o alguien cercano está pasando por un momento difícil, hay apoyo disponible.</span><span class="sm:hidden">¿Necesitas apoyo? Llama gratis 24/7</span>
                 </div>
                 <div class="flex items-center gap-2 font-bold">
-                    <span class="bg-burgundy text-white px-2.5 py-0.5 rounded-md text-[11px]">Línea nacional de salud menta</span>
+                    <span class="bg-burgundy text-white px-2.5 py-0.5 rounded-md text-[11px]">Línea nacional de salud mental</span>
                     <span class="bg-amber-100 border border-amber-300 text-amber-900 px-2.5 py-0.5 rounded-md text-[11px]">Llama al 106 o chatea al 300 754 89 33</span>
                     <span class="hidden sm:inline text-[10px] text-amber-800 font-normal">Gratuitas · 24/7</span>
                 </div>
@@ -252,7 +252,7 @@
                 <div class="space-y-2">
                     <div class="flex justify-between items-center">
                         <span class="text-xs font-bold text-textDark">Indicadores de <span id="kpi-city-title" class="text-burgundy">Pasto</span> vs. promedio simple de las 23 ciudades</span>
-                        <span id="cluster-badge-header" class="badge-pill bg-amber-100 text-amber-900 border border-amber-300">Clúster 2 · Informalidad Urbana</span>
+                        <span id="cluster-badge-header" class="badge-pill bg-amber-100 text-amber-900 border border-amber-300">Clúster 2</span>
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="kpi-cards-grid">
@@ -265,14 +265,14 @@
                 <div class="space-y-1">
                     <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 01 · CRISP-DM GEIH</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Diagnóstico territorial & clustering</h2>
-                    <p class="text-xs text-textMuted">K-Means (k=3) sobre indicadores estandarizados de ocupación, desempleo, informalidad y formalidad asalariada.</p>
+                    <p class="text-xs text-textMuted">K-Means (k=3) sobre indicadores estandarizados de participación, ocupación, desempleo, informalidad y formalidad asalariada. Último trimestre móvil disponible: <span class="font-semibold" id="meta-periodo-geih">—</span>.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    
+
                     <!-- Panel Izquierdo: Información del Clúster -->
                     <div class="lg:col-span-5 card-editorial p-6 flex flex-col justify-between bg-white rounded-xl border border-gray-100 shadow-sm">
-                        
+
                         <div>
                             <!-- Selector de Clústeres -->
                             <div class="flex flex-wrap gap-1.5 mb-5 pb-4 border-b border-gray-100" id="cluster-tabs">
@@ -300,11 +300,11 @@
                         <div class="mb-2">
                             <h3 class="font-bold text-sm text-textDark">Proyección PCA de las 23 ciudades</h3>
                             <div class="flex flex-wrap items-center justify-between gap-2 mt-1">
-                                <span class="text-[10px] text-textMuted font-medium">Varianza explicada: Dim 1 = 58,4% · Dim 2 = 24,1%</span>
+                                <span class="text-[10px] text-textMuted font-medium" id="pca-var-text">Varianza explicada</span>
                                 <div class="flex gap-3 text-[10px] text-textMuted">
-                                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#059669]"></span> Formales</span>
-                                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#e11d48]"></span> Precarización Extrema</span>
-                                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#d97706]"></span> Informalidad Urbana</span>
+                                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#059669]"></span> Participación media</span>
+                                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#e11d48]"></span> Alta precarización</span>
+                                    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#d97706]"></span> Alta participación y ocupación</span>
                                 </div>
                             </div>
                         </div>
@@ -314,8 +314,8 @@
                         </div>
 
                         <div class="mt-3 pt-3 border-t border-gray-50 flex justify-between items-center text-[10px] text-textMuted">
-                            <span>→ <strong>Dim 1 · Formalidad:</strong> asalariados formales</span>
-                            <span>↑ <strong>Dim 2 · Dinamismo:</strong> tasa de ocupación</span>
+                            <span>→ <strong>Dim 1 · Formalidad:</strong> asalariados vs. cuenta propia</span>
+                            <span>↑ <strong>Dim 2 · Dinamismo:</strong> participación y ocupación</span>
                         </div>
                     </div>
                 </div>
@@ -326,11 +326,11 @@
                 <div class="space-y-1">
                     <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 02 · LEAFLET + HEATMAP</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Mapa geográfico & mapa de calor</h2>
-                    <p class="text-xs text-textMuted">Distribución territorial de los casos con desencadenante económico o laboral (INMLCF 2015–2026).</p>
+                    <p class="text-xs text-textMuted">Distribución territorial de los casos con desencadenante económico o laboral (INMLCF 2015–2026). Cada ciudad incluye los municipios de su área metropolitana, igual que la GEIH.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    
+
                     <!-- Columna Izquierda: Mapa -->
                     <div class="lg:col-span-8 card-editorial p-4 space-y-3 flex flex-col justify-between">
                         <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#eee8dc] pb-3">
@@ -347,10 +347,8 @@
                             </div>
                         </div>
 
-                        <!-- Contenedor del Mapa corregido (sin absolute para evitar fallos de Leaflet) -->
                         <div class="relative w-full h-[420px] rounded-xl border border-[#e2dacd] overflow-hidden">
                             <div id="map" class="w-full h-full z-0"></div>
-                            <!-- Leyenda dinámica -->
                             <div id="map-legend" class="absolute bottom-4 left-4 z-[400] bg-white border border-gray-200 shadow-md rounded-lg p-2.5 text-[10px] pointer-events-none"></div>
                         </div>
 
@@ -361,13 +359,10 @@
 
                     <!-- Columna Derecha: Panel Dinámico -->
                     <div class="lg:col-span-4 flex flex-col gap-4">
-                        
-                        <!-- Tarjeta Ciudad en Foco -->
+
                         <div id="map-focus-card" class="card-editorial p-5 bg-white rounded-xl border border-[#e8e2d5] shadow-sm">
-                            <!-- Contenido inyectado por JS -->
                         </div>
 
-                        <!-- Tarjeta Top 8 -->
                         <div class="card-editorial p-5 bg-white rounded-xl border border-[#e8e2d5] shadow-sm flex-1 flex flex-col">
                             <div class="flex justify-between items-center border-b border-[#eee8dc] pb-3 mb-3">
                                 <div>
@@ -378,7 +373,7 @@
                             </div>
                             <div class="space-y-2.5 text-xs flex-1" id="top-cities-list"></div>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
@@ -392,9 +387,9 @@
                 </div>
 
                 <div class="card-editorial p-5 space-y-4">
-                    <!-- Pestañas de la gráfica -->
                     <div class="flex flex-wrap gap-1.5 text-xs border-b border-[#eee8dc] pb-3" id="combo-tabs">
-                         <button onclick="setComboMode('suicidios')" data-mode="suicidios" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Suicidios</button>
+                        <button onclick="setComboMode('general')" data-mode="general" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Combinado</button>
+                        <button onclick="setComboMode('suicidios')" data-mode="suicidios" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Suicidios</button>
                         <button onclick="setComboMode('empleo')" data-mode="empleo" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Empleo (TO/TD)</button>
                         <button onclick="setComboMode('calidad')" data-mode="calidad" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Calidad (Prec./Form.)</button>
                     </div>
@@ -402,12 +397,12 @@
                     <div class="chart-container min-h-[320px]">
                         <canvas id="comboEvolucionChart"></canvas>
                     </div>
-                    
-                    <p class="text-[11px] text-textMuted">* <strong>2026 es un año parcial:</strong> suicidios de enero a julio (INMLCF) y trimestre móvil may–jul (GEIH). No es comparable con años completos; por eso su barra es más clara y su tramo de línea, punteado.</p>
+
+                    <p class="text-[11px] text-textMuted">* <strong>2026 es un año parcial:</strong> suicidios de enero a julio (INMLCF) y promedio de los trimestres móviles de la GEIH disponibles hasta <span id="meta-periodo-geih-2">—</span>. Los indicadores anuales de la GEIH son el promedio de los trimestres móviles que terminan en cada año. No es comparable con años completos; por eso su barra es más clara y su tramo de línea, punteado.</p>
 
                     <div class="p-3 bg-[#f5f0e6] rounded-xl border border-[#e8e2d5] text-xs text-textMuted flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                        <span><strong>Lectura multivariable:</strong> Permite evaluar si los picos en desocupación o precarización preceden temporalmente a los incrementos en conductas autoinfligidas.</span>
-                        <span class="text-[11px] text-burgundy font-semibold shrink-0">Fuente: Microdatos DANE Gran Encuesta Integrada de Hogares (GEIH)+ INMLCF</span>
+                        <span><strong>Lectura descriptiva:</strong> permite ver si el nivel de desocupación o precarización coincide en el tiempo con más o menos casos. No establece causalidad.</span>
+                        <span class="text-[11px] text-burgundy font-semibold shrink-0">Fuente: anexos agregados DANE (GEIH) + INMLCF</span>
                     </div>
                 </div>
             </section>
@@ -417,7 +412,7 @@
                 <div class="space-y-1">
                     <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest">MÓDULO 04 · INMLCF</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Análisis psicosocial & desencadenantes</h2>
-                    <p class="text-xs text-textMuted">Factores precipitantes reportados en necropsia médico-legal.</p>
+                    <p class="text-xs text-textMuted">Causa registrada por Medicina Legal, agrupada. Solo las categorías con 5 o más casos se muestran por separado.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -437,41 +432,19 @@
                     <div class="lg:col-span-6 card-editorial p-6 space-y-5 bg-amber-50/60 border-amber-200/80 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="badge-pill bg-amber-200 text-amber-900 font-bold uppercase tracking-wider text-[10px]">
-                                <i data-lucide="zap" class="w-3 h-3 text-burgundy"></i> HALLAZGO CLAVE · SPEARMAN
+                                <i data-lucide="zap" class="w-3 h-3 text-burgundy"></i> HALLAZGO · SPEARMAN (23 CIUDADES)
                             </span>
-                            
-                            <h3 class="font-serif text-2xl font-bold text-burgundy">"Burnout de subsistencia"</h3>
-                            
+
+                            <h3 class="font-serif text-2xl font-bold text-burgundy">Sin asociación detectable</h3>
+
                             <p class="text-xs text-textDark leading-relaxed">
-                                La <strong>precarización e informalidad por cuenta propia</strong> se asocia más con los casos de origen económico-laboral que el desempleo abierto. Sostener ingresos sin protección desgasta más que la ausencia de empleo.
+                                Entre las 23 ciudades, el <strong>porcentaje de casos económico-laborales</strong> (sobre causas conocidas) no se ordena según la precarización, la desocupación ni la ocupación de cada ciudad. Es coherente con el clasificador del módulo 5: el empleo agregado no ayuda a distinguir la causa.
                             </p>
                         </div>
 
-                        <div class="space-y-3 pt-2">
-                            <div>
-                                <div class="flex justify-between text-xs font-bold text-textDark mb-1">
-                                    <span>Precarización / cuenta propia</span>
-                                    <span class="text-burgundy">r = +0,383</span>
-                                </div>
-                                <div class="w-full bg-amber-200/60 h-2.5 rounded-full overflow-hidden">
-                                    <div class="bg-burgundy h-2.5 rounded-full" style="width: 76.6%;"></div>
-                                </div>
-                            </div>
+                        <div class="space-y-3 pt-2" id="spear-city"></div>
 
-                            <div>
-                                <div class="flex justify-between text-xs font-bold text-textDark mb-1">
-                                    <span>Desempleo abierto (TD)</span>
-                                    <span class="text-textMuted">r = -0,216</span>
-                                </div>
-                                <div class="w-full bg-amber-200/60 h-2.5 rounded-full overflow-hidden">
-                                    <div class="bg-gray-500 h-2.5 rounded-full" style="width: 43.2%;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p class="text-[11px] text-textMuted pt-2">
-                            * Correlación de Spearman sobre indicadores de las 23 capitales colombianas (p &lt; 0,05).
-                        </p>
+                        <p class="text-[11px] text-textMuted pt-2" id="spear-note"></p>
                     </div>
                 </div>
             </section>
@@ -481,7 +454,7 @@
                 <div class="space-y-1">
                     <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest font-mono">MÓDULO 05 · INMLCF + SISMEL</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Resultados del modelo SISMEL</h2>
-                    <p class="text-xs text-textMuted">Clasificación supervisada del desencadenante <strong>económico-laboral</strong>  · Random Forest vs. Gradient Boosting con validación temporal.</p>
+                    <p class="text-xs text-textMuted">Clasificación supervisada del desencadenante <strong>económico-laboral</strong> · Regresión logística y gradient boosting, con y sin contexto laboral de la ciudad (GEIH), con validación temporal.</p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 bg-[#f5f0e6] border border-[#e8e2d5] rounded-2xl p-3 text-[11px]" id="sm-steps"></div>
@@ -501,8 +474,8 @@
                         <p class="text-[10px] text-textMuted" id="sm-ref"></p>
                     </div>
                     <div class="lg:col-span-5 card-editorial p-5 space-y-2 flex flex-col">
-                        <h3 class="font-bold text-sm text-textDark">AUC año por año (regresión logística)</h3>
-                        <p class="text-[11px] text-textMuted">Cada año se prueba con un modelo entrenado solo con los años anteriores.</p>
+                        <h3 class="font-bold text-sm text-textDark">AUC año por año (regresión logística de perfil)</h3>
+                        <p class="text-[11px] text-textMuted">Cada año se prueba con un modelo entrenado solo con los años anteriores. 2026* es parcial (enero–julio).</p>
                         <div class="chart-container flex-1"><canvas id="smValChart"></canvas></div>
                     </div>
                 </div>
@@ -510,12 +483,12 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
                     <div class="lg:col-span-6 card-editorial p-5 space-y-2 flex flex-col">
                         <h3 class="font-bold text-sm text-textDark">Importancia de variables</h3>
-                        <p class="text-[11px] text-textMuted">Caída del AUC al desordenar cada variable (permutación). Mayor caída = pesa más.</p>
-                        <div class="chart-container flex-1 min-h-[300px]"><canvas id="smImpChart"></canvas></div>
+                        <p class="text-[11px] text-textMuted">Caída del AUC al desordenar cada variable (permutación) en el modelo final, evaluado en 2022–2024. Mayor caída = pesa más.</p>
+                        <div class="chart-container flex-1" style="height:400px;min-height:400px"><canvas id="smImpChart"></canvas></div>
                     </div>
                     <div class="lg:col-span-6 card-editorial p-5 space-y-3">
                         <div class="flex items-center justify-between gap-2">
-                            <div><h3 class="font-bold text-sm text-textDark">Perfil de mayor riesgo</h3><p class="text-[11px] text-textMuted">% de casos laboral/económicos con causa conocida, por grupo</p></div>
+                            <div><h3 class="font-bold text-sm text-textDark">Perfil de mayor peso</h3><p class="text-[11px] text-textMuted">% de casos laboral/económicos con causa conocida, por grupo</p></div>
                             <select id="sm-perfil-select" class="bg-white border border-[#d6cdbd] rounded-xl px-2.5 py-1.5 text-xs font-bold outline-none focus:border-burgundy"></select>
                         </div>
                         <div class="grid grid-cols-2 gap-3" id="sm-sex"></div>
@@ -525,35 +498,34 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    <div class="lg:col-span-8 card-editorial p-5 space-y-3">
-                        <div><h3 class="font-bold text-sm text-textDark">Matriz de asociación (V de Cramér)</h3><p class="text-[11px] text-textMuted">0 = independientes · 1 = una determina a la otra. Ordenada por asociación con la causa.</p></div>
-                        <div class="overflow-x-auto"><div id="sm-cramer" class="min-w-[620px]"></div></div>
+                    <div class="lg:col-span-6 card-editorial p-5 space-y-3">
+                        <div><h3 class="font-bold text-sm text-textDark">Matriz de confusión · prueba final 2025–2026</h3><p class="text-[11px] text-textMuted" id="sm-cm-sub"></p></div>
+                        <div id="sm-cm"></div>
+                        <p class="text-xs text-textDark leading-relaxed bg-[#f5f0e6] border border-[#e8e2d5] rounded-xl p-3">Con una prevalencia cercana al 11 % y un AUC de 0,70, el modelo detecta la mitad de los casos laborales/económicos, pero cuatro de cada cinco alertas son falsas. Sirve para <strong>caracterizar perfiles</strong>, no para decisiones sobre una persona.</p>
                     </div>
-                    <div class="lg:col-span-4 card-editorial p-5 space-y-3 bg-amber-50/60 border-amber-200/80">
-                        <span class="badge-pill bg-amber-200 text-amber-900 text-[10px] uppercase">Lectura</span>
-                        <p class="text-xs text-textDark leading-relaxed">Edad y ciclo vital miden casi lo mismo (<strong class="font-mono">0,88</strong>). Las asociaciones con la causa son <strong>bajas</strong>: la mayor es la edad (<strong class="font-mono">0,19</strong>). Ninguna variable separa bien las causas; el modelo combina señales débiles.</p>
-                        <p class="text-xs text-textDark leading-relaxed">Los tres modelos rinden casi igual y apenas superan la línea base de sexo y edad: el límite está en la información disponible, no en el algoritmo.</p>
+                    <div class="lg:col-span-6 card-editorial p-5 space-y-3">
+                        <div><h3 class="font-bold text-sm text-textDark">Criterios de éxito del proyecto</h3><p class="text-[11px] text-textMuted">Resultados del modelo final frente a los KPI de la ficha</p></div>
+                        <div class="overflow-x-auto"><table class="w-full text-xs min-w-[380px]"><tbody id="sm-kpi-table"></tbody></table></div>
                     </div>
                 </div>
 
                 <div class="card-editorial p-5 space-y-4">
                     <div class="flex flex-wrap items-center gap-2">
                         <span class="badge-pill bg-amber-200 text-amber-900 font-bold uppercase text-[10px]"><i data-lucide="scale" class="w-3 h-3 text-burgundy"></i> Cruce con empleo (GEIH)</span>
-                        <h3 class="font-serif font-bold text-lg text-textDark">El empleo no explica la causa laboral/económica</h3>
+                        <h3 class="font-serif font-bold text-lg text-textDark">El empleo de la ciudad no mejora la clasificación</h3>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <div class="lg:col-span-7 space-y-2">
-                            <p class="text-[11px] font-bold text-textDark">1 · Correlación de Spearman</p>
-                            <div class="overflow-x-auto"><table class="w-full text-[11px] min-w-[420px]"><thead><tr class="text-[10px] uppercase text-textMuted border-b border-[#eee8dc]"><th class="py-1.5 text-left">Indicador</th><th class="text-right">Nº casos</th><th class="text-right">Tasa /100 mil</th><th class="text-right">% causa conocida</th><th class="text-right">Tasa dentro del dpto.</th></tr></thead><tbody id="sm-spear"></tbody></table></div>
-                            <p class="text-[10px] text-textMuted">Las correlaciones con el nº de casos (hasta 0,24) reflejan el tamaño de la población. Con la tasa o dentro de cada departamento casi desaparecen. Destacado: |r| ≥ 0,15.</p>
-                        </div>
                         <div class="lg:col-span-5 space-y-2">
-                            <p class="text-[11px] font-bold text-textDark">2 · ¿Mejora el clasificador al agregar empleo? (Δ AUC, IC 95 %)</p>
+                            <p class="text-[11px] font-bold text-textDark">1 · % laboral/económica según la tipología de mercado laboral de la ciudad</p>
+                            <div class="overflow-x-auto"><table class="w-full text-[11px] min-w-[300px]"><thead><tr class="text-[10px] uppercase text-textMuted border-b border-[#eee8dc]"><th class="py-1.5 text-left">Tipología</th><th class="text-right">Casos</th><th class="text-right">% lab./econ.</th></tr></thead><tbody id="sm-tip"></tbody></table></div>
+                            <p class="text-[10px] text-textMuted" id="sm-tip-note"></p>
+                        </div>
+                        <div class="lg:col-span-7 space-y-2">
+                            <p class="text-[11px] font-bold text-textDark">2 · ¿Mejora el clasificador al agregar empleo? (Δ AUC, IC 95 % bootstrap pareado)</p>
                             <div id="sm-forest" class="space-y-2"></div>
-                            <p class="text-[10px] text-textMuted" id="sm-panel"></p>
                         </div>
                     </div>
-                    <p class="text-xs text-textMuted leading-relaxed bg-[#f5f0e6] border border-[#e8e2d5] rounded-xl p-3"><strong class="text-textDark">Hallazgo válido:</strong> no se encontró relación estadística entre los indicadores de empleo (por departamento y trimestre) y los suicidios de causa laboral o económica. La causa pesa más en la adultez y el adulto mayor, pero eso queda como contexto: el empleo no viene desagregado por edad. <strong class="text-textDark">Uso responsable:</strong> el modelo describe perfiles en datos agregados, no evalúa el riesgo de una persona ni asigna causas a casos individuales; los resultados son asociativos, no causales.</p>
+                    <p class="text-xs text-textMuted leading-relaxed bg-[#f5f0e6] border border-[#e8e2d5] rounded-xl p-3"><strong class="text-textDark">Hallazgo válido:</strong> al añadir el empleo de la ciudad en el trimestre previo al hecho (desocupación, subocupación, ocupación, participación, precarización y tipología) el AUC no mejora en ninguna de las 8 comparaciones: en 6 el intervalo incluye el cero y en 2 empeora. La causa pesa más en la adultez y el adulto mayor, pero eso queda como contexto: el empleo no viene desagregado por edad. <strong class="text-textDark">Uso responsable:</strong> el modelo describe perfiles en datos agregados, no evalúa el riesgo de una persona ni asigna causas a casos individuales; los resultados son asociativos, no causales.</p>
                 </div>
             </section>
 
@@ -572,11 +544,11 @@
                             <input type="text" id="table-search" placeholder="Buscar ciudad..." onkeyup="filterTable()" class="w-full bg-[#f7f4ed] border border-[#d6cdbd] rounded-xl pl-9 pr-3 py-1.5 text-xs text-textDark outline-none focus:border-burgundy">
                         </div>
 
-                        <select id="table-cluster-filter" onchange="filterTable()" class="w-full sm:w-48 bg-[#f7f4ed] border border-[#d6cdbd] rounded-xl px-3 py-1.5 text-xs text-textDark outline-none focus:border-burgundy cursor-pointer">
+                        <select id="table-cluster-filter" onchange="filterTable()" class="w-full sm:w-64 bg-[#f7f4ed] border border-[#d6cdbd] rounded-xl px-3 py-1.5 text-xs text-textDark outline-none focus:border-burgundy cursor-pointer">
                             <option value="all">Todos los clústeres</option>
-                            <option value="0">Clúster 0 (Formales)</option>
-                            <option value="1">Clúster 1 (Precarización)</option>
-                            <option value="2">Clúster 2 (Informalidad)</option>
+                            <option value="0">Clúster 0 (Participación media)</option>
+                            <option value="1">Clúster 1 (Alta precarización)</option>
+                            <option value="2">Clúster 2 (Alta participación y ocupación)</option>
                         </select>
                     </div>
 
@@ -605,19 +577,21 @@
                 <div class="space-y-1">
                     <p class="text-[10px] font-bold text-burgundy uppercase tracking-widest font-mono">METODOLOGÍA · FUENTES · LIMITACIONES</p>
                     <h2 class="font-serif font-bold text-2xl text-textDark">Cómo se construyó este observatorio</h2>
-                    <p class="text-xs text-textMuted">Última actualización: <strong id="meta-fecha" class="text-textDark">—</strong> · Gran Encuesta Integrada de Hogares (GEIH) hasta may–jul 2026 · INMLCF hasta julio de 2026</p>
+                    <p class="text-xs text-textMuted">Última actualización: <strong id="meta-fecha" class="text-textDark">—</strong> · Gran Encuesta Integrada de Hogares (GEIH) hasta <span id="meta-periodo-geih-3">—</span> · INMLCF hasta julio de 2026</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-textMuted leading-relaxed">
                     <div class="card-editorial p-5 space-y-2"><h3 class="font-bold text-sm text-textDark flex items-center gap-2"><i data-lucide="database" class="w-4 h-4 text-burgundy"></i> Fuentes</h3>
-                        <p><strong class="text-textDark">Gran Encuesta Integrada de Hogares (GEIH)· DANE:</strong> 23 ciudades y áreas metropolitanas, trimestres móviles (serie 2007–2026; último periodo may–jul 2026).</p>
-                        <p><strong class="text-textDark">INMLCF · Medicina Legal:</strong> presuntos suicidios en Colombia 2015–2026, cifras definitivas (2026 cubre enero–julio).</p></div>
+                        <p><strong class="text-textDark">Gran Encuesta Integrada de Hogares (GEIH)· DANE:</strong> anexos agregados de 23 ciudades y áreas metropolitanas, trimestres móviles (serie 2007–2026).</p>
+                        <p><strong class="text-textDark">INMLCF · Medicina Legal:</strong> presuntos suicidios en Colombia 2015–2026, cifras definitivas (2026 cubre enero–julio). Los dos bloques del archivo (2015–2024 y 2025–2026) se armonizan en el ETL.</p></div>
                     <div class="card-editorial p-5 space-y-2"><h3 class="font-bold text-sm text-textDark flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-burgundy"></i> Métodos</h3>
-                        <p><strong class="text-textDark">Clustering:</strong> PCA a 2 componentes y K-Means (k = 3) sobre indicadores estandarizados; silhouette 0,256.</p>
-                        <p><strong class="text-textDark">SISMEL:</strong> partición temporal sin mezclar años (entrena 2015–2021 → prueba 2022–2024; reentrena 2015–2024 → prueba final 2025–2026), 4 modelos, AUC con IC 95 % por bootstrap. Asociaciones con V de Cramér y Spearman.</p></div>
+                        <p><strong class="text-textDark">Clustering:</strong> PCA a 2 componentes y K-Means (k = 3) sobre indicadores estandarizados del último trimestre disponible; silhouette <span id="meta-sil">—</span>.</p>
+                        <p><strong class="text-textDark">SISMEL:</strong> partición temporal sin mezclar años (entrena 2015–2021 → prueba 2022–2024; reentrena 2015–2024 → prueba final 2025–2026), cinco configuraciones (línea base de sexo y edad; regresión logística y gradient boosting, con y sin contexto laboral), AUC con IC 95 % por bootstrap. El empleo de la ciudad se une por municipio del hecho y trimestre móvil previo.</p></div>
                     <div class="card-editorial p-5 space-y-2 bg-amber-50/60 border-amber-200/80"><h3 class="font-bold text-sm text-textDark flex items-center gap-2"><i data-lucide="scale" class="w-4 h-4 text-burgundy"></i> Limitaciones</h3>
                         <ul class="list-disc pl-4 space-y-1"><li>El 53,2 % de los suicidios (16.468 de 30.932) no tiene causa registrada; las comparaciones regionales son aproximadas.</li>
+                        <li>Solo el 51,9 % de los casos con causa conocida ocurre en una de las 23 ciudades o áreas metropolitanas con GEIH; en las ciudades pequeñas los porcentajes se calculan con pocos casos y son inestables.</li>
                         <li>2026 es un año parcial (enero–julio): no es comparable con años completos.</li>
                         <li>El «promedio de 23 ciudades» es un promedio simple, sin ponderar por población.</li>
+                        <li>La completitud de hora, escolaridad, pertenencia grupal y estado civil es inferior al 95 %.</li>
                         <li>Los resultados son asociativos, no causales. El modelo describe perfiles en datos agregados; no evalúa el riesgo de una persona.</li></ul></div>
                     <div class="card-editorial p-5 space-y-3"><h3 class="font-bold text-sm text-textDark flex items-center gap-2"><i data-lucide="download" class="w-4 h-4 text-burgundy"></i> Datos y apoyo</h3>
                         <div class="flex flex-wrap gap-2"><button onclick="downloadMatrix()" class="bg-burgundy text-white font-semibold px-3 py-2 rounded-xl hover:bg-burgundy-hover">⬇ 23 ciudades (CSV)</button><button onclick="downloadCity()" class="bg-[#eee9df] text-textDark font-semibold px-3 py-2 rounded-xl hover:bg-[#e2dacd]">⬇ Serie de la ciudad en foco (CSV)</button></div>
@@ -631,375 +605,2629 @@
     <!-- SCRIPT PRINCIPAL -->
     <script>
         const cityData = [
-          {
-            "ciudad": "Pasto",
-            "lat": 1.2136, "lng": -77.2811, "cluster": 2, "pc1": 0.27, "pc2": 2.25,
-            "td": 9.7, "to": 62.68, "tgp": 69.45, "tsub": 10.4,
-            "pct_precarizacion": 46.76, "pct_cuenta_propia": 41.97, "pct_empleado_particular": 42.55, "pct_comercio_alojamiento": 30.58,
-            "suicidios_totales": 520, "suicidios_con_razon": 391, "suicidios_eco_lab": 62, "pct_eco_conocido": 15.8,
-            "causas": { "Enfermedad Mental": 164, "Sentimental": 119, "Económica": 51, "Enfermedad física": 26, "Alcohol / Sustancias": 20, "Laboral": 11, "Sin información": 129 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.7, 11.2, 12.2, 18.0, 14.8, 12.6, 11.2, 10.3, 9.7, 10.4],
-              "to": [61.4, 60.8, 60.2, 59.5, 58.3, 51.4, 56.1, 58.5, 60.4, 61.8, 62.6, 62.68],
-              "precarizacion": [52.4, 51.9, 51.4, 51.0, 50.5, 55.2, 52.1, 50.2, 48.7, 47.6, 46.7, 46.76],
-              "formal": [37.4, 37.9, 38.3, 38.7, 39.1, 36.2, 36.5, 38.8, 40.2, 41.5, 42.5, 38.4],
-              "suicidios": [31, 35, 43, 48, 43, 34, 45, 48, 46, 52, 57, 22]
-            }
-          },
-          {
-            "ciudad": "Bogotá",
-            "lat": 4.711, "lng": -74.0721, "cluster": 0, "pc1": 3.19, "pc2": 0.74,
-            "td": 8.0, "to": 64.21, "tgp": 69.83, "tsub": 8.1,
-            "pct_precarizacion": 33.68, "pct_cuenta_propia": 30.51, "pct_empleado_particular": 59.09, "pct_comercio_alojamiento": 23.48,
-            "suicidios_totales": 4286, "suicidios_con_razon": 2810, "suicidios_eco_lab": 438, "pct_eco_conocido": 15.5,
-            "causas": { "Enfermedad Mental": 1350, "Sentimental": 820, "Económica": 380, "Enfermedad física": 180, "Alcohol / Sustancias": 120, "Laboral": 58, "Sin información": 1378 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [8.9, 9.2, 9.5, 10.1, 10.9, 18.2, 14.5, 11.3, 10.1, 9.6, 9.4, 9.8],
-              "to": [64.2, 63.8, 63.1, 62.5, 61.8, 52.3, 56.8, 59.4, 60.5, 61.0, 61.5, 61.2],
-              "precarizacion": [38.5, 38.0, 37.6, 37.1, 36.5, 41.2, 38.1, 35.6, 34.2, 33.8, 33.5, 33.2],
-              "formal": [52.1, 52.8, 53.4, 54.0, 54.6, 49.5, 52.1, 55.4, 56.8, 57.5, 58.1, 58.6],
-              "suicidios": [310, 345, 380, 405, 395, 360, 410, 445, 480, 438, 410, 208]
-            }
-          },
-          {
-            "ciudad": "Medellín",
-            "lat": 6.2442, "lng": -75.5812, "cluster": 0, "pc1": 3.00, "pc2": 0.61,
-            "td": 7.0, "to": 62.66, "tgp": 67.35, "tsub": 7.8,
-            "pct_precarizacion": 33.16, "pct_cuenta_propia": 30.12, "pct_empleado_particular": 60.20, "pct_comercio_alojamiento": 26.43,
-            "suicidios_totales": 2150, "suicidios_con_razon": 1420, "suicidios_eco_lab": 224, "pct_eco_conocido": 15.7,
-            "causas": { "Enfermedad Mental": 680, "Sentimental": 410, "Económica": 195, "Enfermedad física": 95, "Alcohol / Sustancias": 70, "Laboral": 29, "Sin información": 671 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [9.8, 10.1, 10.4, 11.2, 11.8, 17.5, 13.9, 10.8, 9.2, 8.8, 8.6, 8.9],
-              "to": [60.5, 60.1, 59.8, 59.0, 58.2, 50.1, 54.8, 57.2, 58.5, 59.1, 59.2, 58.9],
-              "precarizacion": [42.1, 41.5, 41.0, 40.5, 39.8, 44.5, 41.2, 38.9, 37.5, 36.8, 36.5, 36.4],
-              "formal": [48.2, 48.9, 49.5, 50.1, 50.8, 46.2, 49.1, 51.8, 53.0, 53.8, 54.0, 54.2],
-              "suicidios": [160, 175, 190, 205, 198, 180, 202, 220, 235, 224, 210, 151]
-            }
-          },
-          {
-            "ciudad": "Cali",
-            "lat": 3.4516, "lng": -76.532, "cluster": 2, "pc1": 1.25, "pc2": 0.34,
-            "td": 8.9, "to": 58.55, "tgp": 64.26, "tsub": 9.2,
-            "pct_precarizacion": 39.41, "pct_cuenta_propia": 35.35, "pct_empleado_particular": 55.19, "pct_comercio_alojamiento": 30.09,
-            "suicidios_totales": 1280, "suicidios_con_razon": 890, "suicidios_eco_lab": 139, "pct_eco_conocido": 15.6,
-            "causas": { "Enfermedad Mental": 410, "Sentimental": 260, "Económica": 120, "Enfermedad física": 52, "Alcohol / Sustancias": 41, "Laboral": 19, "Sin información": 378 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.2, 11.5, 11.8, 12.1, 12.8, 20.1, 15.6, 12.2, 11.0, 10.5, 10.6, 10.8],
-              "to": [58.2, 57.8, 57.5, 56.9, 56.0, 47.5, 52.1, 55.0, 56.1, 56.8, 56.5, 56.4],
-              "precarizacion": [46.5, 46.0, 45.5, 45.1, 44.6, 49.2, 46.1, 44.0, 43.1, 42.5, 42.3, 42.1],
-              "formal": [43.1, 43.8, 44.2, 44.8, 45.3, 40.8, 43.5, 46.2, 47.5, 48.1, 48.3, 48.5],
-              "suicidios": [95, 102, 115, 120, 118, 105, 122, 131, 142, 139, 130, 61]
-            }
-          },
-          {
-            "ciudad": "Cúcuta",
-            "lat": 7.8939, "lng": -72.5078, "cluster": 1, "pc1": -3.16, "pc2": 1.93,
-            "td": 9.6, "to": 55.94, "tgp": 61.91, "tsub": 13.5,
-            "pct_precarizacion": 62.81, "pct_cuenta_propia": 59.09, "pct_empleado_particular": 32.01, "pct_comercio_alojamiento": 33.36,
-            "suicidios_totales": 480, "suicidios_con_razon": 340, "suicidios_eco_lab": 75, "pct_eco_conocido": 22.1,
-            "causas": { "Enfermedad Mental": 110, "Sentimental": 98, "Económica": 65, "Enfermedad física": 21, "Alcohol / Sustancias": 18, "Laboral": 10, "Sin información": 158 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [14.1, 14.5, 15.2, 15.8, 16.5, 23.8, 19.2, 15.1, 13.5, 12.9, 12.6, 12.8],
-              "to": [56.1, 55.5, 55.0, 54.2, 53.1, 45.2, 49.8, 52.8, 53.8, 54.2, 54.3, 54.1],
-              "precarizacion": [67.8, 67.2, 66.8, 66.1, 65.4, 70.1, 66.9, 64.8, 63.5, 62.9, 62.6, 62.4],
-              "formal": [23.1, 23.8, 24.2, 24.9, 25.5, 21.0, 24.1, 26.2, 27.5, 28.1, 28.3, 28.5],
-              "suicidios": [32, 36, 42, 45, 43, 38, 46, 52, 58, 75, 68, 45]
-            }
-          },
-          {
-            "ciudad": "Quibdó",
-            "lat": 5.6947, "lng": -76.6611, "cluster": 1, "pc1": -3.77, "pc2": -3.44,
-            "td": 23.0, "to": 43.71, "tgp": 56.74, "tsub": 15.2,
-            "pct_precarizacion": 52.12, "pct_cuenta_propia": 46.48, "pct_empleado_particular": 35.31, "pct_comercio_alojamiento": 25.66,
-            "suicidios_totales": 190, "suicidios_con_razon": 125, "suicidios_eco_lab": 31, "pct_eco_conocido": 24.8,
-            "causas": { "Enfermedad Mental": 42, "Sentimental": 35, "Económica": 26, "Enfermedad física": 8, "Alcohol / Sustancias": 9, "Laboral": 5, "Sin información": 65 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [18.2, 19.0, 20.1, 21.4, 22.8, 30.2, 26.5, 25.1, 24.8, 24.2, 24.3, 24.5],
-              "to": [45.2, 44.8, 44.1, 43.2, 42.0, 34.5, 38.2, 40.1, 41.0, 41.5, 41.4, 41.2],
-              "precarizacion": [72.1, 71.8, 71.2, 70.8, 70.1, 75.2, 72.1, 70.0, 69.1, 68.5, 68.3, 68.2],
-              "formal": [17.5, 17.9, 18.2, 18.8, 19.2, 15.8, 18.1, 19.8, 20.5, 21.1, 21.3, 21.4],
-              "suicidios": [11, 14, 16, 18, 17, 15, 18, 21, 24, 31, 28, 17]
-            }
-          },
-          {
-            "ciudad": "Bucaramanga",
-            "lat": 7.1254, "lng": -73.1198, "cluster": 2, "pc1": 1.23, "pc2": 0.92,
-            "td": 7.2, "to": 60.51, "tgp": 65.24, "tsub": 8.0,
-            "pct_precarizacion": 42.24, "pct_cuenta_propia": 37.77, "pct_empleado_particular": 51.51, "pct_comercio_alojamiento": 28.20,
-            "suicidios_totales": 680, "suicidios_con_razon": 490, "suicidios_eco_lab": 56, "pct_eco_conocido": 11.4,
-            "causas": { "Enfermedad Mental": 210, "Sentimental": 150, "Económica": 48, "Enfermedad física": 35, "Alcohol / Sustancias": 22, "Laboral": 8, "Sin información": 207 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [8.8, 9.1, 9.4, 9.8, 10.2, 16.8, 12.5, 9.8, 8.5, 8.1, 8.0, 8.2],
-              "to": [62.1, 61.8, 61.2, 60.8, 60.1, 51.8, 56.5, 58.8, 59.8, 60.1, 60.0, 59.8],
-              "precarizacion": [45.2, 44.8, 44.2, 43.8, 43.1, 47.8, 44.2, 42.1, 41.0, 40.8, 41.0, 41.2],
-              "formal": [44.8, 45.2, 45.8, 46.5, 47.1, 42.5, 45.8, 48.2, 49.2, 49.6, 49.7, 49.8],
-              "suicidios": [48, 52, 58, 62, 60, 52, 61, 68, 72, 56, 54, 37]
-            }
-          },
-          {
-            "ciudad": "Barranquilla",
-            "lat": 10.9685, "lng": -74.7813, "cluster": 2, "pc1": 0.53, "pc2": -0.29,
-            "td": 8.6, "to": 56.04, "tgp": 61.31, "tsub": 10.1,
-            "pct_precarizacion": 43.05, "pct_cuenta_propia": 37.12, "pct_empleado_particular": 51.64, "pct_comercio_alojamiento": 28.63,
-            "suicidios_totales": 620, "suicidios_con_razon": 440, "suicidios_eco_lab": 74, "pct_eco_conocido": 16.8,
-            "causas": { "Enfermedad Mental": 185, "Sentimental": 135, "Económica": 62, "Enfermedad física": 32, "Alcohol / Sustancias": 21, "Laboral": 12, "Sin información": 173 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [8.1, 8.4, 8.7, 9.1, 9.8, 16.2, 12.8, 9.8, 8.8, 8.3, 8.3, 8.5],
-              "to": [61.2, 60.8, 60.1, 59.5, 58.8, 51.0, 55.8, 58.2, 59.1, 59.5, 59.4, 59.2],
-              "precarizacion": [59.2, 58.8, 58.2, 57.8, 57.1, 61.8, 58.2, 56.0, 55.1, 54.5, 54.6, 54.8],
-              "formal": [34.1, 34.8, 35.2, 35.8, 36.5, 32.0, 35.1, 37.5, 38.2, 38.6, 38.5, 38.5],
-              "suicidios": [42, 46, 52, 56, 54, 46, 55, 62, 68, 74, 69, 46]
-            }
-          },
-          {
-            "ciudad": "Pereira",
-            "lat": 4.8133, "lng": -75.6961, "cluster": 0, "pc1": 1.71, "pc2": -1.15,
-            "td": 7.5, "to": 55.27, "tgp": 59.75, "tsub": 8.5,
-            "pct_precarizacion": 35.02, "pct_cuenta_propia": 30.37, "pct_empleado_particular": 58.24, "pct_comercio_alojamiento": 28.01,
-            "suicidios_totales": 510, "suicidios_con_razon": 380, "suicidios_eco_lab": 72, "pct_eco_conocido": 18.9,
-            "causas": { "Enfermedad Mental": 160, "Sentimental": 115, "Económica": 60, "Enfermedad física": 28, "Alcohol / Sustancias": 18, "Laboral": 12, "Sin información": 117 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.9, 11.4, 11.9, 18.5, 14.2, 11.0, 9.8, 9.2, 9.2, 9.4],
-              "to": [59.1, 58.8, 58.2, 57.8, 57.0, 49.2, 53.8, 56.1, 57.0, 57.3, 57.2, 57.1],
-              "precarizacion": [44.8, 44.2, 43.8, 43.2, 42.5, 47.2, 43.8, 41.5, 40.8, 40.2, 40.4, 40.5],
-              "formal": [45.2, 45.8, 46.2, 46.8, 47.5, 42.8, 46.0, 48.5, 49.8, 50.1, 50.1, 50.2],
-              "suicidios": [35, 39, 44, 48, 46, 38, 47, 54, 59, 72, 65, 33]
-            }
-          },
-          {
-            "ciudad": "Ibagué",
-            "lat": 4.4389, "lng": -75.2322, "cluster": 0, "pc1": 0.66, "pc2": -2.76,
-            "td": 12.7, "to": 49.41, "tgp": 56.63, "tsub": 11.8,
-            "pct_precarizacion": 33.61, "pct_cuenta_propia": 30.14, "pct_empleado_particular": 59.56, "pct_comercio_alojamiento": 29.73,
-            "suicidios_totales": 430, "suicidios_con_razon": 310, "suicidios_eco_lab": 52, "pct_eco_conocido": 16.8,
-            "causas": { "Enfermedad Mental": 135, "Sentimental": 95, "Económica": 44, "Enfermedad física": 18, "Alcohol / Sustancias": 14, "Laboral": 8, "Sin información": 116 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [13.5, 13.8, 14.2, 14.8, 15.6, 22.5, 17.8, 14.2, 13.0, 12.8, 13.0, 13.2],
-              "to": [57.2, 56.8, 56.2, 55.8, 55.0, 47.1, 51.8, 54.2, 55.1, 55.4, 55.3, 55.2],
-              "precarizacion": [54.2, 53.8, 53.2, 52.8, 52.1, 56.8, 53.2, 51.0, 49.8, 49.2, 49.3, 49.5],
-              "formal": [32.8, 33.2, 33.8, 34.2, 34.8, 30.2, 33.1, 35.8, 36.8, 37.0, 37.0, 37.1],
-              "suicidios": [28, 31, 36, 40, 38, 32, 41, 46, 50, 52, 48, 28]
-            }
-          },
-          {
-            "ciudad": "Manizales",
-            "lat": 5.0689, "lng": -75.5174, "cluster": 0, "pc1": 2.31, "pc2": -1.52,
-            "td": 8.3, "to": 55.93, "tgp": 61.01, "tsub": 7.2,
-            "pct_precarizacion": 31.62, "pct_cuenta_propia": 27.95, "pct_empleado_particular": 60.12, "pct_comercio_alojamiento": 25.27,
-            "suicidios_totales": 410, "suicidios_con_razon": 310, "suicidios_eco_lab": 48, "pct_eco_conocido": 15.5,
-            "causas": { "Enfermedad Mental": 138, "Sentimental": 88, "Económica": 41, "Enfermedad física": 22, "Alcohol / Sustancias": 14, "Laboral": 7, "Sin información": 100 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.1, 10.4, 10.8, 11.1, 11.5, 18.1, 13.8, 10.5, 9.4, 9.0, 8.9, 9.1],
-              "to": [56.1, 55.8, 55.2, 54.8, 54.1, 46.8, 51.2, 53.0, 53.9, 54.1, 54.0, 53.8],
-              "precarizacion": [41.2, 40.8, 40.2, 39.8, 39.1, 43.8, 40.1, 38.0, 36.8, 36.1, 35.9, 35.8],
-              "formal": [48.1, 48.8, 49.2, 49.8, 50.4, 45.8, 49.0, 51.5, 52.8, 53.5, 53.7, 53.8],
-              "suicidios": [28, 32, 36, 39, 37, 31, 38, 42, 45, 48, 44, 26]
-            }
-          },
-          {
-            "ciudad": "Cartagena",
-            "lat": 10.391, "lng": -75.4794, "cluster": 1, "pc1": -2.51, "pc2": 0.63,
-            "td": 13.6, "to": 54.72, "tgp": 63.32, "tsub": 12.1,
-            "pct_precarizacion": 58.51, "pct_cuenta_propia": 52.85, "pct_empleado_particular": 36.47, "pct_comercio_alojamiento": 29.06,
-            "suicidios_totales": 380, "suicidios_con_razon": 260, "suicidios_eco_lab": 48, "pct_eco_conocido": 18.5,
-            "causas": { "Enfermedad Mental": 110, "Sentimental": 82, "Económica": 40, "Enfermedad física": 18, "Alcohol / Sustancias": 14, "Laboral": 8, "Sin información": 108 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.9, 11.4, 12.1, 19.5, 15.2, 12.4, 11.8, 11.2, 11.3, 11.5],
-              "to": [58.1, 57.8, 57.1, 56.5, 55.8, 48.0, 52.5, 54.8, 55.6, 56.0, 55.9, 55.8],
-              "precarizacion": [63.1, 62.8, 62.2, 61.8, 61.1, 65.8, 62.1, 60.0, 58.9, 58.2, 58.3, 58.4],
-              "formal": [28.2, 28.8, 29.2, 29.8, 30.5, 26.0, 29.1, 31.2, 32.0, 32.3, 32.2, 32.1],
-              "suicidios": [25, 28, 32, 35, 33, 28, 34, 40, 44, 48, 42, 25]
-            }
-          },
-          {
-            "ciudad": "Santa Marta",
-            "lat": 11.2408, "lng": -74.199, "cluster": 2, "pc1": -0.63, "pc2": -0.68,
-            "td": 8.9, "to": 52.28, "tgp": 57.37, "tsub": 11.5,
-            "pct_precarizacion": 45.0, "pct_cuenta_propia": 40.84, "pct_empleado_particular": 48.96, "pct_comercio_alojamiento": 32.25,
-            "suicidios_totales": 260, "suicidios_con_razon": 185, "suicidios_eco_lab": 38, "pct_eco_conocido": 20.5,
-            "causas": { "Enfermedad Mental": 75, "Sentimental": 58, "Económica": 32, "Enfermedad física": 12, "Alcohol / Sustancias": 10, "Laboral": 6, "Sin información": 67 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [9.1, 9.4, 9.8, 10.2, 10.8, 18.2, 13.8, 10.8, 10.1, 9.7, 9.8, 9.9],
-              "to": [58.2, 57.9, 57.3, 56.8, 56.1, 48.2, 52.8, 55.1, 56.0, 56.3, 56.2, 56.1],
-              "precarizacion": [65.2, 64.8, 64.2, 63.8, 63.1, 67.8, 64.2, 62.0, 60.9, 60.2, 60.3, 60.4],
-              "formal": [27.8, 28.4, 28.8, 29.4, 30.1, 25.8, 28.8, 31.0, 31.8, 32.0, 31.9, 31.8],
-              "suicidios": [18, 20, 23, 25, 24, 20, 25, 29, 32, 38, 33, 19]
-            }
-          },
-          {
-            "ciudad": "Neiva",
-            "lat": 2.9273, "lng": -75.2819, "cluster": 2, "pc1": 0.12, "pc2": 0.50,
-            "td": 9.8, "to": 57.44, "tgp": 63.66, "tsub": 11.2,
-            "pct_precarizacion": 43.85, "pct_cuenta_propia": 41.37, "pct_empleado_particular": 48.78, "pct_comercio_alojamiento": 30.24,
-            "suicidios_totales": 430, "suicidios_con_razon": 305, "suicidios_eco_lab": 54, "pct_eco_conocido": 17.7,
-            "causas": { "Enfermedad Mental": 130, "Sentimental": 98, "Económica": 46, "Enfermedad física": 20, "Alcohol / Sustancias": 14, "Laboral": 8, "Sin información": 114 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.2, 11.5, 11.9, 12.4, 13.1, 20.8, 16.2, 12.8, 11.9, 11.5, 11.6, 11.7],
-              "to": [59.1, 58.8, 58.2, 57.8, 57.0, 49.1, 53.8, 56.2, 57.1, 57.5, 57.4, 57.4],
-              "precarizacion": [57.2, 56.8, 56.2, 55.8, 55.1, 59.8, 56.2, 54.0, 53.0, 52.4, 52.5, 52.6],
-              "formal": [33.8, 34.4, 34.8, 35.4, 36.1, 31.8, 34.8, 37.0, 37.8, 38.0, 37.9, 37.8],
-              "suicidios": [28, 31, 35, 39, 37, 31, 39, 44, 48, 54, 47, 27]
-            }
-          },
-          {
-            "ciudad": "Armenia",
-            "lat": 4.5339, "lng": -75.6811, "cluster": 2, "pc1": 0.18, "pc2": -0.11,
-            "td": 8.5, "to": 55.78, "tgp": 60.97, "tsub": 10.8,
-            "pct_precarizacion": 43.32, "pct_cuenta_propia": 38.62, "pct_empleado_particular": 48.42, "pct_comercio_alojamiento": 29.67,
-            "suicidios_totales": 380, "suicidios_con_razon": 280, "suicidios_eco_lab": 48, "pct_eco_conocido": 17.1,
-            "causas": { "Enfermedad Mental": 120, "Sentimental": 88, "Económica": 41, "Enfermedad física": 19, "Alcohol / Sustancias": 14, "Laboral": 7, "Sin información": 91 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [13.2, 13.5, 13.9, 14.4, 15.1, 22.1, 17.2, 13.8, 12.8, 12.6, 12.7, 12.9],
-              "to": [55.2, 54.8, 54.2, 53.8, 53.0, 45.1, 49.8, 52.2, 53.1, 53.5, 53.4, 53.6],
-              "precarizacion": [52.1, 51.8, 51.2, 50.8, 50.1, 54.8, 51.2, 49.0, 47.8, 47.0, 47.1, 47.2],
-              "formal": [38.1, 38.8, 39.2, 39.8, 40.5, 36.1, 39.1, 41.2, 42.1, 42.3, 42.2, 42.1],
-              "suicidios": [24, 27, 31, 35, 33, 27, 34, 39, 43, 48, 41, 25]
-            }
-          },
-          {
-            "ciudad": "Popayán",
-            "lat": 2.4419, "lng": -76.6063, "cluster": 2, "pc1": -0.52, "pc2": 0.77,
-            "td": 8.2, "to": 57.59, "tgp": 62.73, "tsub": 11.5,
-            "pct_precarizacion": 48.65, "pct_cuenta_propia": 43.63, "pct_empleado_particular": 40.11, "pct_comercio_alojamiento": 28.61,
-            "suicidios_totales": 300, "suicidios_con_razon": 215, "suicidios_eco_lab": 36, "pct_eco_conocido": 16.7,
-            "causas": { "Enfermedad Mental": 92, "Sentimental": 68, "Económica": 31, "Enfermedad física": 14, "Alcohol / Sustancias": 11, "Laboral": 5, "Sin información": 79 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [12.8, 13.1, 13.5, 14.1, 14.8, 21.8, 17.1, 13.8, 12.9, 12.6, 12.7, 12.8],
-              "to": [54.2, 53.8, 53.2, 52.8, 52.0, 44.1, 48.8, 51.2, 52.1, 52.5, 52.4, 52.7],
-              "precarizacion": [55.1, 54.8, 54.2, 53.8, 53.1, 57.8, 54.2, 52.0, 50.8, 50.0, 50.1, 50.1],
-              "formal": [34.8, 35.4, 35.8, 36.4, 37.1, 32.8, 35.8, 38.0, 38.8, 39.0, 38.9, 38.9],
-              "suicidios": [19, 21, 24, 27, 26, 21, 27, 31, 34, 36, 31, 20]
-            }
-          },
-          {
-            "ciudad": "Montería",
-            "lat": 8.7479, "lng": -75.8814, "cluster": 2, "pc1": -0.15, "pc2": 0.27,
-            "td": 11.2, "to": 56.63, "tgp": 63.79, "tsub": 10.5,
-            "pct_precarizacion": 45.79, "pct_cuenta_propia": 38.61, "pct_empleado_particular": 46.15, "pct_comercio_alojamiento": 30.10,
-            "suicidios_totales": 290, "suicidios_con_razon": 205, "suicidios_eco_lab": 34, "pct_eco_conocido": 16.5,
-            "causas": { "Enfermedad Mental": 88, "Sentimental": 65, "Económica": 29, "Enfermedad física": 14, "Alcohol / Sustancias": 10, "Laboral": 5, "Sin información": 79 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [9.8, 10.1, 10.5, 11.0, 11.8, 18.8, 14.8, 11.5, 10.5, 10.0, 10.1, 10.1],
-              "to": [59.8, 59.5, 58.8, 58.2, 57.5, 49.8, 54.5, 56.8, 57.8, 58.1, 58.0, 58.2],
-              "precarizacion": [60.2, 59.8, 59.2, 58.8, 58.1, 62.8, 59.2, 57.0, 55.9, 55.2, 55.3, 55.4],
-              "formal": [31.2, 31.8, 32.2, 32.8, 33.5, 29.2, 32.2, 34.5, 35.2, 35.4, 35.3, 35.2],
-              "suicidios": [18, 20, 23, 26, 25, 20, 26, 30, 33, 34, 30, 19]
-            }
-          },
-          {
-            "ciudad": "Tunja",
-            "lat": 5.5353, "lng": -73.3678, "cluster": 0, "pc1": 1.31, "pc2": -2.25,
-            "td": 12.4, "to": 53.33, "tgp": 60.90, "tsub": 7.9,
-            "pct_precarizacion": 32.05, "pct_cuenta_propia": 29.39, "pct_empleado_particular": 53.18, "pct_comercio_alojamiento": 23.84,
-            "suicidios_totales": 230, "suicidios_con_razon": 170, "suicidios_eco_lab": 22, "pct_eco_conocido": 12.9,
-            "causas": { "Enfermedad Mental": 78, "Sentimental": 52, "Económica": 19, "Enfermedad física": 12, "Alcohol / Sustancias": 8, "Laboral": 3, "Sin información": 58 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.2, 10.5, 10.8, 11.2, 11.8, 18.2, 14.2, 11.2, 10.5, 10.4, 10.5, 10.6],
-              "to": [56.2, 55.8, 55.2, 54.8, 54.0, 46.2, 50.8, 53.2, 54.2, 54.8, 54.7, 54.9],
-              "precarizacion": [44.2, 43.8, 43.2, 42.8, 42.1, 46.8, 43.2, 41.0, 40.1, 39.6, 39.7, 39.8],
-              "formal": [44.8, 45.4, 45.8, 46.4, 47.1, 42.8, 45.8, 48.0, 49.1, 49.4, 49.3, 49.3],
-              "suicidios": [14, 16, 18, 20, 19, 15, 20, 23, 25, 22, 21, 13]
-            }
-          },
-          {
-            "ciudad": "Villavicencio",
-            "lat": 4.142, "lng": -73.6266, "cluster": 2, "pc1": 1.09, "pc2": 2.50,
-            "td": 8.1, "to": 63.48, "tgp": 69.04, "tsub": 10.2,
-            "pct_precarizacion": 42.66, "pct_cuenta_propia": 37.35, "pct_empleado_particular": 48.47, "pct_comercio_alojamiento": 34.15,
-            "suicidios_totales": 360, "suicidios_con_razon": 255, "suicidios_eco_lab": 42, "pct_eco_conocido": 16.5,
-            "causas": { "Enfermedad Mental": 110, "Sentimental": 80, "Económica": 36, "Enfermedad física": 16, "Alcohol / Sustancias": 12, "Laboral": 6, "Sin información": 100 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [10.5, 10.8, 11.2, 11.8, 12.5, 19.8, 15.2, 12.0, 11.1, 10.6, 10.7, 10.8],
-              "to": [59.8, 59.5, 58.8, 58.2, 57.5, 49.5, 54.2, 56.5, 57.5, 58.0, 57.9, 58.1],
-              "precarizacion": [53.2, 52.8, 52.2, 51.8, 51.1, 55.8, 52.2, 50.0, 48.9, 48.4, 48.5, 48.6],
-              "formal": [35.8, 36.4, 36.8, 37.4, 38.1, 33.8, 36.8, 39.0, 40.1, 40.3, 40.2, 40.2],
-              "suicidios": [22, 25, 29, 32, 30, 25, 31, 36, 39, 42, 38, 23]
-            }
-          },
-          {
-            "ciudad": "Florencia",
-            "lat": 1.6144, "lng": -75.6062, "cluster": 1, "pc1": -1.35, "pc2": 0.19,
-            "td": 8.1, "to": 54.53, "tgp": 59.31, "tsub": 13.8,
-            "pct_precarizacion": 50.94, "pct_cuenta_propia": 46.89, "pct_empleado_particular": 38.17, "pct_comercio_alojamiento": 29.06,
-            "suicidios_totales": 210, "suicidios_con_razon": 145, "suicidios_eco_lab": 32, "pct_eco_conocido": 22.1,
-            "causas": { "Enfermedad Mental": 58, "Sentimental": 45, "Económica": 27, "Enfermedad física": 10, "Alcohol / Sustancias": 8, "Laboral": 5, "Sin información": 57 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [13.8, 14.2, 14.8, 15.5, 16.2, 23.5, 18.8, 15.5, 14.8, 14.2, 14.3, 14.5],
-              "to": [53.2, 52.8, 52.2, 51.8, 51.0, 43.1, 47.8, 50.1, 51.0, 51.3, 51.1, 51.2],
-              "precarizacion": [69.2, 68.8, 68.2, 67.8, 67.1, 71.8, 68.2, 66.0, 64.9, 64.0, 64.0, 64.1],
-              "formal": [21.8, 22.4, 22.8, 23.4, 24.1, 19.8, 22.8, 25.0, 25.8, 26.0, 25.9, 25.8],
-              "suicidios": [12, 14, 17, 19, 18, 15, 19, 22, 25, 32, 27, 16]
-            }
-          },
-          {
-            "ciudad": "Valledupar",
-            "lat": 10.4631, "lng": -73.2532, "cluster": 2, "pc1": 0.04, "pc2": -0.91,
-            "td": 9.8, "to": 53.24, "tgp": 58.99, "tsub": 12.5,
-            "pct_precarizacion": 42.68, "pct_cuenta_propia": 36.05, "pct_empleado_particular": 50.79, "pct_comercio_alojamiento": 30.32,
-            "suicidios_totales": 340, "suicidios_con_razon": 230, "suicidios_eco_lab": 45, "pct_eco_conocido": 19.5,
-            "causas": { "Enfermedad Mental": 95, "Sentimental": 72, "Económica": 38, "Enfermedad física": 15, "Alcohol / Sustancias": 12, "Laboral": 7, "Sin información": 101 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.5, 11.8, 12.2, 12.8, 13.5, 20.8, 16.2, 13.0, 12.2, 11.8, 11.9, 12.1],
-              "to": [58.1, 57.8, 57.2, 56.8, 56.0, 48.1, 52.8, 55.0, 55.8, 56.1, 56.0, 55.9],
-              "precarizacion": [65.8, 65.4, 64.8, 64.4, 63.7, 68.4, 64.8, 62.6, 61.5, 60.8, 60.9, 61.0],
-              "formal": [27.2, 27.8, 28.2, 28.8, 29.5, 25.2, 28.2, 30.4, 31.1, 31.3, 31.2, 31.2],
-              "suicidios": [21, 24, 27, 30, 29, 24, 30, 35, 39, 45, 38, 22]
-            }
-          },
-          {
-            "ciudad": "Sincelejo",
-            "lat": 9.3047, "lng": -75.3978, "cluster": 1, "pc1": -1.82, "pc2": 0.49,
-            "td": 13.0, "to": 55.25, "tgp": 63.49, "tsub": 13.1,
-            "pct_precarizacion": 54.17, "pct_cuenta_propia": 47.61, "pct_empleado_particular": 37.61, "pct_comercio_alojamiento": 29.23,
-            "suicidios_totales": 220, "suicidios_con_razon": 150, "suicidios_eco_lab": 31, "pct_eco_conocido": 20.6,
-            "causas": { "Enfermedad Mental": 62, "Sentimental": 48, "Económica": 26, "Enfermedad física": 10, "Alcohol / Sustancias": 8, "Laboral": 5, "Sin información": 61 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [11.1, 11.4, 11.8, 12.4, 13.1, 20.2, 15.8, 12.6, 11.9, 11.5, 11.6, 11.8],
-              "to": [58.2, 57.9, 57.3, 56.9, 56.1, 48.2, 52.9, 55.2, 56.1, 56.4, 56.3, 56.2],
-              "precarizacion": [67.8, 67.4, 66.8, 66.4, 65.7, 70.4, 66.8, 64.6, 63.5, 62.7, 62.7, 62.8],
-              "formal": [25.8, 26.4, 26.8, 27.4, 28.1, 23.8, 26.8, 29.0, 29.7, 29.9, 29.8, 29.8],
-              "suicidios": [13, 15, 18, 20, 19, 15, 20, 23, 26, 31, 26, 16]
-            }
-          },
-          {
-            "ciudad": "Riohacha",
-            "lat": 11.5444, "lng": -72.9072, "cluster": 1, "pc1": -2.99, "pc2": 0.96,
-            "td": 11.8, "to": 55.70, "tgp": 63.15, "tsub": 14.2,
-            "pct_precarizacion": 62.52, "pct_cuenta_propia": 56.13, "pct_empleado_particular": 27.50, "pct_comercio_alojamiento": 25.89,
-            "suicidios_totales": 180, "suicidios_con_razon": 120, "suicidios_eco_lab": 28, "pct_eco_conocido": 23.3,
-            "causas": { "Enfermedad Mental": 48, "Sentimental": 38, "Económica": 23, "Enfermedad física": 8, "Alcohol / Sustancias": 7, "Laboral": 5, "Sin información": 51 },
-            "historico": {
-              "anios": ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"],
-              "td": [12.8, 13.1, 13.5, 14.1, 14.8, 22.1, 17.5, 14.2, 13.6, 13.2, 13.3, 13.5],
-              "to": [55.8, 55.5, 54.9, 54.5, 53.7, 45.8, 50.5, 52.8, 53.7, 54.0, 53.9, 53.8],
-              "precarizacion": [71.5, 71.1, 70.5, 70.1, 69.4, 74.1, 70.5, 68.3, 67.2, 66.4, 66.4, 66.5],
-              "formal": [20.5, 21.1, 21.5, 22.1, 22.8, 18.5, 21.5, 23.7, 24.4, 24.6, 24.5, 24.5],
-              "suicidios": [11, 13, 15, 17, 16, 13, 17, 20, 22, 28, 23, 14]
-            }
-          }
-        ];
+ {
+  "ciudad": "Pasto",
+  "lat": 1.2136,
+  "lng": -77.2811,
+  "cluster": 2,
+  "pc1": 0.49,
+  "pc2": 2.28,
+  "td": 9.2,
+  "to": 62.54,
+  "tgp": 68.88,
+  "tsub": 13.7,
+  "pct_precarizacion": 47.11,
+  "pct_cuenta_propia": 42.66,
+  "pct_empleado_particular": 42.02,
+  "pct_comercio_alojamiento": 30.31,
+  "suicidios_totales": 493,
+  "suicidios_con_razon": 285,
+  "suicidios_eco_lab": 33,
+  "pct_eco_conocido": 11.6,
+  "causas": {
+   "Pareja": 132,
+   "Salud mental y sustancias": 79,
+   "Económica": 29,
+   "Otras": 29,
+   "Familiar": 16,
+   "Sin información": 208
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    10.2,
+    9.9,
+    9.8,
+    9.3,
+    10.8,
+    16.8,
+    13.6,
+    11.9,
+    10.9,
+    11.1,
+    9.5,
+    9.7
+   ],
+   "to": [
+    61.4,
+    62.4,
+    61.9,
+    58.5,
+    57.0,
+    51.8,
+    55.2,
+    58.6,
+    61.4,
+    61.8,
+    62.7,
+    62.2
+   ],
+   "precarizacion": [
+    53.6,
+    51.6,
+    49.2,
+    48.6,
+    46.9,
+    49.0,
+    47.6,
+    47.0,
+    46.8,
+    46.9,
+    48.5,
+    47.7
+   ],
+   "formal": [
+    35.7,
+    37.4,
+    39.4,
+    40.0,
+    41.4,
+    38.5,
+    39.4,
+    41.3,
+    42.3,
+    41.4,
+    41.2,
+    41.4
+   ],
+   "suicidios": [
+    40,
+    34,
+    37,
+    44,
+    44,
+    37,
+    38,
+    52,
+    44,
+    51,
+    55,
+    17
+   ]
+  }
+ },
+ {
+  "ciudad": "Bogotá",
+  "lat": 4.711,
+  "lng": -74.0721,
+  "cluster": 2,
+  "pc1": 3.64,
+  "pc2": 0.67,
+  "td": 7.6,
+  "to": 65.18,
+  "tgp": 70.57,
+  "tsub": 6.2,
+  "pct_precarizacion": 32.33,
+  "pct_cuenta_propia": 29.42,
+  "pct_empleado_particular": 60.48,
+  "pct_comercio_alojamiento": 25.51,
+  "suicidios_totales": 4286,
+  "suicidios_con_razon": 2000,
+  "suicidios_eco_lab": 264,
+  "pct_eco_conocido": 13.2,
+  "causas": {
+   "Salud mental y sustancias": 864,
+   "Pareja": 648,
+   "Económica": 242,
+   "Otras": 128,
+   "Familiar": 63,
+   "Escolar": 33,
+   "Laboral": 22,
+   "Sin información": 2286
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    8.8,
+    9.3,
+    10.6,
+    10.6,
+    10.9,
+    18.1,
+    16.4,
+    11.6,
+    10.4,
+    9.8,
+    8.4,
+    8.1
+   ],
+   "to": [
+    67.8,
+    66.3,
+    64.3,
+    63.7,
+    63.3,
+    54.5,
+    56.7,
+    59.0,
+    62.0,
+    64.1,
+    64.6,
+    64.4
+   ],
+   "precarizacion": [
+    36.8,
+    36.6,
+    35.5,
+    35.4,
+    36.3,
+    36.9,
+    34.1,
+    32.1,
+    31.9,
+    33.7,
+    34.4,
+    33.6
+   ],
+   "formal": [
+    54.9,
+    55.5,
+    56.9,
+    56.9,
+    56.1,
+    55.5,
+    56.3,
+    58.7,
+    59.6,
+    58.2,
+    58.5,
+    59.0
+   ],
+   "suicidios": [
+    310,
+    356,
+    347,
+    387,
+    414,
+    319,
+    374,
+    427,
+    439,
+    363,
+    352,
+    198
+   ]
+  }
+ },
+ {
+  "ciudad": "Medellín",
+  "lat": 6.2442,
+  "lng": -75.5812,
+  "cluster": 2,
+  "pc1": 2.77,
+  "pc2": 0.4,
+  "td": 7.8,
+  "to": 61.54,
+  "tgp": 66.72,
+  "tsub": 6.6,
+  "pct_precarizacion": 34.31,
+  "pct_cuenta_propia": 30.43,
+  "pct_empleado_particular": 59.11,
+  "pct_comercio_alojamiento": 28.01,
+  "suicidios_totales": 3321,
+  "suicidios_con_razon": 1614,
+  "suicidios_eco_lab": 235,
+  "pct_eco_conocido": 14.6,
+  "causas": {
+   "Salud mental y sustancias": 805,
+   "Pareja": 429,
+   "Económica": 219,
+   "Otras": 81,
+   "Familiar": 49,
+   "Laboral": 16,
+   "Escolar": 15,
+   "Sin información": 1707
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    11.4,
+    11.5,
+    11.6,
+    12.6,
+    13.2,
+    19.3,
+    15.5,
+    11.0,
+    9.1,
+    8.8,
+    7.3,
+    8.3
+   ],
+   "to": [
+    58.1,
+    57.4,
+    57.1,
+    55.9,
+    54.5,
+    49.4,
+    51.5,
+    58.2,
+    59.2,
+    60.1,
+    61.7,
+    61.4
+   ],
+   "precarizacion": [
+    32.3,
+    31.3,
+    31.9,
+    32.3,
+    32.4,
+    33.7,
+    32.6,
+    34.3,
+    33.7,
+    34.1,
+    33.7,
+    33.6
+   ],
+   "formal": [
+    59.7,
+    61.1,
+    59.8,
+    59.5,
+    59.6,
+    57.8,
+    59.7,
+    59.3,
+    60.3,
+    59.7,
+    60.4,
+    59.9
+   ],
+   "suicidios": [
+    234,
+    264,
+    236,
+    251,
+    290,
+    264,
+    281,
+    331,
+    370,
+    301,
+    319,
+    180
+   ]
+  }
+ },
+ {
+  "ciudad": "Cali",
+  "lat": 3.4516,
+  "lng": -76.532,
+  "cluster": 2,
+  "pc1": 1.39,
+  "pc2": 0.23,
+  "td": 9.6,
+  "to": 58.08,
+  "tgp": 64.24,
+  "tsub": 7.5,
+  "pct_precarizacion": 38.88,
+  "pct_cuenta_propia": 35.41,
+  "pct_empleado_particular": 55.81,
+  "pct_comercio_alojamiento": 29.49,
+  "suicidios_totales": 1131,
+  "suicidios_con_razon": 392,
+  "suicidios_eco_lab": 55,
+  "pct_eco_conocido": 14.0,
+  "causas": {
+   "Salud mental y sustancias": 170,
+   "Pareja": 111,
+   "Económica": 51,
+   "Otras": 37,
+   "Familiar": 17,
+   "Escolar": 6,
+   "Sin información": 739
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    12.4,
+    11.5,
+    12.7,
+    12.4,
+    13.4,
+    21.7,
+    15.3,
+    11.6,
+    10.9,
+    11.0,
+    9.0,
+    8.9
+   ],
+   "to": [
+    58.9,
+    59.4,
+    58.1,
+    57.1,
+    56.2,
+    48.3,
+    51.2,
+    58.6,
+    59.5,
+    57.6,
+    58.1,
+    58.6
+   ],
+   "precarizacion": [
+    43.7,
+    42.7,
+    41.5,
+    41.1,
+    42.0,
+    42.7,
+    41.5,
+    40.2,
+    39.9,
+    37.3,
+    36.4,
+    38.5
+   ],
+   "formal": [
+    49.2,
+    49.9,
+    51.9,
+    51.8,
+    51.3,
+    50.4,
+    50.8,
+    52.9,
+    53.5,
+    57.3,
+    57.4,
+    55.9
+   ],
+   "suicidios": [
+    3,
+    88,
+    125,
+    130,
+    93,
+    89,
+    102,
+    121,
+    123,
+    138,
+    115,
+    4
+   ]
+  }
+ },
+ {
+  "ciudad": "Barranquilla",
+  "lat": 10.9685,
+  "lng": -74.7813,
+  "cluster": 0,
+  "pc1": 0.43,
+  "pc2": -0.77,
+  "td": 10.2,
+  "to": 54.47,
+  "tgp": 60.64,
+  "tsub": 7.9,
+  "pct_precarizacion": 42.26,
+  "pct_cuenta_propia": 37.15,
+  "pct_empleado_particular": 52.94,
+  "pct_comercio_alojamiento": 27.31,
+  "suicidios_totales": 832,
+  "suicidios_con_razon": 436,
+  "suicidios_eco_lab": 70,
+  "pct_eco_conocido": 16.1,
+  "causas": {
+   "Salud mental y sustancias": 205,
+   "Pareja": 97,
+   "Económica": 69,
+   "Otras": 42,
+   "Familiar": 17,
+   "Escolar": 6,
+   "Sin información": 396
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    8.8,
+    8.7,
+    8.6,
+    8.6,
+    8.3,
+    13.0,
+    14.4,
+    12.1,
+    10.7,
+    11.0,
+    9.9,
+    9.6
+   ],
+   "to": [
+    60.7,
+    60.1,
+    59.3,
+    58.7,
+    58.2,
+    51.2,
+    52.2,
+    56.8,
+    58.9,
+    57.1,
+    57.8,
+    56.4
+   ],
+   "precarizacion": [
+    51.9,
+    50.5,
+    51.4,
+    52.7,
+    52.4,
+    55.1,
+    54.5,
+    50.0,
+    47.7,
+    47.3,
+    47.0,
+    43.3
+   ],
+   "formal": [
+    42.1,
+    43.4,
+    42.3,
+    40.8,
+    41.4,
+    39.0,
+    40.1,
+    45.2,
+    46.8,
+    48.0,
+    48.4,
+    51.7
+   ],
+   "suicidios": [
+    64,
+    86,
+    85,
+    90,
+    61,
+    59,
+    90,
+    69,
+    62,
+    58,
+    71,
+    37
+   ]
+  }
+ },
+ {
+  "ciudad": "Bucaramanga",
+  "lat": 7.1254,
+  "lng": -73.1198,
+  "cluster": 2,
+  "pc1": 1.64,
+  "pc2": 0.37,
+  "td": 8.5,
+  "to": 58.86,
+  "tgp": 64.31,
+  "tsub": 4.3,
+  "pct_precarizacion": 38.42,
+  "pct_cuenta_propia": 34.51,
+  "pct_empleado_particular": 55.52,
+  "pct_comercio_alojamiento": 29.36,
+  "suicidios_totales": 694,
+  "suicidios_con_razon": 346,
+  "suicidios_eco_lab": 43,
+  "pct_eco_conocido": 12.4,
+  "causas": {
+   "Salud mental y sustancias": 145,
+   "Pareja": 116,
+   "Económica": 37,
+   "Otras": 23,
+   "Familiar": 12,
+   "Escolar": 7,
+   "Laboral": 6,
+   "Sin información": 348
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    8.6,
+    9.1,
+    9.3,
+    9.7,
+    11.0,
+    19.2,
+    14.5,
+    9.1,
+    8.9,
+    9.2,
+    8.4,
+    8.2
+   ],
+   "to": [
+    62.3,
+    60.8,
+    60.4,
+    57.7,
+    55.8,
+    48.4,
+    51.5,
+    59.2,
+    59.8,
+    59.2,
+    59.7,
+    59.3
+   ],
+   "precarizacion": [
+    46.8,
+    47.9,
+    48.2,
+    49.6,
+    45.1,
+    47.3,
+    45.6,
+    45.1,
+    41.5,
+    40.9,
+    40.3,
+    40.9
+   ],
+   "formal": [
+    43.3,
+    43.8,
+    43.6,
+    42.3,
+    46.8,
+    44.9,
+    47.1,
+    47.3,
+    51.9,
+    52.9,
+    53.3,
+    52.3
+   ],
+   "suicidios": [
+    49,
+    52,
+    58,
+    73,
+    82,
+    55,
+    78,
+    61,
+    50,
+    57,
+    59,
+    20
+   ]
+  }
+ },
+ {
+  "ciudad": "Pereira",
+  "lat": 4.8133,
+  "lng": -75.6961,
+  "cluster": 0,
+  "pc1": 1.54,
+  "pc2": -1.74,
+  "td": 9.7,
+  "to": 53.46,
+  "tgp": 59.23,
+  "tsub": 3.8,
+  "pct_precarizacion": 33.03,
+  "pct_cuenta_propia": 29.13,
+  "pct_empleado_particular": 58.28,
+  "pct_comercio_alojamiento": 27.17,
+  "suicidios_totales": 598,
+  "suicidios_con_razon": 333,
+  "suicidios_eco_lab": 52,
+  "pct_eco_conocido": 15.6,
+  "causas": {
+   "Salud mental y sustancias": 173,
+   "Pareja": 78,
+   "Económica": 51,
+   "Otras": 22,
+   "Familiar": 9,
+   "Sin información": 265
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    11.7,
+    10.9,
+    9.4,
+    9.0,
+    8.7,
+    17.0,
+    14.1,
+    11.2,
+    9.6,
+    11.3,
+    9.1,
+    8.3
+   ],
+   "to": [
+    59.2,
+    60.2,
+    61.1,
+    60.9,
+    58.3,
+    48.8,
+    50.2,
+    53.3,
+    54.0,
+    52.9,
+    56.0,
+    54.2
+   ],
+   "precarizacion": [
+    43.9,
+    42.8,
+    42.8,
+    43.5,
+    40.4,
+    39.7,
+    36.8,
+    35.2,
+    36.5,
+    33.9,
+    34.8,
+    35.0
+   ],
+   "formal": [
+    48.6,
+    49.6,
+    49.1,
+    48.1,
+    52.8,
+    53.5,
+    53.6,
+    57.2,
+    57.2,
+    59.3,
+    59.3,
+    57.8
+   ],
+   "suicidios": [
+    30,
+    45,
+    50,
+    55,
+    62,
+    51,
+    52,
+    64,
+    63,
+    57,
+    44,
+    25
+   ]
+  }
+ },
+ {
+  "ciudad": "Cúcuta",
+  "lat": 7.8939,
+  "lng": -72.5078,
+  "cluster": 1,
+  "pc1": -3.03,
+  "pc2": 1.75,
+  "td": 10.4,
+  "to": 54.21,
+  "tgp": 60.49,
+  "tsub": 7.7,
+  "pct_precarizacion": 61.81,
+  "pct_cuenta_propia": 57.94,
+  "pct_empleado_particular": 32.83,
+  "pct_comercio_alojamiento": 31.38,
+  "suicidios_totales": 528,
+  "suicidios_con_razon": 150,
+  "suicidios_eco_lab": 17,
+  "pct_eco_conocido": 11.3,
+  "causas": {
+   "Salud mental y sustancias": 68,
+   "Pareja": 47,
+   "Económica": 17,
+   "Otras": 12,
+   "Familiar": 6,
+   "Sin información": 378
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    14.5,
+    15.2,
+    15.9,
+    15.9,
+    15.7,
+    23.0,
+    16.5,
+    13.2,
+    12.7,
+    12.7,
+    11.7,
+    11.0
+   ],
+   "to": [
+    58.5,
+    58.1,
+    56.6,
+    55.3,
+    54.6,
+    47.9,
+    52.0,
+    53.3,
+    53.6,
+    53.7,
+    54.8,
+    54.9
+   ],
+   "precarizacion": [
+    67.5,
+    66.7,
+    67.8,
+    67.4,
+    68.9,
+    68.6,
+    66.3,
+    63.3,
+    61.8,
+    63.6,
+    64.4,
+    62.4
+   ],
+   "formal": [
+    26.2,
+    27.1,
+    26.4,
+    26.5,
+    25.2,
+    25.5,
+    27.3,
+    30.3,
+    32.2,
+    30.2,
+    30.3,
+    32.2
+   ],
+   "suicidios": [
+    35,
+    39,
+    61,
+    52,
+    44,
+    40,
+    37,
+    48,
+    60,
+    65,
+    45,
+    2
+   ]
+  }
+ },
+ {
+  "ciudad": "Ibagué",
+  "lat": 4.4389,
+  "lng": -75.2322,
+  "cluster": 0,
+  "pc1": 0.65,
+  "pc2": -2.16,
+  "td": 11.1,
+  "to": 50.88,
+  "tgp": 57.26,
+  "tsub": 4.4,
+  "pct_precarizacion": 35.64,
+  "pct_cuenta_propia": 32.02,
+  "pct_empleado_particular": 56.45,
+  "pct_comercio_alojamiento": 27.16,
+  "suicidios_totales": 505,
+  "suicidios_con_razon": 165,
+  "suicidios_eco_lab": 15,
+  "pct_eco_conocido": 9.1,
+  "causas": {
+   "Salud mental y sustancias": 68,
+   "Pareja": 60,
+   "Económica": 15,
+   "Otras": 17,
+   "Familiar": 5,
+   "Sin información": 340
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    13.4,
+    14.4,
+    13.9,
+    15.7,
+    17.9,
+    28.7,
+    18.3,
+    15.7,
+    16.1,
+    13.7,
+    12.5,
+    12.1
+   ],
+   "to": [
+    57.4,
+    55.0,
+    53.3,
+    51.4,
+    47.8,
+    38.8,
+    42.0,
+    46.3,
+    46.2,
+    49.0,
+    52.4,
+    51.0
+   ],
+   "precarizacion": [
+    45.8,
+    45.3,
+    43.4,
+    42.2,
+    40.8,
+    41.3,
+    44.2,
+    44.5,
+    40.5,
+    37.8,
+    36.1,
+    35.0
+   ],
+   "formal": [
+    42.7,
+    43.5,
+    45.0,
+    46.5,
+    48.4,
+    48.0,
+    44.8,
+    46.2,
+    49.5,
+    53.1,
+    54.7,
+    56.9
+   ],
+   "suicidios": [
+    33,
+    46,
+    40,
+    38,
+    50,
+    46,
+    43,
+    47,
+    53,
+    37,
+    47,
+    25
+   ]
+  }
+ },
+ {
+  "ciudad": "Cartagena",
+  "lat": 10.391,
+  "lng": -75.4794,
+  "cluster": 1,
+  "pc1": -2.06,
+  "pc2": 0.85,
+  "td": 13.7,
+  "to": 54.59,
+  "tgp": 63.25,
+  "tsub": 7.6,
+  "pct_precarizacion": 56.17,
+  "pct_cuenta_propia": 50.86,
+  "pct_empleado_particular": 39.61,
+  "pct_comercio_alojamiento": 29.57,
+  "suicidios_totales": 446,
+  "suicidios_con_razon": 227,
+  "suicidios_eco_lab": 36,
+  "pct_eco_conocido": 15.9,
+  "causas": {
+   "Salud mental y sustancias": 93,
+   "Pareja": 82,
+   "Económica": 32,
+   "Otras": 15,
+   "Familiar": 5,
+   "Sin información": 219
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    8.0,
+    8.1,
+    8.0,
+    7.4,
+    6.3,
+    13.0,
+    12.1,
+    11.0,
+    10.8,
+    12.5,
+    10.5,
+    13.7
+   ],
+   "to": [
+    62.8,
+    61.9,
+    60.9,
+    61.0,
+    62.0,
+    56.0,
+    61.8,
+    59.5,
+    58.3,
+    55.3,
+    56.8,
+    55.0
+   ],
+   "precarizacion": [
+    58.0,
+    59.1,
+    58.1,
+    56.4,
+    51.7,
+    56.6,
+    61.0,
+    62.1,
+    61.8,
+    59.1,
+    59.2,
+    57.4
+   ],
+   "formal": [
+    35.3,
+    34.0,
+    34.7,
+    37.1,
+    41.7,
+    37.0,
+    32.8,
+    32.5,
+    33.4,
+    35.9,
+    35.8,
+    37.2
+   ],
+   "suicidios": [
+    28,
+    33,
+    46,
+    42,
+    42,
+    37,
+    26,
+    41,
+    55,
+    33,
+    42,
+    21
+   ]
+  }
+ },
+ {
+  "ciudad": "Manizales",
+  "lat": 5.0689,
+  "lng": -75.5174,
+  "cluster": 0,
+  "pc1": 2.13,
+  "pc2": -2.15,
+  "td": 8.6,
+  "to": 55.68,
+  "tgp": 60.91,
+  "tsub": 4.0,
+  "pct_precarizacion": 32.56,
+  "pct_cuenta_propia": 28.95,
+  "pct_empleado_particular": 58.08,
+  "pct_comercio_alojamiento": 21.85,
+  "suicidios_totales": 445,
+  "suicidios_con_razon": 299,
+  "suicidios_eco_lab": 55,
+  "pct_eco_conocido": 18.4,
+  "causas": {
+   "Pareja": 125,
+   "Salud mental y sustancias": 99,
+   "Económica": 50,
+   "Otras": 20,
+   "Laboral": 5,
+   "Sin información": 146
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    9.5,
+    10.2,
+    10.8,
+    11.0,
+    11.6,
+    19.0,
+    14.8,
+    10.2,
+    9.9,
+    10.6,
+    8.9,
+    8.3
+   ],
+   "to": [
+    58.4,
+    56.7,
+    56.8,
+    56.2,
+    54.6,
+    49.2,
+    50.4,
+    53.7,
+    54.1,
+    53.9,
+    56.2,
+    56.3
+   ],
+   "precarizacion": [
+    36.6,
+    36.6,
+    34.9,
+    34.2,
+    33.7,
+    34.8,
+    31.3,
+    31.2,
+    30.1,
+    30.9,
+    32.7,
+    31.7
+   ],
+   "formal": [
+    54.7,
+    54.9,
+    55.9,
+    56.0,
+    56.6,
+    55.4,
+    58.0,
+    60.0,
+    62.1,
+    60.7,
+    60.2,
+    59.9
+   ],
+   "suicidios": [
+    36,
+    28,
+    37,
+    43,
+    43,
+    36,
+    39,
+    41,
+    49,
+    32,
+    33,
+    28
+   ]
+  }
+ },
+ {
+  "ciudad": "Villavicencio",
+  "lat": 4.142,
+  "lng": -73.6266,
+  "cluster": 2,
+  "pc1": 1.4,
+  "pc2": 2.42,
+  "td": 7.7,
+  "to": 62.54,
+  "tgp": 67.77,
+  "tsub": 8.1,
+  "pct_precarizacion": 42.27,
+  "pct_cuenta_propia": 37.38,
+  "pct_empleado_particular": 49.1,
+  "pct_comercio_alojamiento": 33.86,
+  "suicidios_totales": 349,
+  "suicidios_con_razon": 160,
+  "suicidios_eco_lab": 28,
+  "pct_eco_conocido": 17.5,
+  "causas": {
+   "Pareja": 68,
+   "Salud mental y sustancias": 50,
+   "Económica": 27,
+   "Otras": 15,
+   "Sin información": 189
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    10.8,
+    11.9,
+    12.4,
+    11.8,
+    13.1,
+    21.0,
+    14.0,
+    10.5,
+    11.0,
+    9.8,
+    7.6,
+    7.8
+   ],
+   "to": [
+    62.6,
+    60.4,
+    61.6,
+    61.1,
+    60.3,
+    51.8,
+    55.3,
+    59.3,
+    59.3,
+    60.2,
+    61.4,
+    62.3
+   ],
+   "precarizacion": [
+    47.3,
+    46.5,
+    47.7,
+    48.5,
+    46.2,
+    46.6,
+    46.5,
+    45.5,
+    44.8,
+    42.8,
+    43.0,
+    42.2
+   ],
+   "formal": [
+    42.8,
+    43.6,
+    43.0,
+    42.2,
+    44.1,
+    44.1,
+    43.6,
+    45.2,
+    46.7,
+    47.7,
+    48.7,
+    49.2
+   ],
+   "suicidios": [
+    27,
+    23,
+    32,
+    21,
+    16,
+    33,
+    27,
+    41,
+    34,
+    43,
+    35,
+    17
+   ]
+  }
+ },
+ {
+  "ciudad": "Popayán",
+  "lat": 2.4419,
+  "lng": -76.6063,
+  "cluster": 1,
+  "pc1": -0.78,
+  "pc2": 0.45,
+  "td": 9.2,
+  "to": 55.15,
+  "tgp": 60.75,
+  "tsub": 8.6,
+  "pct_precarizacion": 47.52,
+  "pct_cuenta_propia": 43.2,
+  "pct_empleado_particular": 39.83,
+  "pct_comercio_alojamiento": 29.2,
+  "suicidios_totales": 317,
+  "suicidios_con_razon": 202,
+  "suicidios_eco_lab": 20,
+  "pct_eco_conocido": 9.9,
+  "causas": {
+   "Salud mental y sustancias": 84,
+   "Pareja": 68,
+   "Otras": 24,
+   "Económica": 16,
+   "Familiar": 10,
+   "Sin información": 115
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    11.7,
+    12.4,
+    11.4,
+    10.4,
+    11.3,
+    21.4,
+    17.2,
+    13.0,
+    10.1,
+    12.5,
+    10.0,
+    9.7
+   ],
+   "to": [
+    55.8,
+    56.2,
+    55.7,
+    56.6,
+    55.3,
+    46.0,
+    51.1,
+    52.4,
+    57.9,
+    56.5,
+    55.0,
+    55.2
+   ],
+   "precarizacion": [
+    61.0,
+    61.2,
+    57.8,
+    54.3,
+    53.8,
+    50.2,
+    45.2,
+    38.9,
+    50.6,
+    50.0,
+    51.7,
+    48.9
+   ],
+   "formal": [
+    28.3,
+    28.2,
+    31.1,
+    33.5,
+    34.1,
+    35.3,
+    39.3,
+    48.3,
+    38.2,
+    38.8,
+    38.6,
+    39.3
+   ],
+   "suicidios": [
+    19,
+    28,
+    27,
+    28,
+    26,
+    20,
+    25,
+    39,
+    27,
+    35,
+    23,
+    20
+   ]
+  }
+ },
+ {
+  "ciudad": "Valledupar",
+  "lat": 10.4631,
+  "lng": -73.2532,
+  "cluster": 0,
+  "pc1": -0.26,
+  "pc2": -0.77,
+  "td": 10.0,
+  "to": 51.76,
+  "tgp": 57.53,
+  "tsub": 5.3,
+  "pct_precarizacion": 42.62,
+  "pct_cuenta_propia": 37.07,
+  "pct_empleado_particular": 49.6,
+  "pct_comercio_alojamiento": 30.41,
+  "suicidios_totales": 302,
+  "suicidios_con_razon": 171,
+  "suicidios_eco_lab": 26,
+  "pct_eco_conocido": 15.2,
+  "causas": {
+   "Salud mental y sustancias": 68,
+   "Pareja": 59,
+   "Económica": 25,
+   "Otras": 14,
+   "Familiar": 5,
+   "Sin información": 131
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    9.9,
+    12.1,
+    13.1,
+    14.8,
+    16.4,
+    21.7,
+    16.5,
+    16.2,
+    13.4,
+    12.4,
+    9.9,
+    9.8
+   ],
+   "to": [
+    58.3,
+    54.9,
+    55.9,
+    54.1,
+    53.4,
+    44.5,
+    49.1,
+    51.8,
+    50.8,
+    50.2,
+    52.7,
+    52.7
+   ],
+   "precarizacion": [
+    65.0,
+    64.0,
+    63.4,
+    63.2,
+    61.2,
+    62.4,
+    58.7,
+    55.3,
+    55.1,
+    51.1,
+    48.7,
+    43.5
+   ],
+   "formal": [
+    26.9,
+    28.5,
+    28.5,
+    28.8,
+    30.7,
+    30.1,
+    33.3,
+    37.3,
+    37.9,
+    41.7,
+    44.6,
+    49.0
+   ],
+   "suicidios": [
+    17,
+    23,
+    23,
+    35,
+    18,
+    21,
+    29,
+    39,
+    39,
+    27,
+    19,
+    12
+   ]
+  }
+ },
+ {
+  "ciudad": "Armenia",
+  "lat": 4.5339,
+  "lng": -75.6811,
+  "cluster": 0,
+  "pc1": -0.13,
+  "pc2": -0.44,
+  "td": 10.5,
+  "to": 53.17,
+  "tgp": 59.38,
+  "tsub": 5.7,
+  "pct_precarizacion": 42.28,
+  "pct_cuenta_propia": 37.76,
+  "pct_empleado_particular": 48.91,
+  "pct_comercio_alojamiento": 30.29,
+  "suicidios_totales": 279,
+  "suicidios_con_razon": 60,
+  "suicidios_eco_lab": 8,
+  "pct_eco_conocido": 13.3,
+  "causas": {
+   "Salud mental y sustancias": 28,
+   "Pareja": 15,
+   "Económica": 8,
+   "Otras": 9,
+   "Sin información": 219
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    15.3,
+    15.8,
+    15.5,
+    17.0,
+    17.8,
+    25.6,
+    14.4,
+    11.8,
+    12.3,
+    11.2,
+    9.9,
+    10.5
+   ],
+   "to": [
+    52.9,
+    51.5,
+    51.7,
+    50.5,
+    48.4,
+    39.2,
+    44.1,
+    49.1,
+    50.8,
+    53.1,
+    54.3,
+    54.1
+   ],
+   "precarizacion": [
+    56.1,
+    55.4,
+    55.6,
+    53.1,
+    52.1,
+    49.8,
+    44.7,
+    36.3,
+    48.9,
+    47.9,
+    48.2,
+    44.5
+   ],
+   "formal": [
+    33.7,
+    35.0,
+    35.3,
+    37.3,
+    37.5,
+    38.3,
+    45.5,
+    54.5,
+    42.0,
+    42.9,
+    43.9,
+    47.2
+   ],
+   "suicidios": [
+    24,
+    24,
+    30,
+    28,
+    23,
+    25,
+    20,
+    21,
+    23,
+    22,
+    24,
+    15
+   ]
+  }
+ },
+ {
+  "ciudad": "Neiva",
+  "lat": 2.9273,
+  "lng": -75.2819,
+  "cluster": 2,
+  "pc1": 0.34,
+  "pc2": 0.91,
+  "td": 10.5,
+  "to": 58.17,
+  "tgp": 64.98,
+  "tsub": 8.1,
+  "pct_precarizacion": 43.89,
+  "pct_cuenta_propia": 40.42,
+  "pct_empleado_particular": 47.61,
+  "pct_comercio_alojamiento": 30.27,
+  "suicidios_totales": 276,
+  "suicidios_con_razon": 112,
+  "suicidios_eco_lab": 14,
+  "pct_eco_conocido": 12.5,
+  "causas": {
+   "Salud mental y sustancias": 41,
+   "Pareja": 40,
+   "Económica": 14,
+   "Otras": 12,
+   "Familiar": 5,
+   "Sin información": 164
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    10.9,
+    11.2,
+    11.7,
+    11.6,
+    12.9,
+    25.5,
+    17.8,
+    11.8,
+    12.8,
+    10.1,
+    9.3,
+    8.9
+   ],
+   "to": [
+    63.1,
+    62.9,
+    61.5,
+    58.7,
+    56.6,
+    45.6,
+    48.0,
+    53.1,
+    53.1,
+    54.0,
+    53.4,
+    56.3
+   ],
+   "precarizacion": [
+    52.4,
+    52.3,
+    52.6,
+    54.7,
+    53.7,
+    50.5,
+    49.4,
+    53.8,
+    47.9,
+    45.8,
+    46.6,
+    43.0
+   ],
+   "formal": [
+    37.9,
+    38.7,
+    38.2,
+    35.7,
+    37.1,
+    39.1,
+    39.9,
+    37.8,
+    43.8,
+    45.8,
+    46.6,
+    48.9
+   ],
+   "suicidios": [
+    28,
+    21,
+    24,
+    19,
+    21,
+    30,
+    24,
+    22,
+    35,
+    23,
+    18,
+    11
+   ]
+  }
+ },
+ {
+  "ciudad": "Santa Marta",
+  "lat": 11.2408,
+  "lng": -74.199,
+  "cluster": 0,
+  "pc1": -0.65,
+  "pc2": -0.34,
+  "td": 8.8,
+  "to": 51.37,
+  "tgp": 56.3,
+  "tsub": 8.9,
+  "pct_precarizacion": 44.6,
+  "pct_cuenta_propia": 40.99,
+  "pct_empleado_particular": 48.95,
+  "pct_comercio_alojamiento": 31.86,
+  "suicidios_totales": 236,
+  "suicidios_con_razon": 92,
+  "suicidios_eco_lab": 11,
+  "pct_eco_conocido": 12.0,
+  "causas": {
+   "Salud mental y sustancias": 41,
+   "Pareja": 32,
+   "Económica": 11,
+   "Sin información": 144,
+   "Otras": 8
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    9.5,
+    9.9,
+    8.4,
+    8.8,
+    11.7,
+    18.5,
+    14.5,
+    12.1,
+    8.9,
+    9.8,
+    8.9,
+    10.3
+   ],
+   "to": [
+    58.3,
+    55.4,
+    56.3,
+    56.0,
+    54.3,
+    43.8,
+    49.6,
+    53.5,
+    55.3,
+    51.7,
+    53.9,
+    52.0
+   ],
+   "precarizacion": [
+    64.8,
+    62.3,
+    62.5,
+    65.2,
+    63.3,
+    62.1,
+    58.9,
+    59.9,
+    58.5,
+    53.5,
+    54.9,
+    46.1
+   ],
+   "formal": [
+    28.8,
+    31.4,
+    31.1,
+    28.6,
+    30.5,
+    31.5,
+    34.0,
+    33.8,
+    36.2,
+    40.3,
+    39.6,
+    48.2
+   ],
+   "suicidios": [
+    15,
+    15,
+    16,
+    21,
+    9,
+    24,
+    16,
+    29,
+    20,
+    34,
+    23,
+    14
+   ]
+  }
+ },
+ {
+  "ciudad": "Montería",
+  "lat": 8.7479,
+  "lng": -75.8814,
+  "cluster": 2,
+  "pc1": 0.1,
+  "pc2": 0.21,
+  "td": 11.3,
+  "to": 55.81,
+  "tgp": 62.93,
+  "tsub": 6.6,
+  "pct_precarizacion": 44.14,
+  "pct_cuenta_propia": 37.09,
+  "pct_empleado_particular": 47.61,
+  "pct_comercio_alojamiento": 30.19,
+  "suicidios_totales": 219,
+  "suicidios_con_razon": 57,
+  "suicidios_eco_lab": 7,
+  "pct_eco_conocido": 12.3,
+  "causas": {
+   "Salud mental y sustancias": 25,
+   "Pareja": 16,
+   "Económica": 7,
+   "Otras": 9,
+   "Sin información": 162
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    7.2,
+    9.4,
+    10.3,
+    9.4,
+    11.9,
+    17.9,
+    15.6,
+    14.4,
+    12.9,
+    11.5,
+    10.3,
+    11.0
+   ],
+   "to": [
+    65.7,
+    62.9,
+    62.7,
+    63.3,
+    60.7,
+    51.6,
+    53.6,
+    53.8,
+    55.2,
+    58.6,
+    56.6,
+    56.7
+   ],
+   "precarizacion": [
+    57.6,
+    53.0,
+    52.9,
+    54.5,
+    51.0,
+    52.5,
+    51.3,
+    48.5,
+    48.2,
+    47.0,
+    47.6,
+    44.1
+   ],
+   "formal": [
+    33.4,
+    36.1,
+    37.1,
+    36.3,
+    39.8,
+    38.4,
+    38.8,
+    42.3,
+    42.6,
+    43.0,
+    43.6,
+    46.3
+   ],
+   "suicidios": [
+    19,
+    17,
+    27,
+    14,
+    19,
+    13,
+    15,
+    20,
+    24,
+    22,
+    17,
+    12
+   ]
+  }
+ },
+ {
+  "ciudad": "Sincelejo",
+  "lat": 9.3047,
+  "lng": -75.3978,
+  "cluster": 1,
+  "pc1": -1.63,
+  "pc2": 1.1,
+  "td": 12.7,
+  "to": 55.12,
+  "tgp": 63.11,
+  "tsub": 9.3,
+  "pct_precarizacion": 52.76,
+  "pct_cuenta_propia": 46.95,
+  "pct_empleado_particular": 38.38,
+  "pct_comercio_alojamiento": 31.4,
+  "suicidios_totales": 190,
+  "suicidios_con_razon": 161,
+  "suicidios_eco_lab": 29,
+  "pct_eco_conocido": 18.0,
+  "causas": {
+   "Salud mental y sustancias": 95,
+   "Económica": 29,
+   "Pareja": 28,
+   "Otras": 9,
+   "Sin información": 29
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    9.2,
+    10.3,
+    10.0,
+    9.8,
+    12.1,
+    20.7,
+    16.6,
+    12.6,
+    11.4,
+    12.4,
+    12.4,
+    12.0
+   ],
+   "to": [
+    62.3,
+    61.4,
+    61.4,
+    63.1,
+    60.7,
+    49.3,
+    51.5,
+    53.1,
+    52.7,
+    53.0,
+    55.2,
+    56.0
+   ],
+   "precarizacion": [
+    63.4,
+    64.0,
+    62.4,
+    63.3,
+    62.1,
+    63.7,
+    62.9,
+    60.7,
+    59.0,
+    55.9,
+    57.2,
+    55.4
+   ],
+   "formal": [
+    28.2,
+    27.3,
+    28.7,
+    27.6,
+    29.0,
+    26.0,
+    28.3,
+    30.9,
+    33.5,
+    35.5,
+    34.0,
+    36.0
+   ],
+   "suicidios": [
+    19,
+    18,
+    16,
+    23,
+    16,
+    11,
+    22,
+    10,
+    12,
+    21,
+    15,
+    7
+   ]
+  }
+ },
+ {
+  "ciudad": "Tunja",
+  "lat": 5.5353,
+  "lng": -73.3678,
+  "cluster": 0,
+  "pc1": 0.76,
+  "pc2": -1.97,
+  "td": 13.2,
+  "to": 52.38,
+  "tgp": 60.32,
+  "tsub": 4.0,
+  "pct_precarizacion": 33.43,
+  "pct_cuenta_propia": 30.82,
+  "pct_empleado_particular": 52.71,
+  "pct_comercio_alojamiento": 26.66,
+  "suicidios_totales": 140,
+  "suicidios_con_razon": 86,
+  "suicidios_eco_lab": 16,
+  "pct_eco_conocido": 18.6,
+  "causas": {
+   "Pareja": 32,
+   "Salud mental y sustancias": 29,
+   "Económica": 12,
+   "Otras": 13,
+   "Sin información": 54
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    11.4,
+    11.7,
+    11.6,
+    12.4,
+    14.0,
+    23.0,
+    20.8,
+    13.9,
+    10.2,
+    11.5,
+    10.4,
+    12.0
+   ],
+   "to": [
+    55.5,
+    53.5,
+    51.9,
+    50.7,
+    48.9,
+    40.4,
+    43.1,
+    52.7,
+    56.6,
+    55.5,
+    55.2,
+    53.4
+   ],
+   "precarizacion": [
+    36.6,
+    35.9,
+    39.4,
+    39.5,
+    37.8,
+    37.2,
+    33.7,
+    37.9,
+    37.0,
+    34.5,
+    34.8,
+    34.0
+   ],
+   "formal": [
+    44.6,
+    45.9,
+    44.1,
+    43.8,
+    45.3,
+    44.5,
+    47.9,
+    45.7,
+    47.8,
+    49.7,
+    52.1,
+    50.5
+   ],
+   "suicidios": [
+    6,
+    14,
+    13,
+    13,
+    16,
+    14,
+    12,
+    10,
+    11,
+    12,
+    15,
+    4
+   ]
+  }
+ },
+ {
+  "ciudad": "Florencia",
+  "lat": 1.6144,
+  "lng": -75.6062,
+  "cluster": 1,
+  "pc1": -1.4,
+  "pc2": 0.5,
+  "td": 8.2,
+  "to": 52.96,
+  "tgp": 57.71,
+  "tsub": 4.9,
+  "pct_precarizacion": 49.07,
+  "pct_cuenta_propia": 44.68,
+  "pct_empleado_particular": 37.5,
+  "pct_comercio_alojamiento": 31.27,
+  "suicidios_totales": 126,
+  "suicidios_con_razon": 75,
+  "suicidios_eco_lab": 12,
+  "pct_eco_conocido": 16.0,
+  "causas": {
+   "Pareja": 38,
+   "Salud mental y sustancias": 19,
+   "Económica": 11,
+   "Sin información": 51,
+   "Otras": 7
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    12.1,
+    12.3,
+    12.2,
+    13.4,
+    16.1,
+    24.0,
+    16.0,
+    14.4,
+    14.4,
+    15.1,
+    11.1,
+    9.4
+   ],
+   "to": [
+    57.3,
+    56.0,
+    54.4,
+    53.2,
+    52.2,
+    46.3,
+    49.0,
+    54.9,
+    53.0,
+    53.0,
+    54.5,
+    53.7
+   ],
+   "precarizacion": [
+    50.5,
+    50.7,
+    50.6,
+    50.5,
+    45.9,
+    46.8,
+    51.0,
+    50.8,
+    48.4,
+    49.6,
+    49.0,
+    50.3
+   ],
+   "formal": [
+    35.3,
+    34.7,
+    35.4,
+    35.5,
+    39.2,
+    38.0,
+    34.9,
+    36.6,
+    39.0,
+    37.7,
+    37.3,
+    36.6
+   ],
+   "suicidios": [
+    7,
+    5,
+    12,
+    6,
+    6,
+    10,
+    5,
+    9,
+    18,
+    23,
+    17,
+    8
+   ]
+  }
+ },
+ {
+  "ciudad": "Riohacha",
+  "lat": 11.5444,
+  "lng": -72.9072,
+  "cluster": 1,
+  "pc1": -2.8,
+  "pc2": 1.41,
+  "td": 10.8,
+  "to": 55.89,
+  "tgp": 62.67,
+  "tsub": 9.0,
+  "pct_precarizacion": 61.45,
+  "pct_cuenta_propia": 56.76,
+  "pct_empleado_particular": 28.63,
+  "pct_comercio_alojamiento": 26.97,
+  "suicidios_totales": 107,
+  "suicidios_con_razon": 57,
+  "suicidios_eco_lab": 9,
+  "pct_eco_conocido": 15.8,
+  "causas": {
+   "Pareja": 25,
+   "Salud mental y sustancias": 16,
+   "Económica": 7,
+   "Sin información": 50,
+   "Otras": 9
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    11.4,
+    13.4,
+    14.2,
+    13.9,
+    15.3,
+    22.1,
+    18.2,
+    15.6,
+    14.9,
+    17.5,
+    14.8,
+    12.6
+   ],
+   "to": [
+    62.1,
+    60.6,
+    58.4,
+    58.1,
+    55.6,
+    46.8,
+    51.0,
+    51.2,
+    54.2,
+    51.6,
+    53.1,
+    55.7
+   ],
+   "precarizacion": [
+    65.9,
+    66.0,
+    65.6,
+    66.3,
+    65.4,
+    63.6,
+    64.3,
+    64.6,
+    66.0,
+    62.7,
+    64.3,
+    62.9
+   ],
+   "formal": [
+    25.8,
+    25.7,
+    25.0,
+    24.1,
+    24.7,
+    26.2,
+    25.7,
+    25.9,
+    24.5,
+    27.3,
+    27.1,
+    27.1
+   ],
+   "suicidios": [
+    9,
+    7,
+    11,
+    10,
+    4,
+    4,
+    7,
+    17,
+    14,
+    8,
+    9,
+    7
+   ]
+  }
+ },
+ {
+  "ciudad": "Quibdó",
+  "lat": 5.6947,
+  "lng": -76.6611,
+  "cluster": 1,
+  "pc1": -4.53,
+  "pc2": -3.21,
+  "td": 23.4,
+  "to": 42.77,
+  "tgp": 55.81,
+  "tsub": 2.5,
+  "pct_precarizacion": 54.12,
+  "pct_cuenta_propia": 48.89,
+  "pct_empleado_particular": 32.73,
+  "pct_comercio_alojamiento": 24.03,
+  "suicidios_totales": 69,
+  "suicidios_con_razon": 21,
+  "suicidios_eco_lab": 5,
+  "pct_eco_conocido": 23.8,
+  "causas": {
+   "Pareja": 11,
+   "Económica": 5,
+   "Sin información": 48,
+   "Otras": 5
+  },
+  "historico": {
+   "anios": [
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+    "2024",
+    "2025",
+    "2026"
+   ],
+   "td": [
+    15.6,
+    18.4,
+    16.9,
+    18.0,
+    20.6,
+    21.4,
+    25.4,
+    23.3,
+    26.1,
+    27.3,
+    27.6,
+    24.4
+   ],
+   "to": [
+    53.8,
+    52.5,
+    51.8,
+    51.0,
+    46.9,
+    40.2,
+    39.3,
+    41.1,
+    41.3,
+    42.6,
+    41.0,
+    42.7
+   ],
+   "precarizacion": [
+    58.4,
+    66.5,
+    54.2,
+    56.9,
+    54.9,
+    54.2,
+    54.9,
+    55.4,
+    51.7,
+    54.2,
+    56.2,
+    50.6
+   ],
+   "formal": [
+    26.0,
+    17.9,
+    30.7,
+    26.1,
+    28.2,
+    29.1,
+    28.1,
+    29.2,
+    33.3,
+    30.1,
+    30.4,
+    35.2
+   ],
+   "suicidios": [
+    8,
+    5,
+    9,
+    7,
+    7,
+    2,
+    3,
+    7,
+    8,
+    8,
+    3,
+    2
+   ]
+  }
+ }
+];
+        const SISMEL = {"univ": 30932, "conocida": 14464, "y1": 1961, "prev": 13.6, "mods": [{"e": 1, "m": "Solo sexo y edad (base)", "t": "base", "auc": 0.681, "lo": 0.659, "hi": 0.705, "ap": 0.215, "lift": 1.799, "rec": 0.36, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Reg. logística · perfil", "t": "perfil", "auc": 0.697, "lo": 0.675, "hi": 0.717, "ap": 0.242, "lift": 2.01, "rec": 0.402, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Gradient boosting · perfil", "t": "perfil", "auc": 0.696, "lo": 0.673, "hi": 0.718, "ap": 0.248, "lift": 2.028, "rec": 0.406, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Reg. logística · perfil + empleo", "t": "ctx", "auc": 0.695, "lo": 0.671, "hi": 0.715, "ap": 0.234, "lift": 1.948, "rec": 0.39, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Gradient boosting · perfil + empleo", "t": "ctx", "auc": 0.683, "lo": 0.661, "hi": 0.704, "ap": 0.228, "lift": 1.966, "rec": 0.393, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 2, "m": "Solo sexo y edad (base)", "t": "base", "auc": 0.677, "lo": 0.642, "hi": 0.714, "ap": 0.186, "lift": 1.857, "rec": 0.372, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Reg. logística · perfil", "t": "perfil", "auc": 0.702, "lo": 0.663, "hi": 0.739, "ap": 0.245, "lift": 2.086, "rec": 0.417, "prev": 0.111, "n": 1964, "fin": true}, {"e": 2, "m": "Gradient boosting · perfil", "t": "perfil", "auc": 0.687, "lo": 0.651, "hi": 0.727, "ap": 0.209, "lift": 1.971, "rec": 0.394, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Reg. logística · perfil + empleo", "t": "ctx", "auc": 0.699, "lo": 0.661, "hi": 0.736, "ap": 0.245, "lift": 2.063, "rec": 0.413, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Gradient boosting · perfil + empleo", "t": "ctx", "auc": 0.689, "lo": 0.653, "hi": 0.728, "ap": 0.218, "lift": 1.88, "rec": 0.376, "prev": 0.111, "n": 1964, "fin": false}], "val": [{"y": "2019", "auc": 0.673, "n": 1244}, {"y": "2020", "auc": 0.641, "n": 1142}, {"y": "2021", "auc": 0.646, "n": 1309}, {"y": "2022", "auc": 0.688, "n": 1458}, {"y": "2023", "auc": 0.71, "n": 1506}, {"y": "2024", "auc": 0.705, "n": 1400}, {"y": "2025", "auc": 0.697, "n": 1293}, {"y": "2026", "auc": 0.711, "n": 671}], "imp": [{"v": "Edad (quinquenal)", "d": 0.073, "s": 0.0068}, {"v": "Sexo", "d": 0.0235, "s": 0.0042}, {"v": "Ciclo vital", "d": 0.0211, "s": 0.0073}, {"v": "Mecanismo", "d": 0.0165, "s": 0.0042}, {"v": "Pertenencia grupal", "d": 0.0099, "s": 0.0023}, {"v": "Escenario", "d": 0.0082, "s": 0.0015}, {"v": "Departamento", "d": 0.005, "s": 0.0035}, {"v": "Zona", "d": 0.0049, "s": 0.0017}, {"v": "Escolaridad", "d": 0.0037, "s": 0.0026}, {"v": "Estado civil", "d": 0.0023, "s": 0.0023}, {"v": "País de nacimiento", "d": 0.0016, "s": 0.0014}, {"v": "Mes", "d": 0.0007, "s": 0.0009}, {"v": "Hora", "d": 0.0004, "s": 0.0003}, {"v": "Día de la semana", "d": -0.0005, "s": 0.0009}], "perfil": {"Sexo": [{"c": "Hombre", "p": 15.2, "n": 11411}, {"c": "Mujer", "p": 7.4, "n": 3053}], "Ciclo vital": [{"c": "Adolescencia (12–17)", "p": 2.3, "n": 1179}, {"c": "Juventud (18–28)", "p": 8.9, "n": 4150}, {"c": "Adultez (29–59)", "p": 17.5, "n": 6645}, {"c": "Adulto mayor (60+)", "p": 16.5, "n": 2436}], "Edad (quinquenal)": [{"c": "10–14", "p": 1.7, "n": 405}, {"c": "15–17", "p": 2.6, "n": 819}, {"c": "18–19", "p": 6.6, "n": 711}, {"c": "20–24", "p": 8.3, "n": 1985}, {"c": "25–29", "p": 10.6, "n": 1781}, {"c": "30–34", "p": 11.0, "n": 1409}, {"c": "35–39", "p": 15.2, "n": 1215}, {"c": "40–44", "p": 18.3, "n": 1011}, {"c": "45–49", "p": 20.2, "n": 933}, {"c": "50–54", "p": 22.4, "n": 901}, {"c": "55–59", "p": 25.2, "n": 849}, {"c": "60–64", "p": 21.7, "n": 743}, {"c": "65–69", "p": 21.3, "n": 609}, {"c": "70–74", "p": 13.2, "n": 454}, {"c": "75–79", "p": 10.2, "n": 295}, {"c": "80+", "p": 6.6, "n": 335}], "Escolaridad": [{"c": "Básica primaria", "p": 13.1, "n": 3898}, {"c": "Básica secundaria", "p": 13.2, "n": 2228}, {"c": "Media", "p": 14.7, "n": 3061}, {"c": "Preescolar", "p": 13.2, "n": 1577}, {"c": "Sin escolaridad", "p": 9.1, "n": 679}, {"c": "Sin información", "p": 13.3, "n": 1727}, {"c": "Técnica/tecnológica", "p": 16.5, "n": 1202}], "Estado civil": [{"c": "Casado/a", "p": 18.1, "n": 2035}, {"c": "Separado/divorciado", "p": 16.2, "n": 727}, {"c": "Sin información", "p": 14.5, "n": 1144}, {"c": "Soltero/a", "p": 10.3, "n": 6495}, {"c": "Unión libre", "p": 16.0, "n": 3749}, {"c": "Viudo/a", "p": 13.4, "n": 305}], "Mecanismo": [{"c": "Contundente", "p": 7.8, "n": 957}, {"c": "Cortopunzante", "p": 7.0, "n": 200}, {"c": "Asfixia", "p": 15.1, "n": 9311}, {"c": "Arma de fuego", "p": 13.6, "n": 1313}, {"c": "Tóxico", "p": 10.9, "n": 2382}], "Zona del hecho": [{"c": "Cabecera municipal", "p": 14.3, "n": 10806}, {"c": "Centro poblado", "p": 12.4, "n": 660}, {"c": "Rural (vereda y campo)", "p": 11.4, "n": 2910}], "Tipología laboral de la ciudad": [{"c": "Alta participación y ocupación", "p": 13.7, "n": 4966}, {"c": "Alta precarización", "p": 14.3, "n": 893}, {"c": "Participación media", "p": 15.4, "n": 1642}, {"c": "Sin cobertura GEIH", "p": 12.9, "n": 6963}]}, "abl": [{"e": "Etapa 1", "alg": "Reg. logística", "alc": "todos los casos", "a": 0.6973, "b": 0.6945, "d": -0.0028, "lo": -0.0069, "hi": 0.0012}, {"e": "Etapa 1", "alg": "Reg. logística", "alc": "solo ciudades GEIH", "a": 0.6928, "b": 0.6889, "d": -0.0039, "lo": -0.0096, "hi": 0.002}, {"e": "Etapa 1", "alg": "Gradient boosting", "alc": "todos los casos", "a": 0.6963, "b": 0.683, "d": -0.0133, "lo": -0.0227, "hi": -0.0029}, {"e": "Etapa 1", "alg": "Gradient boosting", "alc": "solo ciudades GEIH", "a": 0.699, "b": 0.6816, "d": -0.0174, "lo": -0.035, "hi": 0.0005}, {"e": "Etapa 2", "alg": "Reg. logística", "alc": "todos los casos", "a": 0.7016, "b": 0.6993, "d": -0.0023, "lo": -0.0054, "hi": 0.001}, {"e": "Etapa 2", "alg": "Reg. logística", "alc": "solo ciudades GEIH", "a": 0.6914, "b": 0.6857, "d": -0.0057, "lo": -0.011, "hi": -0.0006}, {"e": "Etapa 2", "alg": "Gradient boosting", "alc": "todos los casos", "a": 0.6872, "b": 0.6887, "d": 0.0015, "lo": -0.006, "hi": 0.009}, {"e": "Etapa 2", "alg": "Gradient boosting", "alc": "solo ciudades GEIH", "a": 0.6795, "b": 0.675, "d": -0.0045, "lo": -0.0167, "hi": 0.0078}], "cm": [[1302, 444], [106, 112]], "umbral": 0.56, "rec": 0.51, "prec": 0.2, "esp": 0.75, "tip": [{"t": "Alta participación y ocupación", "n": 4966, "p": 13.7}, {"t": "Participación media", "n": 1642, "p": 15.4}, {"t": "Alta precarización", "n": 893, "p": 14.3}, {"t": "Sin cobertura GEIH (resto del país)", "n": 6963, "p": 12.9}], "cob": 51.9, "kpis": [{"k": "AUC en prueba final 2025–2026 ≥ 0,65", "r": "0,702 (IC 95 % 0,663–0,739)", "ok": true}, {"k": "Lift en el 20 % superior ≥ 1,5", "r": "2,09", "ok": true}, {"k": "AUC superior a la línea base de sexo y edad", "r": "0,702 frente a 0,677", "ok": true}, {"k": "AUC anual ≥ 0,60 en cada año de prueba (2022–2026)", "r": "mínimo 0,688", "ok": true}, {"k": "Completitud ≥ 95 % en las variables del modelo", "r": "bajo 95 %: hora (31 %), escolaridad (88 %), pertenencia grupal (91 %), estado civil (92 %)", "ok": false}]};
+        const META = {"actualizacion": "2026-11-11", "periodoGeih": "jul–sep 2026", "pcavar": [0.5186496570909971, 0.29925064365128834], "sil": 0.2808203786692691, "spear": [{"k": "pct_precarizacion", "l": "Precarización (cuenta propia y afines)", "r": -0.067, "p": 0.761}, {"k": "pct_cuenta_propia", "l": "Cuenta propia", "r": -0.036, "p": 0.872}, {"k": "td", "l": "Desocupación (TD)", "r": 0.189, "p": 0.388}, {"k": "to", "l": "Ocupación (TO)", "r": -0.146, "p": 0.507}, {"k": "tsub", "l": "Subocupación (TS)", "r": -0.299, "p": 0.166}, {"k": "pct_empleado_particular", "l": "Asalariados formales", "r": -0.06, "p": 0.785}]};
 
         let pcaChartInstance = null;
         let comboChartInstance = null;
@@ -1008,42 +3236,38 @@
         let mapLayerGroup = null;
         let heatLayerInstance = null;
         let currentMapMode = 'heat_abs';
-        let currentComboMode = 'general'; // Variable para mantener la pestaña de la gráfica activa
+        let currentComboMode = 'general';
+
+        const fmt = (x, d = 1) => Number(x).toFixed(d).replace('.', ',');
 
         const clusterInfo = {
             0: {
-                title: "Clúster 0 · Formales / Consolidados",
+                title: "Clúster 0 · Participación media",
                 badgeClass: "bg-emerald-100 text-emerald-900 border-emerald-300",
                 colorHex: "#059669",
-                desc: "Mercados laborales con mayor empleo asalariado en empresas privadas (~58.4%) y menor tasa de precarización (~32.8%).",
-                paradoxTitle: "ESTABILIDAD RELATIVA",
-                paradoxText: "La mayor formalidad amortigua el estrés financiero de subsistencia diaria."
+                desc: "Participación y ocupación intermedias, con predominio de asalariados formales y precarización moderada. Mercados estables pero de menor dinamismo que el grupo de mayor ocupación."
             },
             1: {
-                title: "Clúster 1 · Precarización Extrema",
+                title: "Clúster 1 · Alta precarización",
                 badgeClass: "bg-rose-100 text-rose-900 border-rose-300",
                 colorHex: "#e11d48",
-                desc: "Desempleo estructural elevado e informalidad superior al 60%. Baja capacidad de absorción formal y alta vulnerabilidad de ingresos en los hogares.",
-                paradoxTitle: "VULNERABILIDAD MÚLTIPLE",
-                paradoxText: "El desempleo prolongado se suma a la falta de red de protección social."
+                desc: "Informalidad y trabajo por cuenta propia muy por encima del resto, menor peso del empleo asalariado formal y desocupación más alta. Alta vulnerabilidad de ingresos en los hogares."
             },
             2: {
-                title: "Clúster 2 · Informalidad Urbana / Transición Regional",
+                title: "Clúster 2 · Alta participación y ocupación",
                 badgeClass: "bg-amber-100 text-amber-900 border-amber-300",
                 colorHex: "#d97706",
-                desc: "Ocupación alta sostenida por autoempleo de subsistencia. Mercados donde trabajar no garantiza estabilidad económica.",
-                paradoxTitle: "LA PARADOJA OCUPACIONAL DE PASTO",
-                paradoxText: "La alta ocupación (62,68%) no refleja un mercado robusto: está impulsada por la necesidad de generar ingresos diarios. Casi la mitad de quienes trabajan lo hacen en condición de precarización."
+                desc: "Las mayores tasas de participación y ocupación y la menor desocupación. Dentro del grupo la calidad del empleo es desigual: no todas sus ciudades tienen una ocupación formal."
             }
         };
 
-        const departamentos = { 
-            "Pasto": "Nariño", "Bogotá": "Cundinamarca", "Medellín": "Antioquia", "Cali": "Valle del Cauca", 
-            "Cúcuta": "Norte de Santander", "Quibdó": "Chocó", "Bucaramanga": "Santander", "Barranquilla": "Atlántico", 
-            "Pereira": "Risaralda", "Ibagué": "Tolima", "Manizales": "Caldas", "Cartagena": "Bolívar", 
-            "Santa Marta": "Magdalena", "Neiva": "Huila", "Armenia": "Quindío", "Popayán": "Cauca", 
-            "Montería": "Córdoba", "Tunja": "Boyacá", "Villavicencio": "Meta", "Florencia": "Caquetá", 
-            "Valledupar": "Cesar", "Sincelejo": "Sucre", "Riohacha": "La Guajira" 
+        const departamentos = {
+            "Pasto": "Nariño", "Bogotá": "Cundinamarca", "Medellín": "Antioquia", "Cali": "Valle del Cauca",
+            "Cúcuta": "Norte de Santander", "Quibdó": "Chocó", "Bucaramanga": "Santander", "Barranquilla": "Atlántico",
+            "Pereira": "Risaralda", "Ibagué": "Tolima", "Manizales": "Caldas", "Cartagena": "Bolívar",
+            "Santa Marta": "Magdalena", "Neiva": "Huila", "Armenia": "Quindío", "Popayán": "Cauca",
+            "Montería": "Córdoba", "Tunja": "Boyacá", "Villavicencio": "Meta", "Florencia": "Caquetá",
+            "Valledupar": "Cesar", "Sincelejo": "Sucre", "Riohacha": "La Guajira"
         };
 
         function toggleSidebar() {
@@ -1052,7 +3276,7 @@
                 sidebar.classList.toggle('mobile-open');
                 document.getElementById('sidebar-backdrop').classList.toggle('show', sidebar.classList.contains('mobile-open'));
             } else { sidebar.classList.toggle('collapsed'); }
-            
+
             setTimeout(() => {
                 if (mapInstance) {
                     mapInstance.invalidateSize();
@@ -1066,18 +3290,27 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             safeRun('iconos', () => { if (window.lucide) lucide.createIcons(); });
+            safeRun('meta', smMeta);
             safeRun('selector', populateSelect);
-            safeRun('tabla', renderTable);
+            safeRun('tabla', () => filterTable());
+            safeRun('spearman', renderSpearmanCity);
+            safeRun('pestañas', () => setComboMode('general', true));
             safeRun('dashboard', () => updateDashboard("Pasto"));
             safeRun('grafico PCA', () => { if (window.Chart) initPcaChart(); });
-            // El mapa se inicializa después para garantizar que el layout esté listo
             setTimeout(() => {
                 safeRun('mapa', () => { if (window.L) initLeafletMap(); });
             }, 100);
             safeRun('SISMEL', initSismel);
-            safeRun('fecha', smFecha);
             safeRun('iconos2', () => { if (window.lucide) lucide.createIcons(); });
         });
+
+        function smMeta() {
+            const t = new Date(META.actualizacion + 'T12:00:00Z').toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+            ['meta-fecha', 'meta-fecha-side'].forEach(id => document.getElementById(id).textContent = t);
+            ['meta-periodo-geih', 'meta-periodo-geih-2', 'meta-periodo-geih-3'].forEach(id => document.getElementById(id).textContent = META.periodoGeih);
+            document.getElementById('meta-sil').textContent = fmt(META.sil, 3);
+            document.getElementById('pca-var-text').textContent = `Varianza explicada: Dim 1 = ${fmt(META.pcavar[0] * 100)} % · Dim 2 = ${fmt(META.pcavar[1] * 100)} %`;
+        }
 
         function populateSelect() {
             const select = document.getElementById('city-select');
@@ -1091,6 +3324,14 @@
             });
 
             select.addEventListener('change', (e) => updateDashboard(e.target.value));
+        }
+
+        function pastoNote(city) {
+            if (city.ciudad !== 'Pasto') return '';
+            const rkTO = [...cityData].sort((a, b) => b.to - a.to).findIndex(c => c.ciudad === 'Pasto') + 1;
+            const pares = cityData.filter(c => c.cluster === city.cluster);
+            const topPrec = pares.every(c => c.pct_precarizacion <= city.pct_precarizacion);
+            return `<p class="text-xs text-textDark leading-relaxed bg-amber-50 border border-amber-200 rounded-lg p-3 mt-3"><strong class="text-burgundy">La paradoja de Pasto:</strong> su ocupación (${fmt(city.to)} %) es la ${rkTO}.ª más alta de las 23 ciudades, pero ${fmt(city.pct_precarizacion)} % de los ocupados trabaja en condición de precarización${topPrec ? ', la mayor proporción de su clúster' : ''}.</p>`;
         }
 
         function renderClusterInfo(clusterId, activeCity) {
@@ -1109,6 +3350,7 @@
             });
 
             const shortTitle = info.title.split('·')[1]?.trim() || info.title;
+            const activeObj = cityData.find(c => c.ciudad === activeCity);
             document.getElementById('cluster-detail-box').innerHTML = `
                 <div class="flex items-center space-x-2 text-[10px] font-bold text-textMuted tracking-widest uppercase mb-1">
                     <span class="w-3 h-3 rounded-full" style="background-color:${info.colorHex}"></span>
@@ -1116,25 +3358,26 @@
                 </div>
                 <h3 class="text-2xl font-serif text-textDark leading-tight">${shortTitle}</h3>
                 <p class="text-sm text-textMuted leading-relaxed mt-2">${info.desc}</p>
-                
+
                 <div class="grid grid-cols-4 gap-2 pt-3">
                     <div class="bg-gray-50/80 p-2.5 text-center rounded border border-gray-100">
-                        <div class="font-bold text-textDark text-base">${avgTo.toFixed(1).replace('.', ',')}%</div>
+                        <div class="font-bold text-textDark text-base">${fmt(avgTo)}%</div>
                         <div class="text-[9px] text-textMuted uppercase tracking-wide mt-1">TO Prom.</div>
                     </div>
                     <div class="bg-gray-50/80 p-2.5 text-center rounded border border-gray-100">
-                        <div class="font-bold text-textDark text-base">${avgTd.toFixed(1).replace('.', ',')}%</div>
+                        <div class="font-bold text-textDark text-base">${fmt(avgTd)}%</div>
                         <div class="text-[9px] text-textMuted uppercase tracking-wide mt-1">TD Prom.</div>
                     </div>
                     <div class="bg-gray-50/80 p-2.5 text-center rounded border border-gray-100">
-                        <div class="font-bold text-textDark text-base">${avgPrec.toFixed(1).replace('.', ',')}%</div>
+                        <div class="font-bold text-textDark text-base">${fmt(avgPrec)}%</div>
                         <div class="text-[9px] text-textMuted uppercase tracking-wide mt-1">Precar. Prom.</div>
                     </div>
                     <div class="bg-gray-50/80 p-2.5 text-center rounded border border-gray-100">
-                        <div class="font-bold text-textDark text-base">${avgFormal.toFixed(1).replace('.', ',')}%</div>
+                        <div class="font-bold text-textDark text-base">${fmt(avgFormal)}%</div>
                         <div class="text-[9px] text-textMuted uppercase tracking-wide mt-1">Formal Prom.</div>
                     </div>
                 </div>
+                ${activeObj ? pastoNote(activeObj) : ''}
             `;
 
             const citiesBtns = citiesInCluster.map(c => {
@@ -1173,6 +3416,8 @@
             badgeEl.className = `badge-pill ${cls.badgeClass}`;
             badgeEl.textContent = cls.title;
 
+            const pocos = city.suicidios_con_razon < 50
+                ? `<p class="text-[10px] text-amber-900 bg-amber-100 rounded p-1.5 mt-2">Muestra pequeña: solo ${city.suicidios_con_razon} casos con causa conocida; el porcentaje es inestable.</p>` : '';
             document.getElementById('map-focus-card').innerHTML = `
                 <div class="flex justify-between items-start mb-2">
                     <div>
@@ -1188,14 +3433,15 @@
                         <p class="text-[9px] text-textMuted uppercase">casos econ/laborales</p>
                     </div>
                     <div class="bg-[#f7f4ed] p-2 rounded border border-[#e8e2d5]">
-                        <p class="font-bold text-textDark text-base">${city.pct_eco_conocido}%</p>
+                        <p class="font-bold text-textDark text-base">${fmt(city.pct_eco_conocido)}%</p>
                         <p class="text-[9px] text-textMuted uppercase">de causas conocidas</p>
                     </div>
                 </div>
+                ${pocos}
             `;
 
             const AVG = k => cityData.reduce((a, c) => a + c[k], 0) / cityData.length;
-            const dlt = (k, good) => { const d = city[k] - AVG(k); const cl = good === 0 ? 'text-textMuted' : (d * good > 0 ? 'text-emerald-700' : 'text-rose-700'); return `<p class="text-[9px] ${cl} font-semibold">${d >= 0 ? '+' : '−'}${Math.abs(d).toFixed(1).replace('.', ',')} pp vs. prom.</p>`; };
+            const dlt = (k, good) => { const d = city[k] - AVG(k); const cl = good === 0 ? 'text-textMuted' : (d * good > 0 ? 'text-emerald-700' : 'text-rose-700'); return `<p class="text-[9px] ${cl} font-semibold">${d >= 0 ? '+' : '−'}${fmt(Math.abs(d))} pp vs. prom.</p>`; };
             const kpiGrid = document.getElementById('kpi-cards-grid');
             kpiGrid.innerHTML = `
                 <div class="card-editorial p-3.5 space-y-1 relative">
@@ -1203,14 +3449,14 @@
                         <span class="p-1 bg-amber-100 rounded text-amber-900"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i></span>
                         ${city.ciudad === 'Pasto' ? '<span class="badge-paradoja">Paradoja</span>' : ''}
                     </div>
-                    <p class="text-xl font-bold text-textDark">${city.to}%</p>
+                    <p class="text-xl font-bold text-textDark">${fmt(city.to, 1)}%</p>
                     <p class="text-[10px] font-medium text-textMuted">Tasa de ocupación</p>
                     ${dlt('to', 1)}
                 </div>
 
                 <div class="card-editorial p-3.5 space-y-1">
                     <span class="p-1 bg-amber-100 rounded text-amber-900 inline-block"><i data-lucide="user-x" class="w-3.5 h-3.5"></i></span>
-                    <p class="text-xl font-bold text-textDark">${city.td}%</p>
+                    <p class="text-xl font-bold text-textDark">${fmt(city.td)}%</p>
                     <p class="text-[10px] font-medium text-textMuted">Tasa de desocupación</p>
                     ${dlt('td', -1)}
                 </div>
@@ -1220,28 +3466,28 @@
                         <span class="p-1 bg-amber-100 rounded text-amber-900"><i data-lucide="trending-down" class="w-3.5 h-3.5"></i></span>
                         ${city.ciudad === 'Pasto' ? '<span class="badge-paradoja">Paradoja</span>' : ''}
                     </div>
-                    <p class="text-xl font-bold text-textDark">${city.pct_precarizacion}%</p>
+                    <p class="text-xl font-bold text-textDark">${fmt(city.pct_precarizacion)}%</p>
                     <p class="text-[10px] font-medium text-textMuted">Precarización e informalidad</p>
                     ${dlt('pct_precarizacion', -1)}
                 </div>
 
                 <div class="card-editorial p-3.5 space-y-1">
                     <span class="p-1 bg-amber-100 rounded text-amber-900 inline-block"><i data-lucide="file-check" class="w-3.5 h-3.5"></i></span>
-                    <p class="text-xl font-bold text-textDark">${city.pct_empleado_particular}%</p>
+                    <p class="text-xl font-bold text-textDark">${fmt(city.pct_empleado_particular)}%</p>
                     <p class="text-[10px] font-medium text-textMuted">Asalariados formales</p>
                     ${dlt('pct_empleado_particular', 1)}
                 </div>
 
                 <div class="card-editorial p-3.5 space-y-1">
                     <span class="p-1 bg-amber-100 rounded text-amber-900 inline-block"><i data-lucide="ribbon" class="w-3.5 h-3.5"></i></span>
-                    <p class="text-xl font-bold text-textDark">${city.suicidios_totales}</p>
+                    <p class="text-xl font-bold text-textDark">${city.suicidios_totales.toLocaleString('es-CO')}</p>
                     <p class="text-[10px] font-medium text-textMuted">Suicidios 2015–jul 2026</p>
                     <p class="text-[9px] text-textMuted font-medium">${city.suicidios_eco_lab} con causa econ./laboral</p>
                 </div>
 
                 <div class="card-editorial p-3.5 space-y-1">
                     <span class="p-1 bg-amber-100 rounded text-amber-900 inline-block"><i data-lucide="scale" class="w-3.5 h-3.5"></i></span>
-                    <p class="text-xl font-bold text-textDark">${city.pct_eco_conocido}%</p>
+                    <p class="text-xl font-bold text-textDark">${fmt(city.pct_eco_conocido)}%</p>
                     <p class="text-[10px] font-medium text-textMuted">% económico-laboral</p>
                     ${dlt('pct_eco_conocido', 0)}
                 </div>
@@ -1262,9 +3508,9 @@
 
             const datasets = [0, 1, 2].map(cId => ({
                 label: `Clúster ${cId}`,
-                data: cityData.filter(c => c.cluster === cId).map(c => ({ 
-                    x: c.pc1, y: c.pc2, city: c.ciudad, cluster: c.cluster, 
-                    to: c.to, precarizacion: c.pct_precarizacion 
+                data: cityData.filter(c => c.cluster === cId).map(c => ({
+                    x: c.pc1, y: c.pc2, city: c.ciudad, cluster: c.cluster,
+                    to: c.to, precarizacion: c.pct_precarizacion
                 })),
                 backgroundColor: clusterColors[cId],
                 pointRadius: (ctx) => ctx.raw?.city === 'Pasto' ? 10 : 5,
@@ -1286,8 +3532,8 @@
                                     const d = ctx.raw;
                                     return [
                                         `● Clúster ${d.cluster}`,
-                                        `PC1 ${d.x.toFixed(2).replace('.', ',')} · PC2 ${d.y.toFixed(2).replace('.', ',')}`,
-                                        `TO ${d.to.toFixed(1).replace('.', ',')}% · Precar. ${d.precarizacion.toFixed(1).replace('.', ',')}%`
+                                        `PC1 ${fmt(d.x, 2)} · PC2 ${fmt(d.y, 2)}`,
+                                        `TO ${fmt(d.to)}% · Precar. ${fmt(d.precarizacion)}%`
                                     ];
                                 }
                             },
@@ -1300,13 +3546,13 @@
                         }
                     },
                     scales: {
-                        x: { 
-                            grid: { color: '#e8e2d5' }, 
+                        x: {
+                            grid: { color: '#e8e2d5' },
                             ticks: { color: '#686259', font: { size: 10 } },
                             title: { display: true, text: 'Dim. 1 · Formalidad →', color: '#686259', font: { size: 11, weight: 'bold' } }
                         },
-                        y: { 
-                            grid: { color: '#e8e2d5' }, 
+                        y: {
+                            grid: { color: '#e8e2d5' },
                             ticks: { color: '#686259', font: { size: 10 } },
                             title: { display: true, text: '↑ Dim. 2 · Dinamismo →', color: '#686259', font: { size: 11, weight: 'bold' } }
                         }
@@ -1315,17 +3561,15 @@
             });
         }
 
-        // NUEVA FUNCIÓN PARA CAMBIAR ENTRE PESTAÑAS DE LA GRÁFICA
-        function setComboMode(mode) {
+        function setComboMode(mode, soloPestanas) {
             currentComboMode = mode;
-            
-            // Actualizar estado visual de las pestañas
+
             document.querySelectorAll('#combo-tabs button').forEach(btn => {
                 const isActive = btn.dataset.mode === mode;
                 btn.className = `px-3 py-1.5 rounded-lg font-medium transition-colors ${isActive ? 'bg-burgundy text-white shadow-sm' : 'bg-[#eee9df] text-textDark hover:bg-[#e2dacd]'}`;
             });
+            if (soloPestanas) return;
 
-            // Volver a dibujar la gráfica con el nuevo modo
             const cityName = document.getElementById('city-select').value;
             const city = cityData.find(c => c.ciudad === cityName) || cityData[0];
             if (window.Chart) updateComboChart(city, mode);
@@ -1334,71 +3578,29 @@
         function updateComboChart(city, mode = 'general') {
             const ctx = document.getElementById('comboEvolucionChart').getContext('2d');
             const hist = city.historico;
+            const last = hist.anios.length - 1;
 
             if (comboChartInstance) comboChartInstance.destroy();
 
-            // Definir los datasets base
+            const parcial = c => c.p1DataIndex === last ? [5, 4] : undefined;
             const dSuicidios = {
                 type: 'bar',
-                label: 'Suicidios Anuales',
+                label: 'Suicidios anuales',
                 data: hist.suicidios,
-                backgroundColor: hist.anios.map((a, i) => i === hist.anios.length - 1 ? 'rgba(155, 44, 44, 0.08)' : 'rgba(155, 44, 44, 0.25)'),
+                backgroundColor: hist.anios.map((a, i) => i === last ? 'rgba(155, 44, 44, 0.08)' : 'rgba(155, 44, 44, 0.25)'),
                 borderColor: '#9b2c2c',
                 borderWidth: 1.5,
                 borderRadius: 4,
                 yAxisID: mode === 'general' ? 'y1' : 'y'
             };
-            const dTD = {
-                type: 'line',
-                label: 'Desocupación (TD %)',
-                data: hist.td,
-                borderColor: '#9b2c2c',
-                backgroundColor: '#9b2c2c',
-                borderWidth: 2,
-                tension: 0.3,
-                segment: { borderDash: c => c.p1DataIndex === hist.anios.length - 1 ? [5, 4] : undefined },
-                yAxisID: 'y'
-            };
-            const dTO = {
-                type: 'line',
-                label: 'Ocupación (TO %)',
-                data: hist.to,
-                borderColor: '#1c1917',
-                backgroundColor: '#1c1917',
-                borderWidth: 2.5,
-                tension: 0.3,
-                segment: { borderDash: c => c.p1DataIndex === hist.anios.length - 1 ? [5, 4] : undefined },
-                yAxisID: 'y'
-            };
-            const dPrec = {
-                type: 'line',
-                label: 'Precarización (%)',
-                data: hist.precarizacion,
-                borderColor: '#d97706',
-                backgroundColor: '#d97706',
-                borderWidth: 2,
-                tension: 0.3,
-                segment: { borderDash: c => c.p1DataIndex === hist.anios.length - 1 ? [5, 4] : undefined },
-                yAxisID: 'y'
-            };
-            const dFormal = {
-                type: 'line',
-                label: 'Asalariados Formales (%)',
-                data: hist.formal,
-                borderColor: '#686259',
-                borderDash: [4, 4],
-                borderWidth: 2,
-                tension: 0.3,
-                segment: { borderDash: c => c.p1DataIndex === hist.anios.length - 1 ? [5, 4] : undefined },
-                yAxisID: 'y'
-            };
+            const dTD = { type: 'line', label: 'Desocupación (TD %)', data: hist.td, borderColor: '#9b2c2c', backgroundColor: '#9b2c2c', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
+            const dTO = { type: 'line', label: 'Ocupación (TO %)', data: hist.to, borderColor: '#1c1917', backgroundColor: '#1c1917', borderWidth: 2.5, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
+            const dPrec = { type: 'line', label: 'Precarización (%)', data: hist.precarizacion, borderColor: '#d97706', backgroundColor: '#d97706', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
+            const dFormal = { type: 'line', label: 'Asalariados formales (%)', data: hist.formal, borderColor: '#686259', backgroundColor: '#686259', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
 
             let datasets = [];
-            let scales = {
-                x: { grid: { color: '#eee8dc' } }
-            };
+            let scales = { x: { grid: { color: '#eee8dc' } } };
 
-            // Configurar según el modo
             if (mode === 'general') {
                 datasets = [dSuicidios, dTD, dTO, dPrec, dFormal];
                 scales.y = { type: 'linear', position: 'right', grid: { color: '#eee8dc' }, title: { display: true, text: '%', font: { size: 10 } } };
@@ -1416,17 +3618,12 @@
 
             comboChartInstance = new Chart(ctx, {
                 type: 'bar',
-                data: {
-                    labels: hist.anios.map((a, i) => i === hist.anios.length - 1 ? a + '*' : a),
-                    datasets: datasets
-                },
+                data: { labels: hist.anios.map((a, i) => i === last ? a + '*' : a), datasets: datasets },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     interaction: { mode: 'index', intersect: false },
-                    plugins: {
-                        legend: { position: 'bottom', labels: { color: '#1c1917', font: { size: 10 }, usePointStyle: true } }
-                    },
+                    plugins: { legend: { position: 'bottom', labels: { color: '#1c1917', font: { size: 10 }, usePointStyle: true } } },
                     scales: scales
                 }
             });
@@ -1438,28 +3635,39 @@
 
             const labels = Object.keys(causas);
             const data = Object.values(causas);
-            const colors = ['#9b2c2c', '#d97706', '#b45309', '#78350f', '#524c42', '#822323', '#a8a29e'];
+            const colors = ['#9b2c2c', '#d97706', '#b45309', '#78350f', '#524c42', '#822323', '#c2410c', '#a8a29e'];
 
             if (pieChartInstance) pieChartInstance.destroy();
 
             pieChartInstance = new Chart(ctx, {
                 type: 'doughnut',
-                data: {
-                    labels,
-                    datasets: [{ data, backgroundColor: colors, borderWidth: 2, borderColor: '#ffffff' }]
-                },
+                data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 2, borderColor: '#ffffff' }] },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'right', labels: { color: '#1c1917', font: { size: 10 } } }
-                    }
+                    plugins: { legend: { position: 'right', labels: { color: '#1c1917', font: { size: 10 } } } }
                 }
             });
 
             document.getElementById('pie-summary-caption').innerHTML = `
-                Acumulado en <strong>${city.ciudad}</strong>: <strong>${(causas['Económica']||0)+(causas['Laboral']||0)} casos</strong> de origen estrictamente económico o laboral.
+                Acumulado en <strong>${city.ciudad}</strong>: <strong>${city.suicidios_eco_lab} casos</strong> de origen económico o laboral entre ${city.suicidios_con_razon.toLocaleString('es-CO')} con causa conocida.
             `;
+        }
+
+        function renderSpearmanCity() {
+            const rows = META.spear;
+            document.getElementById('spear-city').innerHTML = rows.map(r => `
+                <div>
+                    <div class="flex justify-between text-xs font-bold text-textDark mb-1">
+                        <span>${r.l}</span>
+                        <span class="${r.r > 0 ? 'text-burgundy' : 'text-textMuted'}">r = ${r.r > 0 ? '+' : '−'}${fmt(Math.abs(r.r), 3)} · p = ${fmt(r.p, 2)}</span>
+                    </div>
+                    <div class="w-full bg-amber-200/60 h-2.5 rounded-full overflow-hidden">
+                        <div class="${r.r > 0 ? 'bg-burgundy' : 'bg-gray-500'} h-2.5 rounded-full" style="width: ${Math.min(100, Math.abs(r.r) / 0.5 * 100).toFixed(1)}%;"></div>
+                    </div>
+                </div>`).join('');
+            const pmin = Math.min(...rows.map(r => r.p));
+            document.getElementById('spear-note').textContent = `* Correlación de Spearman entre indicadores GEIH del último trimestre y el % de casos económico-laborales por ciudad (n = 23, lectura ecológica). Ninguna es significativa (p mínimo = ${fmt(pmin, 2)}). La barra completa equivale a |r| = 0,5. Las ciudades con pocos casos tienen porcentajes inestables.`;
         }
 
         function initLeafletMap() {
@@ -1473,7 +3681,7 @@
 
             mapInstance = L.map('map', { center: [4.5709, -74.2973], zoom: 5, zoomControl: false });
             L.control.zoom({ position: 'topleft' }).addTo(mapInstance);
-            
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(mapInstance);
@@ -1502,7 +3710,7 @@
             updateMapLegend(mode);
 
             if (!mapInstance || !mapLayerGroup) return;
-            
+
             mapLayerGroup.clearLayers();
             if (heatLayerInstance) {
                 mapInstance.removeLayer(heatLayerInstance);
@@ -1510,7 +3718,7 @@
             }
 
             cityData.forEach(c => {
-                const radius = mode === 'clusters' 
+                const radius = mode === 'clusters'
                     ? Math.max(4, Math.sqrt(c.suicidios_totales) * 0.2)
                     : Math.max(4, Math.sqrt(c.suicidios_eco_lab) * 0.8);
 
@@ -1522,7 +3730,7 @@
                     fillOpacity: 0.8
                 }).addTo(mapLayerGroup);
 
-                marker.bindTooltip(`<strong>${c.ciudad}</strong><br>${c.suicidios_eco_lab} casos econ/laboral`);
+                marker.bindTooltip(`<strong>${c.ciudad}</strong><br>${c.suicidios_eco_lab} casos econ/laboral · ${fmt(c.pct_eco_conocido)} %`);
                 marker.on('click', () => {
                     document.getElementById('city-select').value = c.ciudad;
                     updateDashboard(c.ciudad);
@@ -1530,11 +3738,13 @@
             });
 
             if (mode === 'heat_abs' || mode === 'heat_pct') {
-                const points = cityData.map(c => [c.lat, c.lng, mode === 'heat_abs' ? c.suicidios_eco_lab / 250 : c.pct_eco_conocido / 25]);
+                const mx = Math.max(...cityData.map(c => mode === 'heat_abs' ? c.suicidios_eco_lab : c.pct_eco_conocido));
+                const points = cityData.map(c => [c.lat, c.lng, (mode === 'heat_abs' ? c.suicidios_eco_lab : c.pct_eco_conocido) / mx]);
                 if (L.heatLayer) {
                     setTimeout(() => {
                         const mapEl = document.getElementById('map');
-                        if (mapInstance && mapEl && mapEl.clientWidth > 0 && mapEl.clientHeight > 0) {
+                        if (mapInstance && mapEl && mapEl.clientWidth > 0 && mapEl.clientHeight > 0 && currentMapMode === mode) {
+                            if (heatLayerInstance) mapInstance.removeLayer(heatLayerInstance);
                             heatLayerInstance = L.heatLayer(points, { radius: 25, blur: 15, maxZoom: 10 }).addTo(mapInstance);
                         }
                     }, 100);
@@ -1545,7 +3755,7 @@
         function updateMapLegend(mode) {
             const leg = document.getElementById('map-legend');
             if (!leg) return;
-            
+
             if (mode === 'heat_abs') {
                 leg.innerHTML = `
                     <p class="font-bold text-textDark mb-1">Casos económico-laborales</p>
@@ -1562,9 +3772,9 @@
                 leg.innerHTML = `
                     <p class="font-bold text-textDark mb-1.5">Clúster socio-laboral</p>
                     <div class="space-y-1">
-                        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#059669] border border-white"></span><span>0 · Formales</span></div>
-                        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#e11d48] border border-white"></span><span>1 · Precarización Extrema</span></div>
-                        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#d97706] border border-white"></span><span>2 · Informalidad Urbana</span></div>
+                        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#059669] border border-white"></span><span>0 · Participación media</span></div>
+                        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#e11d48] border border-white"></span><span>1 · Alta precarización</span></div>
+                        <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#d97706] border border-white"></span><span>2 · Alta participación y ocupación</span></div>
                     </div>
                     <p class="mt-2 text-textMuted text-[9px]">Tamaño ∝ suicidios registrados</p>
                 `;
@@ -1573,7 +3783,7 @@
 
         function renderTopCitiesRanking(mode) {
             let sorted, title, subtitle, dataKey, unit;
-            
+
             if (mode === 'heat_abs') {
                 sorted = [...cityData].sort((a,b) => b.suicidios_eco_lab - a.suicidios_eco_lab);
                 title = "Top 8 · Volumen absoluto";
@@ -1593,7 +3803,7 @@
                 dataKey = 'suicidios_totales';
                 unit = '';
             }
-            
+
             sorted = sorted.slice(0, 8);
             const maxVal = sorted[0][dataKey];
 
@@ -1609,7 +3819,7 @@
                 <div class="space-y-1 cursor-pointer hover:bg-amber-50 p-1.5 rounded-lg transition-colors" onclick="selectCityFromTable('${c.ciudad}')">
                     <div class="flex justify-between items-center text-xs">
                         <span class="font-bold text-textDark">${i+1}. ${c.ciudad}</span>
-                        <strong class="text-burgundy">${c[dataKey].toLocaleString('es-CO')}${unit}</strong>
+                        <strong class="text-burgundy">${unit ? fmt(c[dataKey]) : c[dataKey].toLocaleString('es-CO')}${unit}</strong>
                     </div>
                     <div class="w-full bg-[#eee9df] h-1.5 rounded-full overflow-hidden">
                         <div class="bg-burgundy h-1.5 rounded-full" style="width: ${(c[dataKey]/maxVal)*100}%;"></div>
@@ -1618,45 +3828,25 @@
             `).join('');
         }
 
-        function renderTable() {
-            const tbody = document.getElementById('data-table-body');
-            tbody.innerHTML = cityData.map(c => `
+        function rowHTML(c) {
+            return `
                 <tr class="hover:bg-amber-50/60 transition-colors cursor-pointer text-xs" onclick="selectCityFromTable('${c.ciudad}')">
                     <td class="py-2.5 px-3 font-bold text-textDark">${c.ciudad}</td>
                     <td class="py-2.5 px-3"><span class="badge-pill ${clusterInfo[c.cluster].badgeClass}">C${c.cluster}</span></td>
-                    <td class="py-2.5 px-3 font-medium text-textDark">${c.to}%</td>
-                    <td class="py-2.5 px-3 font-medium text-textDark">${c.td}%</td>
-                    <td class="py-2.5 px-3 font-semibold text-amber-800">${c.pct_precarizacion}%</td>
-                    <td class="py-2.5 px-3 font-medium text-textMuted">${c.pct_empleado_particular}%</td>
-                    <td class="py-2.5 px-3 text-textDark">${c.suicidios_totales}</td>
+                    <td class="py-2.5 px-3 font-medium text-textDark">${fmt(c.to)}%</td>
+                    <td class="py-2.5 px-3 font-medium text-textDark">${fmt(c.td)}%</td>
+                    <td class="py-2.5 px-3 font-semibold text-amber-800">${fmt(c.pct_precarizacion)}%</td>
+                    <td class="py-2.5 px-3 font-medium text-textMuted">${fmt(c.pct_empleado_particular)}%</td>
+                    <td class="py-2.5 px-3 text-textDark">${c.suicidios_totales.toLocaleString('es-CO')}</td>
                     <td class="py-2.5 px-3 font-bold text-burgundy">${c.suicidios_eco_lab}</td>
-                </tr>
-            `).join('');
+                </tr>`;
         }
 
         function filterTable() {
             const q = document.getElementById('table-search').value.toLowerCase();
             const cls = document.getElementById('table-cluster-filter').value;
-
-            const filtered = cityData.filter(c => {
-                const matchesQ = c.ciudad.toLowerCase().includes(q);
-                const matchesCls = cls === 'all' || c.cluster.toString() === cls;
-                return matchesQ && matchesCls;
-            });
-
-            const tbody = document.getElementById('data-table-body');
-            tbody.innerHTML = filtered.map(c => `
-                <tr class="hover:bg-amber-50/60 transition-colors cursor-pointer text-xs" onclick="selectCityFromTable('${c.ciudad}')">
-                    <td class="py-2.5 px-3 font-bold text-textDark">${c.ciudad}</td>
-                    <td class="py-2.5 px-3"><span class="badge-pill ${clusterInfo[c.cluster].badgeClass}">C${c.cluster}</span></td>
-                    <td class="py-2.5 px-3 font-medium text-textDark">${c.to}%</td>
-                    <td class="py-2.5 px-3 font-medium text-textDark">${c.td}%</td>
-                    <td class="py-2.5 px-3 font-semibold text-amber-800">${c.pct_precarizacion}%</td>
-                    <td class="py-2.5 px-3 font-medium text-textMuted">${c.pct_empleado_particular}%</td>
-                    <td class="py-2.5 px-3 text-textDark">${c.suicidios_totales}</td>
-                    <td class="py-2.5 px-3 font-bold text-burgundy">${c.suicidios_eco_lab}</td>
-                </tr>
-            `).join('');
+            const filtered = cityData.filter(c => c.ciudad.toLowerCase().includes(q) && (cls === 'all' || c.cluster.toString() === cls));
+            document.getElementById('data-table-body').innerHTML = filtered.map(rowHTML).join('');
         }
 
         function selectCityFromTable(cityName) {
@@ -1666,58 +3856,68 @@
         }
 
         // ===== MÓDULO 05 · SISMEL =====
-        const SISMEL = {"mods":[{"e":1,"m":"Solo sexo y edad (ref.)","auc":0.6813027457395818,"lo":0.6592971040395561,"hi":0.7065543301608207,"ap":0.21530028286086586,"lift":1.789713348323505,"rec":0.35802469135802467,"prev":0.12992667277726855,"n":4364},{"e":1,"m":"Regresión logística","auc":0.6983353608320687,"lo":0.6771897684422591,"hi":0.7206210545547563,"ap":0.24301654542195278,"lift":2.0013050742336733,"rec":0.400352733686067,"prev":0.12992667277726855,"n":4364},{"e":1,"m":"Gradient boosting","auc":0.6985469360151125,"lo":0.676857148862131,"hi":0.7207354045853277,"ap":0.24632466714528606,"lift":2.0630193276241386,"rec":0.4126984126984127,"prev":0.12992667277726855,"n":4364},{"e":1,"m":"Random Forest","auc":0.6991361415468166,"lo":0.6773877713681422,"hi":0.7203675858840116,"ap":0.24529053004541365,"lift":1.9924887523207497,"rec":0.3985890652557319,"prev":0.12992667277726855,"n":4364},{"e":2,"m":"Solo sexo y edad (ref.)","auc":0.6772176508296814,"lo":0.6453983669964473,"hi":0.71315647881345,"ap":0.18572783909996615,"lift":1.8568527207787662,"rec":0.37155963302752293,"prev":0.1109979633401222,"n":1964},{"e":2,"m":"Regresión logística","auc":0.7023209012474122,"lo":0.6685613035802859,"hi":0.7391498906439713,"ap":0.2447251401061179,"lift":2.040245582090249,"rec":0.40825688073394495,"prev":0.1109979633401222,"n":1964},{"e":2,"m":"Gradient boosting","auc":0.7004503084376346,"lo":0.6657721435891418,"hi":0.734682310026585,"ap":0.22883669230338038,"lift":1.971473259098443,"rec":0.3944954128440367,"prev":0.1109979633401222,"n":1964},{"e":2,"m":"Random Forest","auc":0.6978966339838373,"lo":0.6653375426756832,"hi":0.7344203875074173,"ap":0.2493935179308638,"lift":2.0173214744263137,"rec":0.4036697247706422,"prev":0.1109979633401222,"n":1964}],"val":[{"y":"2019","auc":0.673},{"y":"2020","auc":0.637},{"y":"2021","auc":0.646},{"y":"2022","auc":0.692},{"y":"2023","auc":0.709},{"y":"2024","auc":0.705}],"imp":[{"v":"Ciclo vital","rf":0.0544,"gb":0.0739},{"v":"Edad (quinquenal)","rf":0.0408,"gb":0.0321},{"v":"Sexo","rf":0.0335,"gb":0.0241},{"v":"Mecanismo","rf":0.018,"gb":0.0252},{"v":"Pertenencia grupal","rf":0.006,"gb":0.0084},{"v":"Estado civil","rf":0.0046,"gb":0.0043},{"v":"Zona","rf":0.0035,"gb":0.0044},{"v":"Escenario","rf":0.0019,"gb":0.0086},{"v":"Departamento","rf":0.0016,"gb":0.001}],"perfil":{"Sexo":[{"c":"Hombre","p":15.2,"n":11411},{"c":"Mujer","p":7.4,"n":3053}],"Ciclo vital":[{"c":"Adolescencia (12–17)","p":2.3,"n":1179},{"c":"Juventud (18–28)","p":8.9,"n":4150},{"c":"Adultez (29–59)","p":17.5,"n":6645},{"c":"Adulto mayor (60+)","p":16.5,"n":2436}],"Edad (quinquenal)":[{"c":"10–14","p":1.7,"n":405},{"c":"15–17","p":2.6,"n":819},{"c":"18–19","p":6.6,"n":711},{"c":"20–24","p":8.3,"n":1985},{"c":"25–29","p":10.6,"n":1781},{"c":"30–34","p":11.0,"n":1409},{"c":"35–39","p":15.2,"n":1215},{"c":"40–44","p":18.3,"n":1011},{"c":"45–49","p":20.2,"n":933},{"c":"50–54","p":22.4,"n":901},{"c":"55–59","p":25.2,"n":849},{"c":"60–64","p":21.7,"n":743},{"c":"65–69","p":21.3,"n":609},{"c":"70–74","p":13.2,"n":454},{"c":"75–79","p":10.2,"n":295},{"c":"80+","p":6.6,"n":335}],"Estado civil":[{"c":"Casado/a","p":18.1,"n":2035},{"c":"Separado/divorciado","p":16.2,"n":727},{"c":"Sin información","p":14.5,"n":1144},{"c":"Soltero/a","p":10.3,"n":6495},{"c":"Unión libre","p":16.0,"n":3749},{"c":"Viudo/a","p":13.4,"n":305}],"Mecanismo":[{"c":"Contundente","p":7.8,"n":957},{"c":"Cortopunzante","p":6.5,"n":169},{"c":"Asfixia","p":15.1,"n":9311},{"c":"Arma de fuego","p":13.6,"n":1313},{"c":"Tóxico","p":10.9,"n":2382}],"Departamento":[{"c":"Caldas","p":18.2,"n":605},{"c":"Santander","p":16.5,"n":790},{"c":"Sucre","p":15.6,"n":430},{"c":"Atlántico","p":15.5,"n":537},{"c":"Boyacá","p":15.2,"n":480},{"c":"Valle del Cauca","p":15.2,"n":1094},{"c":"Cundinamarca","p":15.0,"n":686},{"c":"Caquetá","p":13.9,"n":151},{"c":"Huila","p":13.7,"n":446},{"c":"Bolívar","p":13.5,"n":445},{"c":"Arauca","p":13.2,"n":250},{"c":"Bogotá D.C.","p":13.2,"n":2000},{"c":"Risaralda","p":13.1,"n":496},{"c":"Antioquia","p":13.0,"n":2278},{"c":"Magdalena","p":12.9,"n":233},{"c":"La Guajira","p":12.7,"n":166},{"c":"Meta","p":12.6,"n":340},{"c":"Cesar","p":12.0,"n":451},{"c":"Nariño","p":11.9,"n":611},{"c":"Putumayo","p":11.3,"n":168},{"c":"Norte de Santander","p":10.8,"n":418},{"c":"Tolima","p":10.5,"n":458},{"c":"Cauca","p":8.7,"n":459}]},"cr":{"v":["Causa lab./econ.","Edad (quinquenal)","Ciclo vital","Sexo","Estado civil","Escenario","Mecanismo","Pertenencia grupal","Departamento","Escolaridad","Zona","Día de la semana","Mes","Hora","País de nacimiento"],"M":[[1.0,0.1898,0.1467,0.0926,0.09,0.077,0.0668,0.0574,0.0412,0.0343,0.0327,0.027,0.0074,0.0,0.0],[0.1898,1.0,0.8828,0.2058,0.4732,0.0313,0.0446,0.0422,0.0419,0.1058,0.0237,0.0235,0.0112,0.0414,0.0259],[0.1467,0.8828,1.0,0.1965,0.3314,0.0568,0.0761,0.0836,0.0728,0.1885,0.0,0.029,0.0067,0.0534,0.07],[0.0926,0.2058,0.1965,1.0,0.0544,0.0938,0.2032,0.0944,0.0804,0.0818,0.0301,0.0041,0.0205,0.0286,0.0169],[0.09,0.4732,0.3314,0.0544,1.0,0.0546,0.0553,0.0644,0.0901,0.196,0.0445,0.017,0.0117,0.0243,0.0873],[0.077,0.0313,0.0568,0.0938,0.0546,1.0,0.1069,0.1055,0.0426,0.0579,0.2054,0.0124,0.016,0.0354,0.0655],[0.0668,0.0446,0.0761,0.2032,0.0553,0.1069,1.0,0.0392,0.0727,0.0561,0.1063,0.0,0.014,0.0274,0.0219],[0.0574,0.0422,0.0836,0.0944,0.0644,0.1055,0.0392,1.0,0.0942,0.0987,0.1892,0.0,0.0327,0.0484,0.0414],[0.0412,0.0419,0.0728,0.0804,0.0901,0.0426,0.0727,0.0942,1.0,0.0723,0.2333,0.03,0.0237,0.131,0.0189],[0.0343,0.1058,0.1885,0.0818,0.196,0.0579,0.0561,0.0987,0.0723,1.0,0.1238,0.0206,0.0183,0.0362,0.0426],[0.0327,0.0237,0.0,0.0301,0.0445,0.2054,0.1063,0.1892,0.2333,0.1238,1.0,0.0,0.0,0.0411,0.0],[0.027,0.0235,0.029,0.0041,0.017,0.0124,0.0,0.0,0.03,0.0206,0.0,1.0,0.3777,0.0148,0.0106],[0.0074,0.0112,0.0067,0.0205,0.0117,0.016,0.014,0.0327,0.0237,0.0183,0.0,0.3777,1.0,0.0062,0.0],[0.0,0.0414,0.0534,0.0286,0.0243,0.0354,0.0274,0.0484,0.131,0.0362,0.0411,0.0148,0.0062,1.0,0.026],[0.0,0.0259,0.07,0.0169,0.0873,0.0655,0.0219,0.0414,0.0189,0.0426,0.0,0.0106,0.0,0.026,1.0]]},"spear":[{"k":"tgp","l":"Participación (TGP)","a":0.221,"b":0.015,"c":0.057,"d":0.052},{"k":"to","l":"Ocupación (TO)","a":0.242,"b":0.038,"c":0.058,"d":0.038},{"k":"td","l":"Desocupación (TD)","a":-0.181,"b":-0.055,"c":-0.037,"d":0.033},{"k":"ts","l":"Subocupación (TS)","a":0.04,"b":0.049,"c":-0.021,"d":0.069}],"forest":[{"e":"Etapa 1 · 2022-2024","d":-0.00847,"lo":-0.018636,"hi":0.001536,"a":0.705,"b":0.696},{"e":"Etapa 2 · 2025-2026","d":-0.016064,"lo":-0.029829,"hi":-0.002762,"a":0.701,"b":0.685}],"panel":{"solo_empleo":-0.044,"base":0.256}};
-        const smF = (x, d = 3) => x.toFixed(d).replace('.', ',').replace('-', '−');
+        const smF = (x, d = 3) => Number(x).toFixed(d).replace('.', ',').replace('-', '−');
         let smValC, smImpC, smPerfC;
 
         function initSismel() {
-            const steps = [['database','Carga y armonización','2 bloques INMLCF'],['tags','Definición de clase','1 laboral/econ. · 0 otra'],['cpu','Entrenamiento','4 modelos'],['calendar-range','Etapa 1','Prueba 2022–2024'],['calendar-check','Etapa 2','Prueba final 2025–2026']];
+            const steps = [['database','Carga y armonización','2 bloques INMLCF'],['tags','Definición de clase','1 laboral/econ. · 0 otra'],['layers','Contexto laboral','GEIH: tipología y panel'],['calendar-range','Etapa 1','Prueba 2022–2024'],['calendar-check','Etapa 2','Prueba final 2025–2026']];
             document.getElementById('sm-steps').innerHTML = steps.map((s, i) => `<div class="flex items-center gap-2"><span class="p-1.5 bg-amber-100 rounded-full text-amber-900"><i data-lucide="${s[0]}" class="w-3.5 h-3.5"></i></span><div><p class="text-[9px] font-mono uppercase text-textMuted">Paso ${i + 1}</p><p class="font-semibold text-textDark leading-tight">${s[1]}</p><p class="text-[10px] text-textMuted">${s[2]}</p></div></div>`).join('');
 
-            const f2 = SISMEL.mods.filter(m => m.e === 2), best = f2.slice(1).sort((a, b) => b.auc - a.auc)[0];
-            const kp = [['users','Universo de casos','30.932','INMLCF 2015–2026 · 14.464 con causa conocida',0],
-                ['bar-chart-3','ROC-AUC',smF(best.auc),`Prueba final 2025–2026 · IC 95 % ${smF(best.lo)}–${smF(best.hi)}`,1],
-                ['trending-up','Factor de elevación',smF(best.lift, 2) + '×','Lift@20 % de la población priorizada',0],
-                ['trophy','Mejor AUC',best.m.replace('Regresión logística','Reg. logística'),'GB y RF quedan a ≤ 0,004: empate técnico',0]];
+            const fin = SISMEL.mods.find(m => m.e === 2 && m.fin);
+            const kp = [['users','Universo de casos', SISMEL.univ.toLocaleString('es-CO'), `INMLCF 2015–2026 · ${SISMEL.conocida.toLocaleString('es-CO')} con causa conocida`, 0],
+                ['bar-chart-3','ROC-AUC', smF(fin.auc), `Prueba final 2025–2026 · IC 95 % ${smF(fin.lo)}–${smF(fin.hi)}`, 1],
+                ['trending-up','Factor de elevación', smF(fin.lift, 2) + '×', 'Lift@20 % de la población priorizada', 0],
+                ['trophy','Modelo final', 'Reg. logística', 'Solo perfil: el empleo de la ciudad no mejora el AUC', 0]];
             document.getElementById('sm-kpis').innerHTML = kp.map(k => `<div class="card-editorial p-4 space-y-1 ${k[4] ? '!bg-burgundy !border-burgundy text-white' : ''}"><div class="flex justify-between text-[11px] ${k[4] ? 'text-white/80' : 'text-textMuted'}"><span>${k[1]}</span><i data-lucide="${k[0]}" class="w-4 h-4"></i></div><p class="font-mono font-bold ${k[2].length > 8 ? 'text-base sm:text-lg' : 'text-3xl'} ${k[4] ? 'text-white' : 'text-textDark'}">${k[2]}</p><p class="text-[10px] ${k[4] ? 'text-white/80' : 'text-textMuted'}">${k[3]}</p></div>`).join('');
 
             document.querySelectorAll('#sm-stage-toggle button').forEach(b => b.onclick = () => smStage(+b.dataset.s));
             smStage(2);
 
+            const V = SISMEL.val, lastV = V.length - 1;
             smValC = new Chart(document.getElementById('smValChart'), { type: 'line',
-                data: { labels: SISMEL.val.map(v => v.y), datasets: [{ label: 'AUC', data: SISMEL.val.map(v => v.auc), borderColor: '#9b2c2c', backgroundColor: '#9b2c2c', tension: .3, borderWidth: 2.5, pointRadius: 4 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0.5, max: 0.8, grid: { color: '#eee8dc' } }, x: { grid: { display: false } } } } });
+                data: { labels: V.map((v, i) => i === lastV ? v.y + '*' : v.y), datasets: [
+                    { label: 'AUC', data: V.map(v => v.auc), borderColor: '#9b2c2c', backgroundColor: '#9b2c2c', tension: .3, borderWidth: 2.5, pointRadius: 4, segment: { borderDash: c => c.p1DataIndex === lastV ? [5, 4] : undefined } },
+                    { label: 'Umbral de estabilidad (0,60)', data: V.map(() => 0.60), borderColor: '#686259', borderDash: [4, 4], borderWidth: 1.5, pointRadius: 0 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, usePointStyle: true } } }, scales: { y: { min: 0.5, max: 0.8, grid: { color: '#eee8dc' } }, x: { grid: { display: false } } } } });
 
-            const cols = ['#7f1d1d','#9b2c2c','#b91c1c','#b45309','#92400e','#78350f','#a8a29e','#a8a29e','#a8a29e'];
+            const I = SISMEL.imp;
             smImpC = new Chart(document.getElementById('smImpChart'), { type: 'bar',
-                data: { labels: SISMEL.imp.map(i => i.v), datasets: [{ label: 'Random Forest', data: SISMEL.imp.map(i => i.rf), backgroundColor: cols, borderRadius: 4 }, { label: 'Gradient boosting', data: SISMEL.imp.map(i => i.gb), backgroundColor: 'rgba(28,25,23,.18)', borderRadius: 4 }] },
-                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { font: { size: 10 }, generateLabels: () => [{ text: 'Random Forest', fillStyle: '#9b2c2c' }, { text: 'Gradient boosting', fillStyle: 'rgba(28,25,23,.18)' }] } }, tooltip: { callbacks: { label: c => `${c.dataset.label}: −${smF(c.raw)} AUC` } } }, scales: { x: { grid: { color: '#eee8dc' }, title: { display: true, text: 'Δ ROC-AUC', font: { size: 10 } } }, y: { grid: { display: false }, ticks: { font: { size: 10 } } } } } });
+                data: { labels: I.map(i => i.v), datasets: [{ label: 'Caída del AUC', data: I.map(i => i.d), backgroundColor: I.map((i, k) => i.d <= 0.001 ? '#d6cdbd' : (k < 4 ? '#9b2c2c' : '#c98a8a')), borderRadius: 4 }] },
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `Caída del AUC: ${smF(c.raw)} (± ${smF(I[c.dataIndex].s)})` } } }, scales: { x: { grid: { color: '#eee8dc' }, title: { display: true, text: 'Δ ROC-AUC', font: { size: 10 } } }, y: { grid: { display: false }, ticks: { font: { size: 10 } } } } } });
 
             const sel = document.getElementById('sm-perfil-select');
             sel.innerHTML = Object.keys(SISMEL.perfil).filter(k => k !== 'Sexo').map(k => `<option>${k}</option>`).join('');
             sel.onchange = () => smPerfil(sel.value);
             sel.value = 'Edad (quinquenal)';
-            const sx = SISMEL.perfil['Sexo'], h = sx[0], m = sx[1];
+            const sx = SISMEL.perfil['Sexo'], h = sx.find(x => x.c === 'Hombre'), m = sx.find(x => x.c === 'Mujer');
             document.getElementById('sm-sex').innerHTML = `<div class="rounded-xl p-3 bg-amber-100 border border-amber-200"><div class="flex justify-between text-xs font-semibold text-amber-900"><span>♂ Hombres</span><span class="text-[10px] text-burgundy">${(h.p / m.p).toFixed(1).replace('.', ',')}× mayor</span></div><p class="font-mono font-bold text-2xl text-textDark">${smF(h.p, 1)} %</p></div><div class="rounded-xl p-3 bg-[#eee9df] border border-[#e2dacd]"><span class="text-xs font-semibold text-textDark">♀ Mujeres</span><p class="font-mono font-bold text-2xl text-textDark">${smF(m.p, 1)} %</p></div>`;
             smPerfil('Edad (quinquenal)');
 
-            const C = SISMEL.cr, n = C.v.length;
-            let t = `<div style="display:grid;grid-template-columns:110px repeat(${n},minmax(26px,1fr));gap:2px;font-size:9px"><div></div>` + C.v.map(v => `<div class="text-textMuted text-center" style="writing-mode:vertical-rl;transform:rotate(180deg);height:78px;justify-self:center">${v}</div>`).join('');
-            C.M.forEach((r, i) => { t += `<div class="text-textDark font-semibold self-center truncate" title="${C.v[i]}">${C.v[i]}</div>` + r.map((x, j) => i === j ? `<div class="rounded bg-[#eee9df] h-7"></div>` : `<div class="rounded h-7 flex items-center justify-center font-mono ${x > .45 ? 'text-white' : 'text-textDark'}" style="background:rgba(155,44,44,${Math.min(1, x * 1.15 + .04).toFixed(2)})" title="${C.v[i]} ~ ${C.v[j]}: ${smF(x)}">${x >= .1 ? smF(x, 2) : ''}</div>`).join(''); });
-            document.getElementById('sm-cramer').innerHTML = t + '</div>';
+            // Matriz de confusión
+            const cm = SISMEL.cm, tot = cm[0][0] + cm[0][1] + cm[1][0] + cm[1][1];
+            const cell = (v, ok) => `<div style="background:${ok ? 'rgba(155,44,44,.85)' : 'rgba(155,44,44,.12)'};color:${ok ? '#fff' : '#1c1917'};border-radius:.5rem;padding:.6rem .25rem"><div class="font-mono font-bold text-lg">${v.toLocaleString('es-CO')}</div><div style="font-size:9px;opacity:.8">${smF(100 * v / tot, 1)} % del total</div></div>`;
+            document.getElementById('sm-cm-sub').textContent = `Umbral ${smF(SISMEL.umbral, 2)} elegido por validación cruzada dentro del entrenamiento · n = ${tot.toLocaleString('es-CO')}`;
+            document.getElementById('sm-cm').innerHTML = `<div style="display:grid;grid-template-columns:96px 1fr 1fr;gap:4px;font-size:10px;text-align:center;align-items:center"><div></div><div class="text-textMuted font-semibold">Predicho: otra causa</div><div class="text-textMuted font-semibold">Predicho: laboral/econ.</div><div class="text-textMuted font-semibold text-left">Real: otra causa</div>${cell(cm[0][0], true)}${cell(cm[0][1], false)}<div class="text-textMuted font-semibold text-left">Real: laboral/econ.</div>${cell(cm[1][0], false)}${cell(cm[1][1], true)}</div><div class="grid grid-cols-2 gap-2 mt-3 text-center"><div class="bg-[#f7f4ed] rounded p-2 border border-[#e8e2d5]"><p class="font-mono font-bold text-textDark">${smF(SISMEL.rec, 2)}</p><p class="text-[9px] text-textMuted uppercase">Recall clase 1</p></div><div class="bg-[#f7f4ed] rounded p-2 border border-[#e8e2d5]"><p class="font-mono font-bold text-textDark">${smF(SISMEL.prec, 2)}</p><p class="text-[9px] text-textMuted uppercase">Precisión clase 1</p></div></div>`;
 
-            document.getElementById('sm-spear').innerHTML = SISMEL.spear.map(r => `<tr class="border-b border-[#f2ece0]"><td class="py-1.5 font-semibold text-textDark">${r.l}</td>` + [r.a, r.b, r.c, r.d].map(x => `<td class="text-right font-mono px-1 ${Math.abs(x) >= .15 ? 'bg-amber-100 text-amber-900 font-bold' : 'text-textMuted'}">${(x > 0 ? '+' : '') + smF(x)}</td>`).join('') + '</tr>').join('');
-            const pos = x => ((x + 0.04) / 0.06 * 100).toFixed(1);
-            document.getElementById('sm-forest').innerHTML = SISMEL.forest.map(f => `<div><div class="flex justify-between text-[10px]"><span class="font-semibold text-textDark">${f.e}</span><span class="font-mono text-textMuted">${smF(f.d)} [${smF(f.lo)}; ${smF(f.hi)}]</span></div><div class="relative h-6"><div class="absolute top-0 bottom-0 w-px bg-[#686259]" style="left:${pos(0)}%"></div><div class="absolute top-1/2 h-0.5 bg-burgundy" style="left:${pos(f.lo)}%;width:${pos(f.hi) - pos(f.lo)}%"></div><div class="absolute top-1/2 w-3 h-3 -mt-1.5 -ml-1.5 rounded-full bg-burgundy border-2 border-white" style="left:${pos(f.d)}%"></div></div><p class="text-[10px] text-textMuted">AUC solo perfil ${smF(f.a)} → perfil + empleo ${smF(f.b)}</p></div>`).join('') + '<p class="text-[10px] text-textMuted flex justify-between"><span>← empeora</span><span>0 = sin cambio</span><span>mejora →</span></p>';
-            document.getElementById('sm-panel').innerHTML = `Panel departamento-trimestre: un Random Forest con solo empleo obtiene R² = <strong class="font-mono">${smF(SISMEL.panel.solo_empleo)}</strong>, peor que el promedio histórico del departamento (R² = <strong class="font-mono">${smF(SISMEL.panel.base)}</strong>).`;
+            // KPI de la ficha
+            document.getElementById('sm-kpi-table').innerHTML = SISMEL.kpis.map(k => `<tr class="border-b border-[#f2ece0]"><td class="py-2 pr-2 font-semibold text-textDark">${k.k}</td><td class="py-2 pr-2 text-textMuted">${k.r}</td><td class="py-2 text-right"><span class="badge-pill ${k.ok ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-rose-100 text-rose-900 border-rose-300'} border">${k.ok ? 'Cumple' : 'No cumple'}</span></td></tr>`).join('');
+
+            // Tipología laboral
+            document.getElementById('sm-tip').innerHTML = SISMEL.tip.map(t => `<tr class="border-b border-[#f2ece0]"><td class="py-1.5 font-semibold text-textDark">${t.t}</td><td class="text-right font-mono text-textMuted">${t.n.toLocaleString('es-CO')}</td><td class="text-right font-mono font-bold text-textDark">${smF(t.p, 1)} %</td></tr>`).join('');
+            document.getElementById('sm-tip-note').textContent = `Las diferencias entre tipologías son pequeñas frente al promedio general (13,6 %). Solo el ${smF(SISMEL.cob, 1)} % de los casos con causa conocida cae en una de las 23 ciudades o áreas metropolitanas con GEIH.`;
+
+            // Bosque de Δ AUC (modelo con empleo − modelo de perfil)
+            const pos = x => Math.max(0, Math.min(100, ((x + 0.04) / 0.06 * 100))).toFixed(1);
+            document.getElementById('sm-forest').innerHTML = SISMEL.abl.map(f => `<div><div class="flex justify-between text-[10px]"><span class="font-semibold text-textDark">${f.e} · ${f.alg} · ${f.alc}</span><span class="font-mono text-textMuted">${smF(f.d, 4)} [${smF(f.lo, 4)}; ${smF(f.hi, 4)}]</span></div><div class="relative h-5"><div class="absolute top-0 bottom-0 w-px bg-[#686259]" style="left:${pos(0)}%"></div><div class="absolute top-1/2 h-0.5 bg-burgundy" style="left:${pos(f.lo)}%;width:${(pos(f.hi) - pos(f.lo)).toFixed(1)}%"></div><div class="absolute top-1/2 w-3 h-3 -mt-1.5 -ml-1.5 rounded-full bg-burgundy border-2 border-white" style="left:${pos(f.d)}%"></div></div></div>`).join('') + '<p class="text-[10px] text-textMuted flex justify-between"><span>← empeora</span><span>0 = sin cambio</span><span>mejora →</span></p>';
+
             if (window.lucide) lucide.createIcons();
         }
 
         function smStage(s) {
             document.querySelectorAll('#sm-stage-toggle button').forEach(b => b.className = 'px-3 py-1 rounded-lg ' + (+b.dataset.s === s ? 'bg-white shadow text-textDark' : 'text-textMuted'));
             const rows = SISMEL.mods.filter(m => m.e === s), mx = Math.max(...rows.map(r => r.auc));
-            document.getElementById('sm-model-body').innerHTML = rows.map(r => `<tr class="border-b border-[#f2ece0] ${r.auc === mx ? 'bg-amber-50' : ''}"><td class="py-2 font-semibold text-textDark">${r.m}</td><td><div class="flex items-center gap-2"><span class="font-mono font-bold w-10">${smF(r.auc)}</span><div class="w-20 h-1.5 rounded-full bg-[#eee9df] overflow-hidden"><div class="h-1.5 bg-burgundy" style="width:${((r.auc - .5) / .3 * 100).toFixed(0)}%"></div></div><span class="text-[10px] text-textMuted font-mono">${smF(r.lo)}–${smF(r.hi)}</span></div></td><td class="text-right font-mono">${smF(r.ap)}</td><td class="text-right font-mono">${smF(r.lift, 2)}×</td><td class="text-right font-mono">${smF(r.rec * 100, 1)} %</td></tr>`).join('');
-            document.getElementById('sm-ref').textContent = `n de prueba = ${rows[0].n.toLocaleString('es-CO')} · Referencia: azar = AUC 0,500, AP ${smF(rows[0].prev)}, lift 1,00. Etapa ${s === 1 ? '1: entrena 2015–2021' : '2: entrena 2015–2024, sin ajustar nada'}.`;
+            document.getElementById('sm-model-body').innerHTML = rows.map(r => `<tr class="border-b border-[#f2ece0] ${r.fin ? 'bg-amber-50' : ''}"><td class="py-2 font-semibold text-textDark">${r.m}${r.fin ? ' <span class="badge-pill bg-amber-200 text-amber-900" style="font-size:9px;padding:.05rem .4rem">final</span>' : ''}</td><td><div class="flex items-center gap-2"><span class="font-mono font-bold w-10">${smF(r.auc)}</span><div class="w-20 h-1.5 rounded-full bg-[#eee9df] overflow-hidden"><div class="h-1.5 bg-burgundy" style="width:${((r.auc - .5) / .3 * 100).toFixed(0)}%"></div></div><span class="text-[10px] text-textMuted font-mono">${smF(r.lo)}–${smF(r.hi)}</span></div></td><td class="text-right font-mono">${smF(r.ap)}</td><td class="text-right font-mono">${smF(r.lift, 2)}×</td><td class="text-right font-mono">${smF(r.rec * 100, 1)} %</td></tr>`).join('');
+            document.getElementById('sm-ref').textContent = `n de prueba = ${rows[0].n.toLocaleString('es-CO')} · Referencia: azar = AUC 0,500, AP ${smF(rows[0].prev)}, lift 1,00. Etapa ${s === 1 ? '1: entrena 2015–2021' : '2: entrena 2015–2024, sin ajustar nada'}. «Perfil» = variables sociodemográficas y del hecho; «+ empleo» agrega la GEIH de la ciudad.`;
         }
 
         function smPerfil(k) {
@@ -1725,16 +3925,10 @@
             wrap.style.height = wrap.style.minHeight = (horiz ? Math.max(260, d.length * 20 + 30) : 260) + 'px';
             if (smPerfC) smPerfC.destroy();
             smPerfC = new Chart(document.getElementById('smPerfilChart'), { type: 'bar',
-                data: { labels: d.map(x => x.c), datasets: [{ data: d.map(x => x.p), backgroundColor: d.map(x => x.p >= 13.6 ? '#9b2c2c' : '#e6c3c3'), borderRadius: 4 }] },
+                data: { labels: d.map(x => x.c), datasets: [{ data: d.map(x => x.p), backgroundColor: d.map(x => x.p >= SISMEL.prev ? '#9b2c2c' : '#e6c3c3'), borderRadius: 4 }] },
                 options: { indexAxis: horiz ? 'y' : 'x', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${smF(c.raw, 1)} % de ${d[c.dataIndex].n.toLocaleString('es-CO')} casos` } } }, scales: { [horiz ? 'x' : 'y']: { grid: { color: '#eee8dc' }, ticks: { callback: v => v + '%', font: { size: 9 } } }, [horiz ? 'y' : 'x']: { grid: { display: false }, ticks: { font: { size: 9 } } } } } });
         }
 
-        const META = { actualizacion: '2026-10-27' };
-        function smFecha() {
-            const t = new Date(META.actualizacion + 'T12:00:00Z').toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-            document.getElementById('meta-fecha').textContent = t;
-            document.getElementById('meta-fecha-side').textContent = t;
-        }
         function dlCSV(name, head, rows) {
             const q = v => { const t = String(v ?? ''); return /[",\n;]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
             const txt = '\ufeff' + [head, ...rows].map(r => r.map(q).join(',')).join('\r\n');
@@ -1745,7 +3939,8 @@
         }
         const slug = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '_');
         function downloadMatrix() {
-            const cs = Object.keys(cityData[0].causas), k = ['cluster','lat','lng','to','td','tgp','tsub','pct_precarizacion','pct_cuenta_propia','pct_empleado_particular','pct_comercio_alojamiento','suicidios_totales','suicidios_con_razon','suicidios_eco_lab','pct_eco_conocido','pc1','pc2'];
+            const cs = [...new Set(cityData.flatMap(c => Object.keys(c.causas)))];
+            const k = ['cluster','lat','lng','to','td','tgp','tsub','pct_precarizacion','pct_cuenta_propia','pct_empleado_particular','pct_comercio_alojamiento','suicidios_totales','suicidios_con_razon','suicidios_eco_lab','pct_eco_conocido','pc1','pc2'];
             dlCSV('observatorio_23_ciudades.csv', ['ciudad', ...k, ...cs.map(c => 'causa_' + slug(c))], cityData.map(c => [c.ciudad, ...k.map(x => c[x]), ...cs.map(x => c.causas[x] ?? '')]));
         }
         function downloadCity() {
