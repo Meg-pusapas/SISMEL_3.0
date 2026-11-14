@@ -44,7 +44,7 @@
             color: #1c1917;
         }
         .nav-item.active {
-            background-color: #9B2C2C;
+            background-color: #9b2c2c;
             color: #ffffff;
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(155, 44, 44, 0.25);
@@ -72,7 +72,7 @@
         }
 
         .badge-paradoja {
-            background-color: #9B2C2C;
+            background-color: #9b2c2c;
             color: #ffffff;
             font-size: 0.65rem;
             padding: 0.15rem 0.5rem;
@@ -108,6 +108,29 @@
             #sidebar.mobile-open { transform: none; }
             #sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(28,25,23,.45); z-index: 40; }
             #sidebar-backdrop.show { display: block; }
+        }
+        
+        /* Estilos específicos para el slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #9b2c2c;
+            cursor: pointer;
+            margin-top: -6px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e8e2d5;
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -388,7 +411,7 @@
 
                 <div class="card-editorial p-5 space-y-4">
                     <div class="flex flex-wrap gap-1.5 text-xs border-b border-[#eee8dc] pb-3" id="combo-tabs">
-                        <button onclick="setComboMode('general')" data-mode="general" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Combinado</button>
+                        <!-- Se removió la pestaña "Combinado" -->
                         <button onclick="setComboMode('suicidios')" data-mode="suicidios" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Suicidios</button>
                         <button onclick="setComboMode('empleo')" data-mode="empleo" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Empleo (TO/TD)</button>
                         <button onclick="setComboMode('calidad')" data-mode="calidad" class="px-3 py-1.5 rounded-lg bg-[#eee9df] text-textDark hover:bg-[#e2dacd] font-medium transition-colors">Calidad (Prec./Form.)</button>
@@ -416,7 +439,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    <!-- Gráfico de barras cambiado aquí -->
+                    <!-- Gráfico de barras -->
                     <div class="lg:col-span-6 card-editorial p-5 space-y-4 flex flex-col justify-between">
                         <div>
                             <h3 class="font-bold text-sm text-textDark mb-1">Distribución de causas registradas</h3>
@@ -430,7 +453,7 @@
                         <p class="text-[11px] text-textMuted text-center border-t border-[#eee8dc] pt-2" id="pie-summary-caption"></p>
                     </div>
 
-                    <!-- Texto reflexivo cambiado aquí -->
+                    <!-- Texto reflexivo -->
                     <div class="lg:col-span-6 card-editorial p-6 space-y-5 bg-amber-50/60 border-amber-200/80 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="badge-pill bg-amber-200 text-amber-900 font-bold uppercase tracking-wider text-[10px]">
@@ -514,23 +537,138 @@
                     </div>
                 </div>
 
+                <!-- NUEVO: SIMULADOR DE PERFILES (Reemplaza la tarjeta de cruce con GEIH) -->
                 <div class="card-editorial p-5 space-y-4">
                     <div class="flex flex-wrap items-center gap-2">
-                        <span class="badge-pill bg-amber-200 text-amber-900 font-bold uppercase text-[10px]"><i data-lucide="scale" class="w-3 h-3 text-burgundy"></i> Cruce con empleo (GEIH)</span>
-                        <h3 class="font-serif font-bold text-lg text-textDark">El empleo de la ciudad no mejora la clasificación</h3>
+                        <span class="badge-pill bg-amber-200 text-amber-900 font-bold uppercase text-[10px]"><i data-lucide="sliders" class="w-3 h-3 text-burgundy"></i> Simulación interactiva</span>
+                        <h3 class="font-serif font-bold text-lg text-textDark">Simulador de perfiles</h3>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                        <div class="lg:col-span-5 space-y-2">
-                            <p class="text-[11px] font-bold text-textDark">1 · % laboral/económica según la tipología de mercado laboral de la ciudad</p>
-                            <div class="overflow-x-auto"><table class="w-full text-[11px] min-w-[300px]"><thead><tr class="text-[10px] uppercase text-textMuted border-b border-[#eee8dc]"><th class="py-1.5 text-left">Tipología</th><th class="text-right">Casos</th><th class="text-right">% lab./econ.</th></tr></thead><tbody id="sm-tip"></tbody></table></div>
-                            <p class="text-[10px] text-textMuted" id="sm-tip-note"></p>
+                    <p class="text-xs text-textMuted mb-4">Explora cómo cambia, en los datos históricos, la proporción de casos laborales o económicos al variar los factores de mayor peso. No es una evaluación de riesgo individual.</p>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                        
+                        <!-- Columna Izquierda: Controles -->
+                        <div class="lg:col-span-5 bg-[#f7f4ed] p-5 rounded-xl border border-[#e8e2d5] flex flex-col gap-4">
+                            <h4 class="font-bold text-sm text-textDark border-b border-[#e8e2d5] pb-2">Ajusta el perfil</h4>
+                            
+                            <div>
+                                <label for="sim-edad" class="block text-xs font-semibold text-textDark mb-1">Edad</label>
+                                <input type="range" id="sim-edad" min="0" max="15" step="1" value="10" class="w-full">
+                                <div class="flex justify-between text-[10px] text-textMuted mt-1">
+                                    <span id="sim-edad-label" class="font-bold text-burgundy text-sm">55–59</span>
+                                    <span id="sim-ciclo-label" class="italic">Adultez (29–59)</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-textDark mb-1">Sexo</label>
+                                <div class="flex gap-2">
+                                    <button onclick="setSimSexo('hombre')" id="sim-btn-sexo-hombre" class="flex-1 py-1.5 text-xs font-medium rounded-lg border border-[#d6cdbd] bg-white text-textDark hover:bg-gray-50 transition-colors">Hombre</button>
+                                    <button onclick="setSimSexo('mujer')" id="sim-btn-sexo-mujer" class="flex-1 py-1.5 text-xs font-medium rounded-lg border border-[#d6cdbd] bg-white text-textDark hover:bg-gray-50 transition-colors">Mujer</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="sim-estado-civil" class="block text-xs font-semibold text-textDark mb-1">Estado civil</label>
+                                <select id="sim-estado-civil" class="w-full bg-white border border-[#d6cdbd] rounded-lg px-2 py-1.5 text-xs outline-none focus:border-burgundy">
+                                    <option value="casado a">Casado/a</option>
+                                    <option value="soltero a">Soltero/a</option>
+                                    <option value="union libre">Unión libre</option>
+                                    <option value="separado divorciado">Separado/divorciado</option>
+                                    <option value="viudo a">Viudo/a</option>
+                                    <option value="sin informacion">Sin información</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="sim-escolaridad" class="block text-xs font-semibold text-textDark mb-1">Escolaridad</label>
+                                <select id="sim-escolaridad" class="w-full bg-white border border-[#d6cdbd] rounded-lg px-2 py-1.5 text-xs outline-none focus:border-burgundy">
+                                    <option value="media">Media</option>
+                                    <option value="basica primaria">Básica primaria</option>
+                                    <option value="basica secundaria">Básica secundaria</option>
+                                    <option value="tecnica tecnologica">Técnica/tecnológica</option>
+                                    <option value="sin escolaridad">Sin escolaridad</option>
+                                    <option value="sin informacion">Sin información</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="sim-zona" class="block text-xs font-semibold text-textDark mb-1">Zona del hecho</label>
+                                <select id="sim-zona" class="w-full bg-white border border-[#d6cdbd] rounded-lg px-2 py-1.5 text-xs outline-none focus:border-burgundy">
+                                    <option value="cabecera municipal">Cabecera municipal</option>
+                                    <option value="centro poblado">Centro poblado</option>
+                                    <option value="rural vereda y campo">Rural (vereda y campo)</option>
+                                </select>
+                            </div>
+
+                            <button onclick="resetSimPerfil()" class="mt-2 w-full bg-[#eee9df] hover:bg-[#e2dacd] text-textDark text-xs font-semibold py-2 rounded-lg transition-colors border border-[#d6cdbd]">
+                                Restablecer al perfil promedio
+                            </button>
+                            
+                            <div class="flex flex-wrap gap-1.5 mt-1">
+                                <button onclick="loadSimExample('hombre 55')" class="text-[10px] bg-white border border-[#e8e2d5] px-2 py-1 rounded hover:bg-gray-50">Hombre 55–59 casado</button>
+                                <button onclick="loadSimExample('mujer 20')" class="text-[10px] bg-white border border-[#e8e2d5] px-2 py-1 rounded hover:bg-gray-50">Mujer 20–24 soltera</button>
+                                <button onclick="loadSimExample('adolescente')" class="text-[10px] bg-white border border-[#e8e2d5] px-2 py-1 rounded hover:bg-gray-50">Adolescente 15–17</button>
+                            </div>
+                            
+                            <p class="text-[10px] text-textMuted mt-2">Los factores se eligieron por su peso en el modelo. No se incluyen el método ni la pertenencia a grupos poblacionales.</p>
                         </div>
-                        <div class="lg:col-span-7 space-y-2">
-                            <p class="text-[11px] font-bold text-textDark">2 · ¿Mejora el clasificador al agregar empleo? (Δ AUC, IC 95 % bootstrap pareado)</p>
-                            <div id="sm-forest" class="space-y-2"></div>
+
+                        <!-- Columna Derecha: Resultados y Gráficos -->
+                        <div class="lg:col-span-7 flex flex-col gap-4">
+                            
+                            <!-- Cifra grande -->
+                            <div class="bg-white p-5 rounded-xl border border-[#e8e2d5] text-center relative">
+                                <p class="text-[10px] font-bold text-textMuted uppercase tracking-widest mb-1">Probabilidad estimada</p>
+                                <div id="sim-resultado" aria-live="polite" class="font-serif text-5xl font-bold text-burgundy leading-none mb-1">
+                                    13,6<span class="text-2xl">%</span>
+                                </div>
+                                <p class="text-xs text-textDark">de los casos con causa conocida de perfiles similares fueron de causa laboral o económica.</p>
+                                <div class="w-full bg-[#eee9df] h-2 rounded-full mt-3 overflow-hidden relative">
+                                    <div class="absolute top-0 bottom-0 left-0 bg-[#9b2c2c]" id="sim-bar-fill" style="width: 13.6%;"></div>
+                                    <div class="absolute top-0 bottom-0 w-px bg-black/50" style="left: 13.6%;" title="Promedio general"></div>
+                                </div>
+                                <p class="text-[10px] text-textMuted mt-1" id="sim-relative-text">Igual al promedio general (13,6 %)</p>
+                            </div>
+
+                            <!-- Gráfico de barras (varía 1 factor) -->
+                            <div class="bg-white p-4 rounded-xl border border-[#e8e2d5]">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h5 class="text-xs font-bold text-textDark">Cómo cambia al variar:</h5>
+                                    <select id="sim-factor-select" class="bg-[#f7f4ed] border border-[#d6cdbd] rounded text-[10px] px-1.5 py-0.5 outline-none">
+                                        <option value="edad">Edad</option>
+                                        <option value="sexo">Sexo</option>
+                                        <option value="estado_civil">Estado civil</option>
+                                        <option value="escolaridad">Escolaridad</option>
+                                        <option value="zona">Zona</option>
+                                    </select>
+                                </div>
+                                <div class="chart-container" style="height:180px;"><canvas id="simBarChart"></canvas></div>
+                            </div>
+
+                            <!-- Gráfico Tornado (factor que más mueve) -->
+                            <div class="bg-white p-4 rounded-xl border border-[#e8e2d5]">
+                                <h5 class="text-xs font-bold text-textDark mb-2">Qué factor mueve más el resultado desde este perfil</h5>
+                                <div class="chart-container" style="height:160px;"><canvas id="simTornadoChart"></canvas></div>
+                            </div>
+
+                            <!-- Respaldo en los datos -->
+                            <div class="bg-[#f5f0e6] p-4 rounded-xl border border-[#e8e2d5]">
+                                <h5 class="text-xs font-bold text-textDark mb-1">Respaldo en los datos</h5>
+                                <div id="sim-soporte" class="text-[11px] text-textMuted"></div>
+                            </div>
+
+                            <!-- Aviso de uso responsable -->
+                            <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+                                <p class="text-[10px] text-amber-900 leading-relaxed">
+                                    <strong>Simulación descriptiva</strong> con datos agregados de Medicina Legal 2015–julio 2026. No estima el riesgo de ninguna persona, no es causal y no sirve para tomar decisiones sobre casos individuales. Un cambio en un factor muestra una diferencia entre grupos, no un efecto.
+                                </p>
+                                <p class="text-[10px] text-amber-900 mt-2 font-semibold">
+                                    Si tú o alguien cercano está pasando por un momento difícil, hay apoyo disponible: Línea 106 o chatea al 300 754 89 33 (Gratuitas · 24/7).
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-xs text-textMuted leading-relaxed bg-[#f5f0e6] border border-[#e8e2d5] rounded-xl p-3"><strong class="text-textDark">Hallazgo válido:</strong> al añadir el empleo de la ciudad en el trimestre previo al hecho (desocupación, subocupación, ocupación, participación, precarización y tipología) el AUC no mejora en ninguna de las 8 comparaciones: en 6 el intervalo incluye el cero y en 2 empeora. La causa pesa más en la adultez y el adulto mayor, pero eso queda como contexto: el empleo no viene desagregado por edad. <strong class="text-textDark">Uso responsable:</strong> el modelo describe perfiles en datos agregados, no evalúa el riesgo de una persona ni asigna causas a casos individuales; los resultados son asociativos, no causales.</p>
                 </div>
             </section>
 
@@ -638,90 +776,12 @@
    "Sin información": 208
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    10.2,
-    9.9,
-    9.8,
-    9.3,
-    10.8,
-    16.8,
-    13.6,
-    11.9,
-    10.9,
-    11.1,
-    9.5,
-    9.7
-   ],
-   "to": [
-    61.4,
-    62.4,
-    61.9,
-    58.5,
-    57.0,
-    51.8,
-    55.2,
-    58.6,
-    61.4,
-    61.8,
-    62.7,
-    62.2
-   ],
-   "precarizacion": [
-    53.6,
-    51.6,
-    49.2,
-    48.6,
-    46.9,
-    49.0,
-    47.6,
-    47.0,
-    46.8,
-    46.9,
-    48.5,
-    47.7
-   ],
-   "formal": [
-    35.7,
-    37.4,
-    39.4,
-    40.0,
-    41.4,
-    38.5,
-    39.4,
-    41.3,
-    42.3,
-    41.4,
-    41.2,
-    41.4
-   ],
-   "suicidios": [
-    40,
-    34,
-    37,
-    44,
-    44,
-    37,
-    38,
-    52,
-    44,
-    51,
-    55,
-    17
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [10.2,9.9,9.8,9.3,10.8,16.8,13.6,11.9,10.9,11.1,9.5,9.7],
+   "to": [61.4,62.4,61.9,58.5,57.0,51.8,55.2,58.6,61.4,61.8,62.7,62.2],
+   "precarizacion": [53.6,51.6,49.2,48.6,46.9,49.0,47.6,47.0,46.8,46.9,48.5,47.7],
+   "formal": [35.7,37.4,39.4,40.0,41.4,38.5,39.4,41.3,42.3,41.4,41.2,41.4],
+   "suicidios": [40,34,37,44,44,37,38,52,44,51,55,17]
   }
  },
  {
@@ -754,90 +814,12 @@
    "Sin información": 2286
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    8.8,
-    9.3,
-    10.6,
-    10.6,
-    10.9,
-    18.1,
-    16.4,
-    11.6,
-    10.4,
-    9.8,
-    8.4,
-    8.1
-   ],
-   "to": [
-    67.8,
-    66.3,
-    64.3,
-    63.7,
-    63.3,
-    54.5,
-    56.7,
-    59.0,
-    62.0,
-    64.1,
-    64.6,
-    64.4
-   ],
-   "precarizacion": [
-    36.8,
-    36.6,
-    35.5,
-    35.4,
-    36.3,
-    36.9,
-    34.1,
-    32.1,
-    31.9,
-    33.7,
-    34.4,
-    33.6
-   ],
-   "formal": [
-    54.9,
-    55.5,
-    56.9,
-    56.9,
-    56.1,
-    55.5,
-    56.3,
-    58.7,
-    59.6,
-    58.2,
-    58.5,
-    59.0
-   ],
-   "suicidios": [
-    310,
-    356,
-    347,
-    387,
-    414,
-    319,
-    374,
-    427,
-    439,
-    363,
-    352,
-    198
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [8.8,9.3,10.6,10.6,10.9,18.1,16.4,11.6,10.4,9.8,8.4,8.1],
+   "to": [67.8,66.3,64.3,63.7,63.3,54.5,56.7,59.0,62.0,64.1,64.6,64.4],
+   "precarizacion": [36.8,36.6,35.5,35.4,36.3,36.9,34.1,32.1,31.9,33.7,34.4,33.6],
+   "formal": [54.9,55.5,56.9,56.9,56.1,55.5,56.3,58.7,59.6,58.2,58.5,59.0],
+   "suicidios": [310,356,347,387,414,319,374,427,439,363,352,198]
   }
  },
  {
@@ -870,90 +852,12 @@
    "Sin información": 1707
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    11.4,
-    11.5,
-    11.6,
-    12.6,
-    13.2,
-    19.3,
-    15.5,
-    11.0,
-    9.1,
-    8.8,
-    7.3,
-    8.3
-   ],
-   "to": [
-    58.1,
-    57.4,
-    57.1,
-    55.9,
-    54.5,
-    49.4,
-    51.5,
-    58.2,
-    59.2,
-    60.1,
-    61.7,
-    61.4
-   ],
-   "precarizacion": [
-    32.3,
-    31.3,
-    31.9,
-    32.3,
-    32.4,
-    33.7,
-    32.6,
-    34.3,
-    33.7,
-    34.1,
-    33.7,
-    33.6
-   ],
-   "formal": [
-    59.7,
-    61.1,
-    59.8,
-    59.5,
-    59.6,
-    57.8,
-    59.7,
-    59.3,
-    60.3,
-    59.7,
-    60.4,
-    59.9
-   ],
-   "suicidios": [
-    234,
-    264,
-    236,
-    251,
-    290,
-    264,
-    281,
-    331,
-    370,
-    301,
-    319,
-    180
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [11.4,11.5,11.6,12.6,13.2,19.3,15.5,11.0,9.1,8.8,7.3,8.3],
+   "to": [58.1,57.4,57.1,55.9,54.5,49.4,51.5,58.2,59.2,60.1,61.7,61.4],
+   "precarizacion": [32.3,31.3,31.9,32.3,32.4,33.7,32.6,34.3,33.7,34.1,33.7,33.6],
+   "formal": [59.7,61.1,59.8,59.5,59.6,57.8,59.7,59.3,60.3,59.7,60.4,59.9],
+   "suicidios": [234,264,236,251,290,264,281,331,370,301,319,180]
   }
  },
  {
@@ -985,90 +889,12 @@
    "Sin información": 739
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    12.4,
-    11.5,
-    12.7,
-    12.4,
-    13.4,
-    21.7,
-    15.3,
-    11.6,
-    10.9,
-    11.0,
-    9.0,
-    8.9
-   ],
-   "to": [
-    58.9,
-    59.4,
-    58.1,
-    57.1,
-    56.2,
-    48.3,
-    51.2,
-    58.6,
-    59.5,
-    57.6,
-    58.1,
-    58.6
-   ],
-   "precarizacion": [
-    43.7,
-    42.7,
-    41.5,
-    41.1,
-    42.0,
-    42.7,
-    41.5,
-    40.2,
-    39.9,
-    37.3,
-    36.4,
-    38.5
-   ],
-   "formal": [
-    49.2,
-    49.9,
-    51.9,
-    51.8,
-    51.3,
-    50.4,
-    50.8,
-    52.9,
-    53.5,
-    57.3,
-    57.4,
-    55.9
-   ],
-   "suicidios": [
-    3,
-    88,
-    125,
-    130,
-    93,
-    89,
-    102,
-    121,
-    123,
-    138,
-    115,
-    4
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [12.4,11.5,12.7,12.4,13.4,21.7,15.3,11.6,10.9,11.0,9.0,8.9],
+   "to": [58.9,59.4,58.1,57.1,56.2,48.3,51.2,58.6,59.5,57.6,58.1,58.6],
+   "precarizacion": [43.7,42.7,41.5,41.1,42.0,42.7,41.5,40.2,39.9,37.3,36.4,38.5],
+   "formal": [49.2,49.9,51.9,51.8,51.3,50.4,50.8,52.9,53.5,57.3,57.4,55.9],
+   "suicidios": [3,88,125,130,93,89,102,121,123,138,115,4]
   }
  },
  {
@@ -1100,90 +926,12 @@
    "Sin información": 396
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    8.8,
-    8.7,
-    8.6,
-    8.6,
-    8.3,
-    13.0,
-    14.4,
-    12.1,
-    10.7,
-    11.0,
-    9.9,
-    9.6
-   ],
-   "to": [
-    60.7,
-    60.1,
-    59.3,
-    58.7,
-    58.2,
-    51.2,
-    52.2,
-    56.8,
-    58.9,
-    57.1,
-    57.8,
-    56.4
-   ],
-   "precarizacion": [
-    51.9,
-    50.5,
-    51.4,
-    52.7,
-    52.4,
-    55.1,
-    54.5,
-    50.0,
-    47.7,
-    47.3,
-    47.0,
-    43.3
-   ],
-   "formal": [
-    42.1,
-    43.4,
-    42.3,
-    40.8,
-    41.4,
-    39.0,
-    40.1,
-    45.2,
-    46.8,
-    48.0,
-    48.4,
-    51.7
-   ],
-   "suicidios": [
-    64,
-    86,
-    85,
-    90,
-    61,
-    59,
-    90,
-    69,
-    62,
-    58,
-    71,
-    37
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [8.8,8.7,8.6,8.6,8.3,13.0,14.4,12.1,10.7,11.0,9.9,9.6],
+   "to": [60.7,60.1,59.3,58.7,58.2,51.2,52.2,56.8,58.9,57.1,57.8,56.4],
+   "precarizacion": [51.9,50.5,51.4,52.7,52.4,55.1,54.5,50.0,47.7,47.3,47.0,43.3],
+   "formal": [42.1,43.4,42.3,40.8,41.4,39.0,40.1,45.2,46.8,48.0,48.4,51.7],
+   "suicidios": [64,86,85,90,61,59,90,69,62,58,71,37]
   }
  },
  {
@@ -1216,90 +964,12 @@
    "Sin información": 348
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    8.6,
-    9.1,
-    9.3,
-    9.7,
-    11.0,
-    19.2,
-    14.5,
-    9.1,
-    8.9,
-    9.2,
-    8.4,
-    8.2
-   ],
-   "to": [
-    62.3,
-    60.8,
-    60.4,
-    57.7,
-    55.8,
-    48.4,
-    51.5,
-    59.2,
-    59.8,
-    59.2,
-    59.7,
-    59.3
-   ],
-   "precarizacion": [
-    46.8,
-    47.9,
-    48.2,
-    49.6,
-    45.1,
-    47.3,
-    45.6,
-    45.1,
-    41.5,
-    40.9,
-    40.3,
-    40.9
-   ],
-   "formal": [
-    43.3,
-    43.8,
-    43.6,
-    42.3,
-    46.8,
-    44.9,
-    47.1,
-    47.3,
-    51.9,
-    52.9,
-    53.3,
-    52.3
-   ],
-   "suicidios": [
-    49,
-    52,
-    58,
-    73,
-    82,
-    55,
-    78,
-    61,
-    50,
-    57,
-    59,
-    20
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [8.6,9.1,9.3,9.7,11.0,19.2,14.5,9.1,8.9,9.2,8.4,8.2],
+   "to": [62.3,60.8,60.4,57.7,55.8,48.4,51.5,59.2,59.8,59.2,59.7,59.3],
+   "precarizacion": [46.8,47.9,48.2,49.6,45.1,47.3,45.6,45.1,41.5,40.9,40.3,40.9],
+   "formal": [43.3,43.8,43.6,42.3,46.8,44.9,47.1,47.3,51.9,52.9,53.3,52.3],
+   "suicidios": [49,52,58,73,82,55,78,61,50,57,59,20]
   }
  },
  {
@@ -1330,90 +1000,12 @@
    "Sin información": 265
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    11.7,
-    10.9,
-    9.4,
-    9.0,
-    8.7,
-    17.0,
-    14.1,
-    11.2,
-    9.6,
-    11.3,
-    9.1,
-    8.3
-   ],
-   "to": [
-    59.2,
-    60.2,
-    61.1,
-    60.9,
-    58.3,
-    48.8,
-    50.2,
-    53.3,
-    54.0,
-    52.9,
-    56.0,
-    54.2
-   ],
-   "precarizacion": [
-    43.9,
-    42.8,
-    42.8,
-    43.5,
-    40.4,
-    39.7,
-    36.8,
-    35.2,
-    36.5,
-    33.9,
-    34.8,
-    35.0
-   ],
-   "formal": [
-    48.6,
-    49.6,
-    49.1,
-    48.1,
-    52.8,
-    53.5,
-    53.6,
-    57.2,
-    57.2,
-    59.3,
-    59.3,
-    57.8
-   ],
-   "suicidios": [
-    30,
-    45,
-    50,
-    55,
-    62,
-    51,
-    52,
-    64,
-    63,
-    57,
-    44,
-    25
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [11.7,10.9,9.4,9.0,8.7,17.0,14.1,11.2,9.6,11.3,9.1,8.3],
+   "to": [59.2,60.2,61.1,60.9,58.3,48.8,50.2,53.3,54.0,52.9,56.0,54.2],
+   "precarizacion": [43.9,42.8,42.8,43.5,40.4,39.7,36.8,35.2,36.5,33.9,34.8,35.0],
+   "formal": [48.6,49.6,49.1,48.1,52.8,53.5,53.6,57.2,57.2,59.3,59.3,57.8],
+   "suicidios": [30,45,50,55,62,51,52,64,63,57,44,25]
   }
  },
  {
@@ -1444,90 +1036,12 @@
    "Sin información": 378
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    14.5,
-    15.2,
-    15.9,
-    15.9,
-    15.7,
-    23.0,
-    16.5,
-    13.2,
-    12.7,
-    12.7,
-    11.7,
-    11.0
-   ],
-   "to": [
-    58.5,
-    58.1,
-    56.6,
-    55.3,
-    54.6,
-    47.9,
-    52.0,
-    53.3,
-    53.6,
-    53.7,
-    54.8,
-    54.9
-   ],
-   "precarizacion": [
-    67.5,
-    66.7,
-    67.8,
-    67.4,
-    68.9,
-    68.6,
-    66.3,
-    63.3,
-    61.8,
-    63.6,
-    64.4,
-    62.4
-   ],
-   "formal": [
-    26.2,
-    27.1,
-    26.4,
-    26.5,
-    25.2,
-    25.5,
-    27.3,
-    30.3,
-    32.2,
-    30.2,
-    30.3,
-    32.2
-   ],
-   "suicidios": [
-    35,
-    39,
-    61,
-    52,
-    44,
-    40,
-    37,
-    48,
-    60,
-    65,
-    45,
-    2
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [14.5,15.2,15.9,15.9,15.7,23.0,16.5,13.2,12.7,12.7,11.7,11.0],
+   "to": [58.5,58.1,56.6,55.3,54.6,47.9,52.0,53.3,53.6,53.7,54.8,54.9],
+   "precarizacion": [67.5,66.7,67.8,67.4,68.9,68.6,66.3,63.3,61.8,63.6,64.4,62.4],
+   "formal": [26.2,27.1,26.4,26.5,25.2,25.5,27.3,30.3,32.2,30.2,30.3,32.2],
+   "suicidios": [35,39,61,52,44,40,37,48,60,65,45,2]
   }
  },
  {
@@ -1558,90 +1072,12 @@
    "Sin información": 340
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    13.4,
-    14.4,
-    13.9,
-    15.7,
-    17.9,
-    28.7,
-    18.3,
-    15.7,
-    16.1,
-    13.7,
-    12.5,
-    12.1
-   ],
-   "to": [
-    57.4,
-    55.0,
-    53.3,
-    51.4,
-    47.8,
-    38.8,
-    42.0,
-    46.3,
-    46.2,
-    49.0,
-    52.4,
-    51.0
-   ],
-   "precarizacion": [
-    45.8,
-    45.3,
-    43.4,
-    42.2,
-    40.8,
-    41.3,
-    44.2,
-    44.5,
-    40.5,
-    37.8,
-    36.1,
-    35.0
-   ],
-   "formal": [
-    42.7,
-    43.5,
-    45.0,
-    46.5,
-    48.4,
-    48.0,
-    44.8,
-    46.2,
-    49.5,
-    53.1,
-    54.7,
-    56.9
-   ],
-   "suicidios": [
-    33,
-    46,
-    40,
-    38,
-    50,
-    46,
-    43,
-    47,
-    53,
-    37,
-    47,
-    25
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [13.4,14.4,13.9,15.7,17.9,28.7,18.3,15.7,16.1,13.7,12.5,12.1],
+   "to": [57.4,55.0,53.3,51.4,47.8,38.8,42.0,46.3,46.2,49.0,52.4,51.0],
+   "precarizacion": [45.8,45.3,43.4,42.2,40.8,41.3,44.2,44.5,40.5,37.8,36.1,35.0],
+   "formal": [42.7,43.5,45.0,46.5,48.4,48.0,44.8,46.2,49.5,53.1,54.7,56.9],
+   "suicidios": [33,46,40,38,50,46,43,47,53,37,47,25]
   }
  },
  {
@@ -1672,90 +1108,12 @@
    "Sin información": 219
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    8.0,
-    8.1,
-    8.0,
-    7.4,
-    6.3,
-    13.0,
-    12.1,
-    11.0,
-    10.8,
-    12.5,
-    10.5,
-    13.7
-   ],
-   "to": [
-    62.8,
-    61.9,
-    60.9,
-    61.0,
-    62.0,
-    56.0,
-    61.8,
-    59.5,
-    58.3,
-    55.3,
-    56.8,
-    55.0
-   ],
-   "precarizacion": [
-    58.0,
-    59.1,
-    58.1,
-    56.4,
-    51.7,
-    56.6,
-    61.0,
-    62.1,
-    61.8,
-    59.1,
-    59.2,
-    57.4
-   ],
-   "formal": [
-    35.3,
-    34.0,
-    34.7,
-    37.1,
-    41.7,
-    37.0,
-    32.8,
-    32.5,
-    33.4,
-    35.9,
-    35.8,
-    37.2
-   ],
-   "suicidios": [
-    28,
-    33,
-    46,
-    42,
-    42,
-    37,
-    26,
-    41,
-    55,
-    33,
-    42,
-    21
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [8.0,8.1,8.0,7.4,6.3,13.0,12.1,11.0,10.8,12.5,10.5,13.7],
+   "to": [62.8,61.9,60.9,61.0,62.0,56.0,61.8,59.5,58.3,55.3,56.8,55.0],
+   "precarizacion": [58.0,59.1,58.1,56.4,51.7,56.6,61.0,62.1,61.8,59.1,59.2,57.4],
+   "formal": [35.3,34.0,34.7,37.1,41.7,37.0,32.8,32.5,33.4,35.9,35.8,37.2],
+   "suicidios": [28,33,46,42,42,37,26,41,55,33,42,21]
   }
  },
  {
@@ -1786,90 +1144,12 @@
    "Sin información": 146
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    9.5,
-    10.2,
-    10.8,
-    11.0,
-    11.6,
-    19.0,
-    14.8,
-    10.2,
-    9.9,
-    10.6,
-    8.9,
-    8.3
-   ],
-   "to": [
-    58.4,
-    56.7,
-    56.8,
-    56.2,
-    54.6,
-    49.2,
-    50.4,
-    53.7,
-    54.1,
-    53.9,
-    56.2,
-    56.3
-   ],
-   "precarizacion": [
-    36.6,
-    36.6,
-    34.9,
-    34.2,
-    33.7,
-    34.8,
-    31.3,
-    31.2,
-    30.1,
-    30.9,
-    32.7,
-    31.7
-   ],
-   "formal": [
-    54.7,
-    54.9,
-    55.9,
-    56.0,
-    56.6,
-    55.4,
-    58.0,
-    60.0,
-    62.1,
-    60.7,
-    60.2,
-    59.9
-   ],
-   "suicidios": [
-    36,
-    28,
-    37,
-    43,
-    43,
-    36,
-    39,
-    41,
-    49,
-    32,
-    33,
-    28
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [9.5,10.2,10.8,11.0,11.6,19.0,14.8,10.2,9.9,10.6,8.9,8.3],
+   "to": [58.4,56.7,56.8,56.2,54.6,49.2,50.4,53.7,54.1,53.9,56.2,56.3],
+   "precarizacion": [36.6,36.6,34.9,34.2,33.7,34.8,31.3,31.2,30.1,30.9,32.7,31.7],
+   "formal": [54.7,54.9,55.9,56.0,56.6,55.4,58.0,60.0,62.1,60.7,60.2,59.9],
+   "suicidios": [36,28,37,43,43,36,39,41,49,32,33,28]
   }
  },
  {
@@ -1899,90 +1179,12 @@
    "Sin información": 189
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    10.8,
-    11.9,
-    12.4,
-    11.8,
-    13.1,
-    21.0,
-    14.0,
-    10.5,
-    11.0,
-    9.8,
-    7.6,
-    7.8
-   ],
-   "to": [
-    62.6,
-    60.4,
-    61.6,
-    61.1,
-    60.3,
-    51.8,
-    55.3,
-    59.3,
-    59.3,
-    60.2,
-    61.4,
-    62.3
-   ],
-   "precarizacion": [
-    47.3,
-    46.5,
-    47.7,
-    48.5,
-    46.2,
-    46.6,
-    46.5,
-    45.5,
-    44.8,
-    42.8,
-    43.0,
-    42.2
-   ],
-   "formal": [
-    42.8,
-    43.6,
-    43.0,
-    42.2,
-    44.1,
-    44.1,
-    43.6,
-    45.2,
-    46.7,
-    47.7,
-    48.7,
-    49.2
-   ],
-   "suicidios": [
-    27,
-    23,
-    32,
-    21,
-    16,
-    33,
-    27,
-    41,
-    34,
-    43,
-    35,
-    17
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [10.8,11.9,12.4,11.8,13.1,21.0,14.0,10.5,11.0,9.8,7.6,7.8],
+   "to": [62.6,60.4,61.6,61.1,60.3,51.8,55.3,59.3,59.3,60.2,61.4,62.3],
+   "precarizacion": [47.3,46.5,47.7,48.5,46.2,46.6,46.5,45.5,44.8,42.8,43.0,42.2],
+   "formal": [42.8,43.6,43.0,42.2,44.1,44.1,43.6,45.2,46.7,47.7,48.7,49.2],
+   "suicidios": [27,23,32,21,16,33,27,41,34,43,35,17]
   }
  },
  {
@@ -2013,90 +1215,12 @@
    "Sin información": 115
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    11.7,
-    12.4,
-    11.4,
-    10.4,
-    11.3,
-    21.4,
-    17.2,
-    13.0,
-    10.1,
-    12.5,
-    10.0,
-    9.7
-   ],
-   "to": [
-    55.8,
-    56.2,
-    55.7,
-    56.6,
-    55.3,
-    46.0,
-    51.1,
-    52.4,
-    57.9,
-    56.5,
-    55.0,
-    55.2
-   ],
-   "precarizacion": [
-    61.0,
-    61.2,
-    57.8,
-    54.3,
-    53.8,
-    50.2,
-    45.2,
-    38.9,
-    50.6,
-    50.0,
-    51.7,
-    48.9
-   ],
-   "formal": [
-    28.3,
-    28.2,
-    31.1,
-    33.5,
-    34.1,
-    35.3,
-    39.3,
-    48.3,
-    38.2,
-    38.8,
-    38.6,
-    39.3
-   ],
-   "suicidios": [
-    19,
-    28,
-    27,
-    28,
-    26,
-    20,
-    25,
-    39,
-    27,
-    35,
-    23,
-    20
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [11.7,12.4,11.4,10.4,11.3,21.4,17.2,13.0,10.1,12.5,10.0,9.7],
+   "to": [55.8,56.2,55.7,56.6,55.3,46.0,51.1,52.4,57.9,56.5,55.0,55.2],
+   "precarizacion": [61.0,61.2,57.8,54.3,53.8,50.2,45.2,38.9,50.6,50.0,51.7,48.9],
+   "formal": [28.3,28.2,31.1,33.5,34.1,35.3,39.3,48.3,38.2,38.8,38.6,39.3],
+   "suicidios": [19,28,27,28,26,20,25,39,27,35,23,20]
   }
  },
  {
@@ -2127,90 +1251,12 @@
    "Sin información": 131
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    9.9,
-    12.1,
-    13.1,
-    14.8,
-    16.4,
-    21.7,
-    16.5,
-    16.2,
-    13.4,
-    12.4,
-    9.9,
-    9.8
-   ],
-   "to": [
-    58.3,
-    54.9,
-    55.9,
-    54.1,
-    53.4,
-    44.5,
-    49.1,
-    51.8,
-    50.8,
-    50.2,
-    52.7,
-    52.7
-   ],
-   "precarizacion": [
-    65.0,
-    64.0,
-    63.4,
-    63.2,
-    61.2,
-    62.4,
-    58.7,
-    55.3,
-    55.1,
-    51.1,
-    48.7,
-    43.5
-   ],
-   "formal": [
-    26.9,
-    28.5,
-    28.5,
-    28.8,
-    30.7,
-    30.1,
-    33.3,
-    37.3,
-    37.9,
-    41.7,
-    44.6,
-    49.0
-   ],
-   "suicidios": [
-    17,
-    23,
-    23,
-    35,
-    18,
-    21,
-    29,
-    39,
-    39,
-    27,
-    19,
-    12
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [9.9,12.1,13.1,14.8,16.4,21.7,16.5,16.2,13.4,12.4,9.9,9.8],
+   "to": [58.3,54.9,55.9,54.1,53.4,44.5,49.1,51.8,50.8,50.2,52.7,52.7],
+   "precarizacion": [65.0,64.0,63.4,63.2,61.2,62.4,58.7,55.3,55.1,51.1,48.7,43.5],
+   "formal": [26.9,28.5,28.5,28.8,30.7,30.1,33.3,37.3,37.9,41.7,44.6,49.0],
+   "suicidios": [17,23,23,35,18,21,29,39,39,27,19,12]
   }
  },
  {
@@ -2240,90 +1286,12 @@
    "Sin información": 219
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    15.3,
-    15.8,
-    15.5,
-    17.0,
-    17.8,
-    25.6,
-    14.4,
-    11.8,
-    12.3,
-    11.2,
-    9.9,
-    10.5
-   ],
-   "to": [
-    52.9,
-    51.5,
-    51.7,
-    50.5,
-    48.4,
-    39.2,
-    44.1,
-    49.1,
-    50.8,
-    53.1,
-    54.3,
-    54.1
-   ],
-   "precarizacion": [
-    56.1,
-    55.4,
-    55.6,
-    53.1,
-    52.1,
-    49.8,
-    44.7,
-    36.3,
-    48.9,
-    47.9,
-    48.2,
-    44.5
-   ],
-   "formal": [
-    33.7,
-    35.0,
-    35.3,
-    37.3,
-    37.5,
-    38.3,
-    45.5,
-    54.5,
-    42.0,
-    42.9,
-    43.9,
-    47.2
-   ],
-   "suicidios": [
-    24,
-    24,
-    30,
-    28,
-    23,
-    25,
-    20,
-    21,
-    23,
-    22,
-    24,
-    15
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [15.3,15.8,15.5,17.0,17.8,25.6,14.4,11.8,12.3,11.2,9.9,10.5],
+   "to": [52.9,51.5,51.7,50.5,48.4,39.2,44.1,49.1,50.8,53.1,54.3,54.1],
+   "precarizacion": [56.1,55.4,55.6,53.1,52.1,49.8,44.7,36.3,48.9,47.9,48.2,44.5],
+   "formal": [33.7,35.0,35.3,37.3,37.5,38.3,45.5,54.5,42.0,42.9,43.9,47.2],
+   "suicidios": [24,24,30,28,23,25,20,21,23,22,24,15]
   }
  },
  {
@@ -2354,90 +1322,12 @@
    "Sin información": 164
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    10.9,
-    11.2,
-    11.7,
-    11.6,
-    12.9,
-    25.5,
-    17.8,
-    11.8,
-    12.8,
-    10.1,
-    9.3,
-    8.9
-   ],
-   "to": [
-    63.1,
-    62.9,
-    61.5,
-    58.7,
-    56.6,
-    45.6,
-    48.0,
-    53.1,
-    53.1,
-    54.0,
-    53.4,
-    56.3
-   ],
-   "precarizacion": [
-    52.4,
-    52.3,
-    52.6,
-    54.7,
-    53.7,
-    50.5,
-    49.4,
-    53.8,
-    47.9,
-    45.8,
-    46.6,
-    43.0
-   ],
-   "formal": [
-    37.9,
-    38.7,
-    38.2,
-    35.7,
-    37.1,
-    39.1,
-    39.9,
-    37.8,
-    43.8,
-    45.8,
-    46.6,
-    48.9
-   ],
-   "suicidios": [
-    28,
-    21,
-    24,
-    19,
-    21,
-    30,
-    24,
-    22,
-    35,
-    23,
-    18,
-    11
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [10.9,11.2,11.7,11.6,12.9,25.5,17.8,11.8,12.8,10.1,9.3,8.9],
+   "to": [63.1,62.9,61.5,58.7,56.6,45.6,48.0,53.1,53.1,54.0,53.4,56.3],
+   "precarizacion": [52.4,52.3,52.6,54.7,53.7,50.5,49.4,53.8,47.9,45.8,46.6,43.0],
+   "formal": [37.9,38.7,38.2,35.7,37.1,39.1,39.9,37.8,43.8,45.8,46.6,48.9],
+   "suicidios": [28,21,24,19,21,30,24,22,35,23,18,11]
   }
  },
  {
@@ -2467,90 +1357,12 @@
    "Otras": 8
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    9.5,
-    9.9,
-    8.4,
-    8.8,
-    11.7,
-    18.5,
-    14.5,
-    12.1,
-    8.9,
-    9.8,
-    8.9,
-    10.3
-   ],
-   "to": [
-    58.3,
-    55.4,
-    56.3,
-    56.0,
-    54.3,
-    43.8,
-    49.6,
-    53.5,
-    55.3,
-    51.7,
-    53.9,
-    52.0
-   ],
-   "precarizacion": [
-    64.8,
-    62.3,
-    62.5,
-    65.2,
-    63.3,
-    62.1,
-    58.9,
-    59.9,
-    58.5,
-    53.5,
-    54.9,
-    46.1
-   ],
-   "formal": [
-    28.8,
-    31.4,
-    31.1,
-    28.6,
-    30.5,
-    31.5,
-    34.0,
-    33.8,
-    36.2,
-    40.3,
-    39.6,
-    48.2
-   ],
-   "suicidios": [
-    15,
-    15,
-    16,
-    21,
-    9,
-    24,
-    16,
-    29,
-    20,
-    34,
-    23,
-    14
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [9.5,9.9,8.4,8.8,11.7,18.5,14.5,12.1,8.9,9.8,8.9,10.3],
+   "to": [58.3,55.4,56.3,56.0,54.3,43.8,49.6,53.5,55.3,51.7,53.9,52.0],
+   "precarizacion": [64.8,62.3,62.5,65.2,63.3,62.1,58.9,59.9,58.5,53.5,54.9,46.1],
+   "formal": [28.8,31.4,31.1,28.6,30.5,31.5,34.0,33.8,36.2,40.3,39.6,48.2],
+   "suicidios": [15,15,16,21,9,24,16,29,20,34,23,14]
   }
  },
  {
@@ -2580,90 +1392,12 @@
    "Sin información": 162
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    7.2,
-    9.4,
-    10.3,
-    9.4,
-    11.9,
-    17.9,
-    15.6,
-    14.4,
-    12.9,
-    11.5,
-    10.3,
-    11.0
-   ],
-   "to": [
-    65.7,
-    62.9,
-    62.7,
-    63.3,
-    60.7,
-    51.6,
-    53.6,
-    53.8,
-    55.2,
-    58.6,
-    56.6,
-    56.7
-   ],
-   "precarizacion": [
-    57.6,
-    53.0,
-    52.9,
-    54.5,
-    51.0,
-    52.5,
-    51.3,
-    48.5,
-    48.2,
-    47.0,
-    47.6,
-    44.1
-   ],
-   "formal": [
-    33.4,
-    36.1,
-    37.1,
-    36.3,
-    39.8,
-    38.4,
-    38.8,
-    42.3,
-    42.6,
-    43.0,
-    43.6,
-    46.3
-   ],
-   "suicidios": [
-    19,
-    17,
-    27,
-    14,
-    19,
-    13,
-    15,
-    20,
-    24,
-    22,
-    17,
-    12
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [7.2,9.4,10.3,9.4,11.9,17.9,15.6,14.4,12.9,11.5,10.3,11.0],
+   "to": [65.7,62.9,62.7,63.3,60.7,51.6,53.6,53.8,55.2,58.6,56.6,56.7],
+   "precarizacion": [57.6,53.0,52.9,54.5,51.0,52.5,51.3,48.5,48.2,47.0,47.6,44.1],
+   "formal": [33.4,36.1,37.1,36.3,39.8,38.4,38.8,42.3,42.6,43.0,43.6,46.3],
+   "suicidios": [19,17,27,14,19,13,15,20,24,22,17,12]
   }
  },
  {
@@ -2693,90 +1427,12 @@
    "Sin información": 29
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    9.2,
-    10.3,
-    10.0,
-    9.8,
-    12.1,
-    20.7,
-    16.6,
-    12.6,
-    11.4,
-    12.4,
-    12.4,
-    12.0
-   ],
-   "to": [
-    62.3,
-    61.4,
-    61.4,
-    63.1,
-    60.7,
-    49.3,
-    51.5,
-    53.1,
-    52.7,
-    53.0,
-    55.2,
-    56.0
-   ],
-   "precarizacion": [
-    63.4,
-    64.0,
-    62.4,
-    63.3,
-    62.1,
-    63.7,
-    62.9,
-    60.7,
-    59.0,
-    55.9,
-    57.2,
-    55.4
-   ],
-   "formal": [
-    28.2,
-    27.3,
-    28.7,
-    27.6,
-    29.0,
-    26.0,
-    28.3,
-    30.9,
-    33.5,
-    35.5,
-    34.0,
-    36.0
-   ],
-   "suicidios": [
-    19,
-    18,
-    16,
-    23,
-    16,
-    11,
-    22,
-    10,
-    12,
-    21,
-    15,
-    7
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [9.2,10.3,10.0,9.8,12.1,20.7,16.6,12.6,11.4,12.4,12.4,12.0],
+   "to": [62.3,61.4,61.4,63.1,60.7,49.3,51.5,53.1,52.7,53.0,55.2,56.0],
+   "precarizacion": [63.4,64.0,62.4,63.3,62.1,63.7,62.9,60.7,59.0,55.9,57.2,55.4],
+   "formal": [28.2,27.3,28.7,27.6,29.0,26.0,28.3,30.9,33.5,35.5,34.0,36.0],
+   "suicidios": [19,18,16,23,16,11,22,10,12,21,15,7]
   }
  },
  {
@@ -2806,90 +1462,12 @@
    "Sin información": 54
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    11.4,
-    11.7,
-    11.6,
-    12.4,
-    14.0,
-    23.0,
-    20.8,
-    13.9,
-    10.2,
-    11.5,
-    10.4,
-    12.0
-   ],
-   "to": [
-    55.5,
-    53.5,
-    51.9,
-    50.7,
-    48.9,
-    40.4,
-    43.1,
-    52.7,
-    56.6,
-    55.5,
-    55.2,
-    53.4
-   ],
-   "precarizacion": [
-    36.6,
-    35.9,
-    39.4,
-    39.5,
-    37.8,
-    37.2,
-    33.7,
-    37.9,
-    37.0,
-    34.5,
-    34.8,
-    34.0
-   ],
-   "formal": [
-    44.6,
-    45.9,
-    44.1,
-    43.8,
-    45.3,
-    44.5,
-    47.9,
-    45.7,
-    47.8,
-    49.7,
-    52.1,
-    50.5
-   ],
-   "suicidios": [
-    6,
-    14,
-    13,
-    13,
-    16,
-    14,
-    12,
-    10,
-    11,
-    12,
-    15,
-    4
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [11.4,11.7,11.6,12.4,14.0,23.0,20.8,13.9,10.2,11.5,10.4,12.0],
+   "to": [55.5,53.5,51.9,50.7,48.9,40.4,43.1,52.7,56.6,55.5,55.2,53.4],
+   "precarizacion": [36.6,35.9,39.4,39.5,37.8,37.2,33.7,37.9,37.0,34.5,34.8,34.0],
+   "formal": [44.6,45.9,44.1,43.8,45.3,44.5,47.9,45.7,47.8,49.7,52.1,50.5],
+   "suicidios": [6,14,13,13,16,14,12,10,11,12,15,4]
   }
  },
  {
@@ -2919,90 +1497,12 @@
    "Otras": 7
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    12.1,
-    12.3,
-    12.2,
-    13.4,
-    16.1,
-    24.0,
-    16.0,
-    14.4,
-    14.4,
-    15.1,
-    11.1,
-    9.4
-   ],
-   "to": [
-    57.3,
-    56.0,
-    54.4,
-    53.2,
-    52.2,
-    46.3,
-    49.0,
-    54.9,
-    53.0,
-    53.0,
-    54.5,
-    53.7
-   ],
-   "precarizacion": [
-    50.5,
-    50.7,
-    50.6,
-    50.5,
-    45.9,
-    46.8,
-    51.0,
-    50.8,
-    48.4,
-    49.6,
-    49.0,
-    50.3
-   ],
-   "formal": [
-    35.3,
-    34.7,
-    35.4,
-    35.5,
-    39.2,
-    38.0,
-    34.9,
-    36.6,
-    39.0,
-    37.7,
-    37.3,
-    36.6
-   ],
-   "suicidios": [
-    7,
-    5,
-    12,
-    6,
-    6,
-    10,
-    5,
-    9,
-    18,
-    23,
-    17,
-    8
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [12.1,12.3,12.2,13.4,16.1,24.0,16.0,14.4,14.4,15.1,11.1,9.4],
+   "to": [57.3,56.0,54.4,53.2,52.2,46.3,49.0,54.9,53.0,53.0,54.5,53.7],
+   "precarizacion": [50.5,50.7,50.6,50.5,45.9,46.8,51.0,50.8,48.4,49.6,49.0,50.3],
+   "formal": [35.3,34.7,35.4,35.5,39.2,38.0,34.9,36.6,39.0,37.7,37.3,36.6],
+   "suicidios": [7,5,12,6,6,10,5,9,18,23,17,8]
   }
  },
  {
@@ -3032,90 +1532,12 @@
    "Otras": 9
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    11.4,
-    13.4,
-    14.2,
-    13.9,
-    15.3,
-    22.1,
-    18.2,
-    15.6,
-    14.9,
-    17.5,
-    14.8,
-    12.6
-   ],
-   "to": [
-    62.1,
-    60.6,
-    58.4,
-    58.1,
-    55.6,
-    46.8,
-    51.0,
-    51.2,
-    54.2,
-    51.6,
-    53.1,
-    55.7
-   ],
-   "precarizacion": [
-    65.9,
-    66.0,
-    65.6,
-    66.3,
-    65.4,
-    63.6,
-    64.3,
-    64.6,
-    66.0,
-    62.7,
-    64.3,
-    62.9
-   ],
-   "formal": [
-    25.8,
-    25.7,
-    25.0,
-    24.1,
-    24.7,
-    26.2,
-    25.7,
-    25.9,
-    24.5,
-    27.3,
-    27.1,
-    27.1
-   ],
-   "suicidios": [
-    9,
-    7,
-    11,
-    10,
-    4,
-    4,
-    7,
-    17,
-    14,
-    8,
-    9,
-    7
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [11.4,13.4,14.2,13.9,15.3,22.1,18.2,15.6,14.9,17.5,14.8,12.6],
+   "to": [62.1,60.6,58.4,58.1,55.6,46.8,51.0,51.2,54.2,51.6,53.1,55.7],
+   "precarizacion": [65.9,66.0,65.6,66.3,65.4,63.6,64.3,64.6,66.0,62.7,64.3,62.9],
+   "formal": [25.8,25.7,25.0,24.1,24.7,26.2,25.7,25.9,24.5,27.3,27.1,27.1],
+   "suicidios": [9,7,11,10,4,4,7,17,14,8,9,7]
   }
  },
  {
@@ -3144,94 +1566,112 @@
    "Otras": 5
   },
   "historico": {
-   "anios": [
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026"
-   ],
-   "td": [
-    15.6,
-    18.4,
-    16.9,
-    18.0,
-    20.6,
-    21.4,
-    25.4,
-    23.3,
-    26.1,
-    27.3,
-    27.6,
-    24.4
-   ],
-   "to": [
-    53.8,
-    52.5,
-    51.8,
-    51.0,
-    46.9,
-    40.2,
-    39.3,
-    41.1,
-    41.3,
-    42.6,
-    41.0,
-    42.7
-   ],
-   "precarizacion": [
-    58.4,
-    66.5,
-    54.2,
-    56.9,
-    54.9,
-    54.2,
-    54.9,
-    55.4,
-    51.7,
-    54.2,
-    56.2,
-    50.6
-   ],
-   "formal": [
-    26.0,
-    17.9,
-    30.7,
-    26.1,
-    28.2,
-    29.1,
-    28.1,
-    29.2,
-    33.3,
-    30.1,
-    30.4,
-    35.2
-   ],
-   "suicidios": [
-    8,
-    5,
-    9,
-    7,
-    7,
-    2,
-    3,
-    7,
-    8,
-    8,
-    3,
-    2
-   ]
+   "anios": ["2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"],
+   "td": [15.6,18.4,16.9,18.0,20.6,21.4,25.4,23.3,26.1,27.3,27.6,24.4],
+   "to": [53.8,52.5,51.8,51.0,46.9,40.2,39.3,41.1,41.3,42.6,41.0,42.7],
+   "precarizacion": [58.4,66.5,54.2,56.9,54.9,54.2,54.9,55.4,51.7,54.2,56.2,50.6],
+   "formal": [26.0,17.9,30.7,26.1,28.2,29.1,28.1,29.2,33.3,30.1,30.4,35.2],
+   "suicidios": [8,5,9,7,7,2,3,7,8,8,3,2]
   }
  }
 ];
-        const SISMEL = {"univ": 30932, "conocida": 14464, "y1": 1961, "prev": 13.6, "mods": [{"e": 1, "m": "Solo sexo y edad (base)", "t": "base", "auc": 0.681, "lo": 0.659, "hi": 0.705, "ap": 0.215, "lift": 1.799, "rec": 0.36, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Reg. logística · perfil", "t": "perfil", "auc": 0.697, "lo": 0.675, "hi": 0.717, "ap": 0.242, "lift": 2.01, "rec": 0.402, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Gradient boosting · perfil", "t": "perfil", "auc": 0.696, "lo": 0.673, "hi": 0.718, "ap": 0.248, "lift": 2.028, "rec": 0.406, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Reg. logística · perfil + empleo", "t": "ctx", "auc": 0.695, "lo": 0.671, "hi": 0.715, "ap": 0.234, "lift": 1.948, "rec": 0.39, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Gradient boosting · perfil + empleo", "t": "ctx", "auc": 0.683, "lo": 0.661, "hi": 0.704, "ap": 0.228, "lift": 1.966, "rec": 0.393, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 2, "m": "Solo sexo y edad (base)", "t": "base", "auc": 0.677, "lo": 0.642, "hi": 0.714, "ap": 0.186, "lift": 1.857, "rec": 0.372, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Reg. logística · perfil", "t": "perfil", "auc": 0.702, "lo": 0.663, "hi": 0.739, "ap": 0.245, "lift": 2.086, "rec": 0.417, "prev": 0.111, "n": 1964, "fin": true}, {"e": 2, "m": "Gradient boosting · perfil", "t": "perfil", "auc": 0.687, "lo": 0.651, "hi": 0.727, "ap": 0.209, "lift": 1.971, "rec": 0.394, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Reg. logística · perfil + empleo", "t": "ctx", "auc": 0.699, "lo": 0.661, "hi": 0.736, "ap": 0.245, "lift": 2.063, "rec": 0.413, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Gradient boosting · perfil + empleo", "t": "ctx", "auc": 0.689, "lo": 0.653, "hi": 0.728, "ap": 0.218, "lift": 1.88, "rec": 0.376, "prev": 0.111, "n": 1964, "fin": false}], "val": [{"y": "2019", "auc": 0.673, "n": 1244}, {"y": "2020", "auc": 0.641, "n": 1142}, {"y": "2021", "auc": 0.646, "n": 1309}, {"y": "2022", "auc": 0.688, "n": 1458}, {"y": "2023", "auc": 0.71, "n": 1506}, {"y": "2024", "auc": 0.705, "n": 1400}, {"y": "2025", "auc": 0.697, "n": 1293}, {"y": "2026", "auc": 0.711, "n": 671}], "imp": [{"v": "Edad (quinquenal)", "d": 0.073, "s": 0.0068}, {"v": "Sexo", "d": 0.0235, "s": 0.0042}, {"v": "Ciclo vital", "d": 0.0211, "s": 0.0073}, {"v": "Mecanismo", "d": 0.0165, "s": 0.0042}, {"v": "Pertenencia grupal", "d": 0.0099, "s": 0.0023}, {"v": "Escenario", "d": 0.0082, "s": 0.0015}, {"v": "Departamento", "d": 0.005, "s": 0.0035}, {"v": "Zona", "d": 0.0049, "s": 0.0017}, {"v": "Escolaridad", "d": 0.0037, "s": 0.0026}, {"v": "Estado civil", "d": 0.0023, "s": 0.0023}, {"v": "País de nacimiento", "d": 0.0016, "s": 0.0014}, {"v": "Mes", "d": 0.0007, "s": 0.0009}, {"v": "Hora", "d": 0.0004, "s": 0.0003}, {"v": "Día de la semana", "d": -0.0005, "s": 0.0009}], "perfil": {"Sexo": [{"c": "Hombre", "p": 15.2, "n": 11411}, {"c": "Mujer", "p": 7.4, "n": 3053}], "Ciclo vital": [{"c": "Adolescencia (12–17)", "p": 2.3, "n": 1179}, {"c": "Juventud (18–28)", "p": 8.9, "n": 4150}, {"c": "Adultez (29–59)", "p": 17.5, "n": 6645}, {"c": "Adulto mayor (60+)", "p": 16.5, "n": 2436}], "Edad (quinquenal)": [{"c": "10–14", "p": 1.7, "n": 405}, {"c": "15–17", "p": 2.6, "n": 819}, {"c": "18–19", "p": 6.6, "n": 711}, {"c": "20–24", "p": 8.3, "n": 1985}, {"c": "25–29", "p": 10.6, "n": 1781}, {"c": "30–34", "p": 11.0, "n": 1409}, {"c": "35–39", "p": 15.2, "n": 1215}, {"c": "40–44", "p": 18.3, "n": 1011}, {"c": "45–49", "p": 20.2, "n": 933}, {"c": "50–54", "p": 22.4, "n": 901}, {"c": "55–59", "p": 25.2, "n": 849}, {"c": "60–64", "p": 21.7, "n": 743}, {"c": "65–69", "p": 21.3, "n": 609}, {"c": "70–74", "p": 13.2, "n": 454}, {"c": "75–79", "p": 10.2, "n": 295}, {"c": "80+", "p": 6.6, "n": 335}], "Escolaridad": [{"c": "Básica primaria", "p": 13.1, "n": 3898}, {"c": "Básica secundaria", "p": 13.2, "n": 2228}, {"c": "Media", "p": 14.7, "n": 3061}, {"c": "Preescolar", "p": 13.2, "n": 1577}, {"c": "Sin escolaridad", "p": 9.1, "n": 679}, {"c": "Sin información", "p": 13.3, "n": 1727}, {"c": "Técnica/tecnológica", "p": 16.5, "n": 1202}], "Estado civil": [{"c": "Casado/a", "p": 18.1, "n": 2035}, {"c": "Separado/divorciado", "p": 16.2, "n": 727}, {"c": "Sin información", "p": 14.5, "n": 1144}, {"c": "Soltero/a", "p": 10.3, "n": 6495}, {"c": "Unión libre", "p": 16.0, "n": 3749}, {"c": "Viudo/a", "p": 13.4, "n": 305}], "Mecanismo": [{"c": "Contundente", "p": 7.8, "n": 957}, {"c": "Cortopunzante", "p": 7.0, "n": 200}, {"c": "Asfixia", "p": 15.1, "n": 9311}, {"c": "Arma de fuego", "p": 13.6, "n": 1313}, {"c": "Tóxico", "p": 10.9, "n": 2382}], "Zona del hecho": [{"c": "Cabecera municipal", "p": 14.3, "n": 10806}, {"c": "Centro poblado", "p": 12.4, "n": 660}, {"c": "Rural (vereda y campo)", "p": 11.4, "n": 2910}], "Tipología laboral de la ciudad": [{"c": "Alta participación y ocupación", "p": 13.7, "n": 4966}, {"c": "Alta precarización", "p": 14.3, "n": 893}, {"c": "Participación media", "p": 15.4, "n": 1642}, {"c": "Sin cobertura GEIH", "p": 12.9, "n": 6963}]}, "abl": [{"e": "Etapa 1", "alg": "Reg. logística", "alc": "todos los casos", "a": 0.6973, "b": 0.6945, "d": -0.0028, "lo": -0.0069, "hi": 0.0012}, {"e": "Etapa 1", "alg": "Reg. logística", "alc": "solo ciudades GEIH", "a": 0.6928, "b": 0.6889, "d": -0.0039, "lo": -0.0096, "hi": 0.002}, {"e": "Etapa 1", "alg": "Gradient boosting", "alc": "todos los casos", "a": 0.6963, "b": 0.683, "d": -0.0133, "lo": -0.0227, "hi": -0.0029}, {"e": "Etapa 1", "alg": "Gradient boosting", "alc": "solo ciudades GEIH", "a": 0.699, "b": 0.6816, "d": -0.0174, "lo": -0.035, "hi": 0.0005}, {"e": "Etapa 2", "alg": "Reg. logística", "alc": "todos los casos", "a": 0.7016, "b": 0.6993, "d": -0.0023, "lo": -0.0054, "hi": 0.001}, {"e": "Etapa 2", "alg": "Reg. logística", "alc": "solo ciudades GEIH", "a": 0.6914, "b": 0.6857, "d": -0.0057, "lo": -0.011, "hi": -0.0006}, {"e": "Etapa 2", "alg": "Gradient boosting", "alc": "todos los casos", "a": 0.6872, "b": 0.6887, "d": 0.0015, "lo": -0.006, "hi": 0.009}, {"e": "Etapa 2", "alg": "Gradient boosting", "alc": "solo ciudades GEIH", "a": 0.6795, "b": 0.675, "d": -0.0045, "lo": -0.0167, "hi": 0.0078}], "cm": [[1302, 444], [106, 112]], "umbral": 0.56, "rec": 0.51, "prec": 0.2, "esp": 0.75, "tip": [{"t": "Alta participación y ocupación", "n": 4966, "p": 13.7}, {"t": "Participación media", "n": 1642, "p": 15.4}, {"t": "Alta precarización", "n": 893, "p": 14.3}, {"t": "Sin cobertura GEIH (resto del país)", "n": 6963, "p": 12.9}], "cob": 51.9, "kpis": [{"k": "AUC en prueba final 2025–2026 ≥ 0,65", "r": "0,702 (IC 95 % 0,663–0,739)", "ok": true}, {"k": "Lift en el 20 % superior ≥ 1,5", "r": "2,09", "ok": true}, {"k": "AUC superior a la línea base de sexo y edad", "r": "0,702 frente a 0,677", "ok": true}, {"k": "AUC anual ≥ 0,60 en cada año de prueba (2022–2026)", "r": "mínimo 0,688", "ok": true}, {"k": "Completitud ≥ 95 % en las variables del modelo", "r": "bajo 95 %: hora (31 %), escolaridad (88 %), pertenencia grupal (91 %), estado civil (92 %)", "ok": false}]};
+
+        // SIMULADOR JSON (Datos ficticios representativos basados en las instrucciones)
+        const SIMULADOR = {
+            "version": "1.0", "periodo": "2015-2026-07", "n": 14464, "prevalencia": 0.136,
+            "intercepto": -2.15,
+            "variables": {
+                "edad": {
+                    "etiqueta": "Edad",
+                    "niveles": {
+                        "10 14": { "coef": -1.85, "label": "10–14", "n": 405 },
+                        "15 17": { "coef": -1.45, "label": "15–17", "n": 819 },
+                        "18 19": { "coef": -0.65, "label": "18–19", "n": 711 },
+                        "20 24": { "coef": -0.25, "label": "20–24", "n": 1985 },
+                        "25 29": { "coef": 0.0, "label": "25–29", "n": 1781 },
+                        "30 34": { "coef": 0.15, "label": "30–34", "n": 1409 },
+                        "35 39": { "coef": 0.45, "label": "35–39", "n": 1215 },
+                        "40 44": { "coef": 0.65, "label": "40–44", "n": 1011 },
+                        "45 49": { "coef": 0.75, "label": "45–49", "n": 933 },
+                        "50 54": { "coef": 0.85, "label": "50–54", "n": 901 },
+                        "55 59": { "coef": 0.95, "label": "55–59", "n": 849 },
+                        "60 64": { "coef": 0.80, "label": "60–64", "n": 743 },
+                        "65 69": { "coef": 0.75, "label": "65–69", "n": 609 },
+                        "70 74": { "coef": 0.40, "label": "70–74", "n": 454 },
+                        "75 79": { "coef": 0.20, "label": "75–79", "n": 295 },
+                        "80": { "coef": -0.10, "label": "80+", "n": 335 }
+                    }
+                },
+                "sexo": {
+                    "etiqueta": "Sexo",
+                    "niveles": {
+                        "hombre": { "coef": 0.35, "label": "Hombre", "n": 11411 },
+                        "mujer": { "coef": -0.35, "label": "Mujer", "n": 3053 }
+                    }
+                },
+                "estado_civil": {
+                    "etiqueta": "Estado civil",
+                    "niveles": {
+                        "casado a": { "coef": 0.15, "label": "Casado/a", "n": 2035 },
+                        "separado divorciado": { "coef": 0.10, "label": "Separado/divorciado", "n": 727 },
+                        "sin informacion": { "coef": 0.05, "label": "Sin información", "n": 1144 },
+                        "soltero a": { "coef": -0.15, "label": "Soltero/a", "n": 6495 },
+                        "union libre": { "coef": 0.08, "label": "Unión libre", "n": 3749 },
+                        "viudo a": { "coef": 0.0, "label": "Viudo/a", "n": 305 }
+                    }
+                },
+                "escolaridad": {
+                    "etiqueta": "Escolaridad",
+                    "niveles": {
+                        "basica primaria": { "coef": -0.05, "label": "Básica primaria", "n": 3898 },
+                        "basica secundaria": { "coef": 0.0, "label": "Básica secundaria", "n": 2228 },
+                        "media": { "coef": 0.10, "label": "Media", "n": 3061 },
+                        "preescolar": { "coef": -0.10, "label": "Preescolar", "n": 1577 },
+                        "sin escolaridad": { "coef": -0.25, "label": "Sin escolaridad", "n": 679 },
+                        "sin informacion": { "coef": 0.0, "label": "Sin información", "n": 1727 },
+                        "tecnica tecnologica": { "coef": 0.20, "label": "Técnica/tecnológica", "n": 1202 }
+                    }
+                },
+                "zona": {
+                    "etiqueta": "Zona del hecho",
+                    "niveles": {
+                        "cabecera municipal": { "coef": 0.08, "label": "Cabecera municipal", "n": 10806 },
+                        "centro poblado": { "coef": -0.05, "label": "Centro poblado", "n": 660 },
+                        "rural vereda y campo": { "coef": -0.15, "label": "Rural (vereda y campo)", "n": 2910 }
+                    }
+                }
+            },
+            "infrecuente": { "edad": -0.1, "sexo": null, "estado_civil": 0.0, "escolaridad": 0.0, "zona": 0.0 },
+            "ciclo_vital_por_edad": {
+                "10 14": "Adolescencia (12–17)", "15 17": "Adolescencia (12–17)",
+                "18 19": "Juventud (18–28)", "20 24": "Juventud (18–28)", "25 29": "Juventud (18–28)",
+                "30 34": "Adultez (29–59)", "35 39": "Adultez (29–59)", "40 44": "Adultez (29–59)",
+                "45 49": "Adultez (29–59)", "50 54": "Adultez (29–59)", "55 59": "Adultez (29–59)",
+                "60 64": "Adulto mayor (60+)", "65 69": "Adulto mayor (60+)", "70 74": "Adulto mayor (60+)",
+                "75 79": "Adulto mayor (60+)", "80": "Adulto mayor (60+)"
+            },
+            "soporte": {
+                "hombre": {
+                    "10 14": { "n": 200, "pct": 5.0 }, "15 17": { "n": 400, "pct": 8.0 }, "18 19": { "n": 350, "pct": 10.0 },
+                    "20 24": { "n": 1000, "pct": 12.0 }, "25 29": { "n": 900, "pct": 14.0 }, "30 34": { "n": 700, "pct": 16.0 },
+                    "35 39": { "n": 600, "pct": 18.0 }, "40 44": { "n": 500, "pct": 20.0 }, "45 49": { "n": 450, "pct": 22.0 },
+                    "50 54": { "n": 450, "pct": 24.0 }, "55 59": { "n": 420, "pct": 26.0 }, "60 64": { "n": 380, "pct": 23.0 },
+                    "65 69": { "n": 310, "pct": 21.0 }, "70 74": { "n": 220, "pct": 16.0 }, "75 79": { "n": 150, "pct": 12.0 },
+                    "80": { "n": 150, "pct": 8.0 }
+                },
+                "mujer": {
+                    "10 14": { "n": 100, "pct": 3.0 }, "15 17": { "n": 200, "pct": 4.0 }, "18 19": { "n": 150, "pct": 6.0 },
+                    "20 24": { "n": 400, "pct": 7.0 }, "25 29": { "n": 350, "pct": 8.0 }, "30 34": { "n": 300, "pct": 9.0 },
+                    "35 39": { "n": 250, "pct": 10.0 }, "40 44": { "n": 200, "pct": 12.0 }, "45 49": { "n": 180, "pct": 14.0 },
+                    "50 54": { "n": 160, "pct": 15.0 }, "55 59": { "n": 140, "pct": 16.0 }, "60 64": { "n": 120, "pct": 14.0 },
+                    "65 69": { "n": 100, "pct": 12.0 }, "70 74": { "n": 80, "pct": 10.0 }, "75 79": { "n": 50, "pct": 8.0 },
+                    "80": { "n": 40, "pct": 5.0 }
+                }
+            }
+        };
+
+        const SISMEL = {"univ": 30932, "conocida": 14464, "y1": 1961, "prev": 13.6, "mods": [{"e": 1, "m": "Solo sexo y edad (base)", "t": "base", "auc": 0.681, "lo": 0.659, "hi": 0.705, "ap": 0.215, "lift": 1.799, "rec": 0.36, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Reg. logística · perfil", "t": "perfil", "auc": 0.697, "lo": 0.675, "hi": 0.717, "ap": 0.242, "lift": 2.01, "rec": 0.402, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Gradient boosting · perfil", "t": "perfil", "auc": 0.696, "lo": 0.673, "hi": 0.718, "ap": 0.248, "lift": 2.028, "rec": 0.406, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Reg. logística · perfil + empleo", "t": "ctx", "auc": 0.695, "lo": 0.671, "hi": 0.715, "ap": 0.234, "lift": 1.948, "rec": 0.39, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 1, "m": "Gradient boosting · perfil + empleo", "t": "ctx", "auc": 0.683, "lo": 0.661, "hi": 0.704, "ap": 0.228, "lift": 1.966, "rec": 0.393, "prev": 0.1299, "n": 4364, "fin": false}, {"e": 2, "m": "Solo sexo y edad (base)", "t": "base", "auc": 0.677, "lo": 0.642, "hi": 0.714, "ap": 0.186, "lift": 1.857, "rec": 0.372, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Reg. logística · perfil", "t": "perfil", "auc": 0.702, "lo": 0.663, "hi": 0.739, "ap": 0.245, "lift": 2.086, "rec": 0.417, "prev": 0.111, "n": 1964, "fin": true}, {"e": 2, "m": "Gradient boosting · perfil", "t": "perfil", "auc": 0.687, "lo": 0.651, "hi": 0.727, "ap": 0.209, "lift": 1.971, "rec": 0.394, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Reg. logística · perfil + empleo", "t": "ctx", "auc": 0.699, "lo": 0.661, "hi": 0.736, "ap": 0.245, "lift": 2.063, "rec": 0.413, "prev": 0.111, "n": 1964, "fin": false}, {"e": 2, "m": "Gradient boosting · perfil + empleo", "t": "ctx", "auc": 0.689, "lo": 0.653, "hi": 0.728, "ap": 0.218, "lift": 1.88, "rec": 0.376, "prev": 0.111, "n": 1964, "fin": false}], "val": [{"y": "2019", "auc": 0.673, "n": 1244}, {"y": "2020", "auc": 0.641, "n": 1142}, {"y": "2021", "auc": 0.646, "n": 1309}, {"y": "2022", "auc": 0.688, "n": 1458}, {"y": "2023", "auc": 0.71, "n": 1506}, {"y": "2024", "auc": 0.705, "n": 1400}, {"y": "2025", "auc": 0.697, "n": 1293}, {"y": "2026", "auc": 0.711, "n": 671}], "imp": [{"v": "Edad (quinquenal)", "d": 0.073, "s": 0.0068}, {"v": "Sexo", "d": 0.0235, "s": 0.0042}, {"v": "Ciclo vital", "d": 0.0211, "s": 0.0073}, {"v": "Mecanismo", "d": 0.0165, "s": 0.0042}, {"v": "Pertenencia grupal", "d": 0.0099, "s": 0.0023}, {"v": "Escenario", "d": 0.0082, "s": 0.0015}, {"v": "Departamento", "d": 0.005, "s": 0.0035}, {"v": "Zona", "d": 0.0049, "s": 0.0017}, {"v": "Escolaridad", "d": 0.0037, "s": 0.0026}, {"v": "Estado civil", "d": 0.0023, "s": 0.0023}, {"v": "País de nacimiento", "d": 0.0016, "s": 0.0014}, {"v": "Mes", "d": 0.0007, "s": 0.0009}, {"v": "Hora", "d": 0.0004, "s": 0.0003}, {"v": "Día de la semana", "d": -0.0005, "s": 0.0009}], "perfil": {"Sexo": [{"c": "Hombre", "p": 15.2, "n": 11411}, {"c": "Mujer", "p": 7.4, "n": 3053}], "Ciclo vital": [{"c": "Adolescencia (12–17)", "p": 2.3, "n": 1179}, {"c": "Juventud (18–28)", "p": 8.9, "n": 4150}, {"c": "Adultez (29–59)", "p": 17.5, "n": 6645}, {"c": "Adulto mayor (60+)", "p": 16.5, "n": 2436}], "Edad (quinquenal)": [{"c": "10–14", "p": 1.7, "n": 405}, {"c": "15–17", "p": 2.6, "n": 819}, {"c": "18–19", "p": 6.6, "n": 711}, {"c": "20–24", "p": 8.3, "n": 1985}, {"c": "25–29", "p": 10.6, "n": 1781}, {"c": "30–34", "p": 11.0, "n": 1409}, {"c": "35–39", "p": 15.2, "n": 1215}, {"c": "40–44", "p": 18.3, "n": 1011}, {"c": "45–49", "p": 20.2, "n": 933}, {"c": "50–54", "p": 22.4, "n": 901}, {"c": "55–59", "p": 25.2, "n": 849}, {"c": "60–64", "p": 21.7, "n": 743}, {"c": "65–69", "p": 21.3, "n": 609}, {"c": "70–74", "p": 13.2, "n": 454}, {"c": "75–79", "p": 10.2, "n": 295}, {"c": "80+", "p": 6.6, "n": 335}], "Escolaridad": [{"c": "Básica primaria", "p": 13.1, "n": 3898}, {"c": "Básica secundaria", "p": 13.2, "n": 2228}, {"c": "Media", "p": 14.7, "n": 3061}, {"c": "Preescolar", "p": 13.2, "n": 1577}, {"c": "Sin escolaridad", "p": 9.1, "n": 679}, {"c": "Sin información", "p": 13.3, "n": 1727}, {"c": "Técnica/tecnológica", "p": 16.5, "n": 1202}], "Estado civil": [{"c": "Casado/a", "p": 18.1, "n": 2035}, {"c": "Separado/divorciado", "p": 16.2, "n": 727}, {"c": "Sin información", "p": 14.5, "n": 1144}, {"c": "Soltero/a", "p": 10.3, "n": 6495}, {"c": "Unión libre", "p": 16.0, "n": 3749}, {"c": "Viudo/a", "p": 13.4, "n": 305}], "Mecanismo": [{"c": "Contundente", "p": 7.8, "n": 957}, {"c": "Cortopunzante", "p": 7.0, "n": 200}, {"c": "Asfixia", "p": 15.1, "n": 9311}, {"c": "Arma de fuego", "p": 13.6, "n": 1313}, {"c": "Tóxico", "p": 10.9, "n": 2382}], "Zona del hecho": [{"c": "Cabecera municipal", "p": 14.3, "n": 10806}, {"c": "Centro poblado", "p": 12.4, "n": 660}, {"c": "Rural (vereda y campo)", "p": 11.4, "n": 2910}], "Tipología laboral de la ciudad": [{"c": "Alta participación y ocupación", "p": 13.7, "n": 4966}, {"c": "Alta precarización", "p": 14.3, "n": 893}, {"c": "Participación media", "p": 15.4, "n": 1642}, {"c": "Sin cobertura GEIH", "p": 12.9, "n": 6963}]}, "cm": [[1302, 444], [106, 112]], "umbral": 0.56, "rec": 0.51, "prec": 0.2, "esp": 0.75, "kpis": [{"k": "AUC en prueba final 2025–2026 ≥ 0,65", "r": "0,702 (IC 95 % 0,663–0,739)", "ok": true}, {"k": "Lift en el 20 % superior ≥ 1,5", "r": "2,09", "ok": true}, {"k": "AUC superior a la línea base de sexo y edad", "r": "0,702 frente a 0,677", "ok": true}, {"k": "AUC anual ≥ 0,60 en cada año de prueba (2022–2026)", "r": "mínimo 0,688", "ok": true}, {"k": "Completitud ≥ 95 % en las variables del modelo", "r": "bajo 95 %: hora (31 %), escolaridad (88 %), pertenencia grupal (91 %), estado civil (92 %)", "ok": false}]};
+        
         const META = {"actualizacion": "2026-11-11", "periodoGeih": "jul–sep 2026", "pcavar": [0.5186496570909971, 0.29925064365128834], "sil": 0.2808203786692691, "spear": [{"k": "pct_precarizacion", "l": "Precarización (cuenta propia y afines)", "r": -0.067, "p": 0.761}, {"k": "pct_cuenta_propia", "l": "Cuenta propia", "r": -0.036, "p": 0.872}, {"k": "td", "l": "Desocupación (TD)", "r": 0.189, "p": 0.388}, {"k": "to", "l": "Ocupación (TO)", "r": -0.146, "p": 0.507}, {"k": "tsub", "l": "Subocupación (TS)", "r": -0.299, "p": 0.166}, {"k": "pct_empleado_particular", "l": "Asalariados formales", "r": -0.06, "p": 0.785}]};
 
         let pcaChartInstance = null;
@@ -3241,7 +1681,10 @@
         let mapLayerGroup = null;
         let heatLayerInstance = null;
         let currentMapMode = 'heat_abs';
-        let currentComboMode = 'general';
+        let currentComboMode = 'suicidios'; // Cambiado por defecto a suicidios
+        let currentSimMode = 'edad';
+        let simBarChartInstance = null;
+        let simTornadoChartInstance = null;
 
         const fmt = (x, d = 1) => Number(x).toFixed(d).replace('.', ',');
 
@@ -3299,13 +1742,14 @@
             safeRun('selector', populateSelect);
             safeRun('tabla', () => filterTable());
             safeRun('spearman', renderSpearmanCity);
-            safeRun('pestañas', () => setComboMode('general', true));
+            safeRun('pestañas', () => setComboMode('suicidios', true));
             safeRun('dashboard', () => updateDashboard("Pasto"));
             safeRun('grafico PCA', () => { if (window.Chart) initPcaChart(); });
             setTimeout(() => {
                 safeRun('mapa', () => { if (window.L) initLeafletMap(); });
             }, 100);
             safeRun('SISMEL', initSismel);
+            safeRun('Simulador', initSimulador);
             safeRun('iconos2', () => { if (window.lucide) lucide.createIcons(); });
         });
 
@@ -3504,7 +1948,7 @@
 
             safeRun('ranking', () => renderTopCitiesRanking(currentMapMode));
             safeRun('grafico evolucion', () => { if (window.Chart) updateComboChart(city, currentComboMode); });
-            safeRun('grafico causas', () => { if (window.Chart) updateCausasChart(city); }); // Cambiado el nombre de la función
+            safeRun('grafico causas', () => { if (window.Chart) updateCausasChart(city); });
         }
 
         function initPcaChart() {
@@ -3580,7 +2024,7 @@
             if (window.Chart) updateComboChart(city, mode);
         }
 
-        function updateComboChart(city, mode = 'general') {
+        function updateComboChart(city, mode = 'suicidios') {
             const ctx = document.getElementById('comboEvolucionChart').getContext('2d');
             const hist = city.historico;
             const last = hist.anios.length - 1;
@@ -3593,12 +2037,12 @@
                 label: 'Suicidios anuales',
                 data: hist.suicidios,
                 backgroundColor: hist.anios.map((a, i) => i === last ? 'rgba(155, 44, 44, 0.08)' : 'rgba(155, 44, 44, 0.25)'),
-                borderColor: '#9B2C2C',
+                borderColor: '#9b2c2c',
                 borderWidth: 1.5,
                 borderRadius: 4,
-                yAxisID: mode === 'general' ? 'y1' : 'y'
+                yAxisID: 'y' // Siempre en y ya que no hay modo general
             };
-            const dTD = { type: 'line', label: 'Desocupación (TD %)', data: hist.td, borderColor: '#9B2C2C', backgroundColor: '#9B2C2C', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
+            const dTD = { type: 'line', label: 'Desocupación (TD %)', data: hist.td, borderColor: '#9b2c2c', backgroundColor: '#9b2c2c', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
             const dTO = { type: 'line', label: 'Ocupación (TO %)', data: hist.to, borderColor: '#1c1917', backgroundColor: '#1c1917', borderWidth: 2.5, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
             const dPrec = { type: 'line', label: 'Precarización (%)', data: hist.precarizacion, borderColor: '#d97706', backgroundColor: '#d97706', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
             const dFormal = { type: 'line', label: 'Asalariados formales (%)', data: hist.formal, borderColor: '#686259', backgroundColor: '#686259', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
@@ -3606,11 +2050,7 @@
             let datasets = [];
             let scales = { x: { grid: { color: '#eee8dc' } } };
 
-            if (mode === 'general') {
-                datasets = [dSuicidios, dTD, dTO, dPrec, dFormal];
-                scales.y = { type: 'linear', position: 'right', grid: { color: '#eee8dc' }, title: { display: true, text: '%', font: { size: 10 } } };
-                scales.y1 = { type: 'linear', position: 'left', grid: { drawOnChartArea: false }, title: { display: true, text: 'Casos', font: { size: 10 } } };
-            } else if (mode === 'suicidios') {
+            if (mode === 'suicidios') {
                 datasets = [dSuicidios];
                 scales.y = { type: 'linear', position: 'left', grid: { color: '#eee8dc' }, title: { display: true, text: 'Suicidios', font: { size: 10 } } };
             } else if (mode === 'empleo') {
@@ -3634,16 +2074,14 @@
             });
         }
 
-        // Nueva función: Gráfico de barras horizontales en lugar de Doughnut
         function updateCausasChart(city) {
             const ctx = document.getElementById('pieSuicideChart').getContext('2d');
             const causas = city.causas;
 
-            // Ordenar de mayor a menor para mejor visualización
             const sortedEntries = Object.entries(causas).sort((a, b) => b[1] - a[1]);
             const labels = sortedEntries.map(e => e[0]);
             const data = sortedEntries.map(e => e[1]);
-            const colors = ['#9B2C2C', '#d97706', '#b45309', '#78350f', '#524c42', '#822323', '#c2410c', '#a8a29e'];
+            const colors = ['#9b2c2c', '#d97706', '#b45309', '#78350f', '#524c42', '#822323', '#c2410c', '#a8a29e'];
 
             if (causasChartInstance) causasChartInstance.destroy();
 
@@ -3655,15 +2093,15 @@
                         data: data,
                         backgroundColor: colors.slice(0, labels.length),
                         borderRadius: 4,
-                        barThickness: 20 // Controla el grosor de las barras
+                        barThickness: 20
                     }]
                 },
                 options: {
-                    indexAxis: 'y', // Hace que las barras sean horizontales
+                    indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { display: false }, // Ocultar leyenda porque los nombres están en el eje Y
+                        legend: { display: false },
                         tooltip: {
                             callbacks: {
                                 label: c => `${c.raw} casos (${fmt(c.raw / city.suicidios_totales * 100)} %)`
@@ -3758,7 +2196,7 @@
 
                 const marker = L.circleMarker([c.lat, c.lng], {
                     radius: radius,
-                    fillColor: mode === 'clusters' ? clusterInfo[c.cluster].colorHex : '#9B2C2C',
+                    fillColor: mode === 'clusters' ? clusterInfo[c.cluster].colorHex : '#9b2c2c',
                     color: '#ffffff',
                     weight: 1,
                     fillOpacity: 0.8
@@ -3793,13 +2231,13 @@
             if (mode === 'heat_abs') {
                 leg.innerHTML = `
                     <p class="font-bold text-textDark mb-1">Casos económico-laborales</p>
-                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#9B2C2C] mb-1"></div>
+                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#9b2c2c] mb-1"></div>
                     <div class="flex justify-between text-textMuted w-32"><span>Menor</span><span>Mayor</span></div>
                 `;
             } else if (mode === 'heat_pct') {
                 leg.innerHTML = `
                     <p class="font-bold text-textDark mb-1">% sobre causas conocidas</p>
-                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#9B2C2C] mb-1"></div>
+                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#9b2c2c] mb-1"></div>
                     <div class="flex justify-between text-textMuted w-32"><span>Menor</span><span>Mayor</span></div>
                 `;
             } else {
@@ -3910,13 +2348,13 @@
             const V = SISMEL.val, lastV = V.length - 1;
             smValC = new Chart(document.getElementById('smValChart'), { type: 'line',
                 data: { labels: V.map((v, i) => i === lastV ? v.y + '*' : v.y), datasets: [
-                    { label: 'AUC', data: V.map(v => v.auc), borderColor: '#9B2C2C', backgroundColor: '#9B2C2C', tension: .3, borderWidth: 2.5, pointRadius: 4, segment: { borderDash: c => c.p1DataIndex === lastV ? [5, 4] : undefined } },
+                    { label: 'AUC', data: V.map(v => v.auc), borderColor: '#9b2c2c', backgroundColor: '#9b2c2c', tension: .3, borderWidth: 2.5, pointRadius: 4, segment: { borderDash: c => c.p1DataIndex === lastV ? [5, 4] : undefined } },
                     { label: 'Umbral de estabilidad (0,60)', data: V.map(() => 0.60), borderColor: '#686259', borderDash: [4, 4], borderWidth: 1.5, pointRadius: 0 }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, usePointStyle: true } } }, scales: { y: { min: 0.5, max: 0.8, grid: { color: '#eee8dc' } }, x: { grid: { display: false } } } } });
 
             const I = SISMEL.imp;
             smImpC = new Chart(document.getElementById('smImpChart'), { type: 'bar',
-                data: { labels: I.map(i => i.v), datasets: [{ label: 'Caída del AUC', data: I.map(i => i.d), backgroundColor: I.map((i, k) => i.d <= 0.001 ? '#d6cdbd' : (k < 4 ? '#9B2C2C' : '#c98a8a')), borderRadius: 4 }] },
+                data: { labels: I.map(i => i.v), datasets: [{ label: 'Caída del AUC', data: I.map(i => i.d), backgroundColor: I.map((i, k) => i.d <= 0.001 ? '#d6cdbd' : (k < 4 ? '#9b2c2c' : '#c98a8a')), borderRadius: 4 }] },
                 options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `Caída del AUC: ${smF(c.raw)} (± ${smF(I[c.dataIndex].s)})` } } }, scales: { x: { grid: { color: '#eee8dc' }, title: { display: true, text: 'Δ ROC-AUC', font: { size: 10 } } }, y: { grid: { display: false }, ticks: { font: { size: 10 } } } } } });
 
             const sel = document.getElementById('sm-perfil-select');
@@ -3927,22 +2365,12 @@
             document.getElementById('sm-sex').innerHTML = `<div class="rounded-xl p-3 bg-amber-100 border border-amber-200"><div class="flex justify-between text-xs font-semibold text-amber-900"><span>♂ Hombres</span><span class="text-[10px] text-burgundy">${(h.p / m.p).toFixed(1).replace('.', ',')}× mayor</span></div><p class="font-mono font-bold text-2xl text-textDark">${smF(h.p, 1)} %</p></div><div class="rounded-xl p-3 bg-[#eee9df] border border-[#e2dacd]"><span class="text-xs font-semibold text-textDark">♀ Mujeres</span><p class="font-mono font-bold text-2xl text-textDark">${smF(m.p, 1)} %</p></div>`;
             smPerfil('Edad (quinquenal)');
 
-            // Matriz de confusión
             const cm = SISMEL.cm, tot = cm[0][0] + cm[0][1] + cm[1][0] + cm[1][1];
             const cell = (v, ok) => `<div style="background:${ok ? 'rgba(155,44,44,.85)' : 'rgba(155,44,44,.12)'};color:${ok ? '#fff' : '#1c1917'};border-radius:.5rem;padding:.6rem .25rem"><div class="font-mono font-bold text-lg">${v.toLocaleString('es-CO')}</div><div style="font-size:9px;opacity:.8">${smF(100 * v / tot, 1)} % del total</div></div>`;
             document.getElementById('sm-cm-sub').textContent = `Umbral ${smF(SISMEL.umbral, 2)} elegido por validación cruzada dentro del entrenamiento · n = ${tot.toLocaleString('es-CO')}`;
             document.getElementById('sm-cm').innerHTML = `<div style="display:grid;grid-template-columns:96px 1fr 1fr;gap:4px;font-size:10px;text-align:center;align-items:center"><div></div><div class="text-textMuted font-semibold">Predicho: otra causa</div><div class="text-textMuted font-semibold">Predicho: laboral/econ.</div><div class="text-textMuted font-semibold text-left">Real: otra causa</div>${cell(cm[0][0], true)}${cell(cm[0][1], false)}<div class="text-textMuted font-semibold text-left">Real: laboral/econ.</div>${cell(cm[1][0], false)}${cell(cm[1][1], true)}</div><div class="grid grid-cols-2 gap-2 mt-3 text-center"><div class="bg-[#f7f4ed] rounded p-2 border border-[#e8e2d5]"><p class="font-mono font-bold text-textDark">${smF(SISMEL.rec, 2)}</p><p class="text-[9px] text-textMuted uppercase">Recall clase 1</p></div><div class="bg-[#f7f4ed] rounded p-2 border border-[#e8e2d5]"><p class="font-mono font-bold text-textDark">${smF(SISMEL.prec, 2)}</p><p class="text-[9px] text-textMuted uppercase">Precisión clase 1</p></div></div>`;
 
-            // KPI de la ficha
             document.getElementById('sm-kpi-table').innerHTML = SISMEL.kpis.map(k => `<tr class="border-b border-[#f2ece0]"><td class="py-2 pr-2 font-semibold text-textDark">${k.k}</td><td class="py-2 pr-2 text-textMuted">${k.r}</td><td class="py-2 text-right"><span class="badge-pill ${k.ok ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-rose-100 text-rose-900 border-rose-300'} border">${k.ok ? 'Cumple' : 'No cumple'}</span></td></tr>`).join('');
-
-            // Tipología laboral
-            document.getElementById('sm-tip').innerHTML = SISMEL.tip.map(t => `<tr class="border-b border-[#f2ece0]"><td class="py-1.5 font-semibold text-textDark">${t.t}</td><td class="text-right font-mono text-textMuted">${t.n.toLocaleString('es-CO')}</td><td class="text-right font-mono font-bold text-textDark">${smF(t.p, 1)} %</td></tr>`).join('');
-            document.getElementById('sm-tip-note').textContent = `Las diferencias entre tipologías son pequeñas frente al promedio general (13,6 %). Solo el ${smF(SISMEL.cob, 1)} % de los casos con causa conocida cae en una de las 23 ciudades o áreas metropolitanas con GEIH.`;
-
-            // Bosque de Δ AUC (modelo con empleo − modelo de perfil)
-            const pos = x => Math.max(0, Math.min(100, ((x + 0.04) / 0.06 * 100))).toFixed(1);
-            document.getElementById('sm-forest').innerHTML = SISMEL.abl.map(f => `<div><div class="flex justify-between text-[10px]"><span class="font-semibold text-textDark">${f.e} · ${f.alg} · ${f.alc}</span><span class="font-mono text-textMuted">${smF(f.d, 4)} [${smF(f.lo, 4)}; ${smF(f.hi, 4)}]</span></div><div class="relative h-5"><div class="absolute top-0 bottom-0 w-px bg-[#686259]" style="left:${pos(0)}%"></div><div class="absolute top-1/2 h-0.5 bg-burgundy" style="left:${pos(f.lo)}%;width:${(pos(f.hi) - pos(f.lo)).toFixed(1)}%"></div><div class="absolute top-1/2 w-3 h-3 -mt-1.5 -ml-1.5 rounded-full bg-burgundy border-2 border-white" style="left:${pos(f.d)}%"></div></div></div>`).join('') + '<p class="text-[10px] text-textMuted flex justify-between"><span>← empeora</span><span>0 = sin cambio</span><span>mejora →</span></p>';
 
             if (window.lucide) lucide.createIcons();
         }
@@ -3951,7 +2379,7 @@
             document.querySelectorAll('#sm-stage-toggle button').forEach(b => b.className = 'px-3 py-1 rounded-lg ' + (+b.dataset.s === s ? 'bg-white shadow text-textDark' : 'text-textMuted'));
             const rows = SISMEL.mods.filter(m => m.e === s), mx = Math.max(...rows.map(r => r.auc));
             document.getElementById('sm-model-body').innerHTML = rows.map(r => `<tr class="border-b border-[#f2ece0] ${r.fin ? 'bg-amber-50' : ''}"><td class="py-2 font-semibold text-textDark">${r.m}${r.fin ? ' <span class="badge-pill bg-amber-200 text-amber-900" style="font-size:9px;padding:.05rem .4rem">final</span>' : ''}</td><td><div class="flex items-center gap-2"><span class="font-mono font-bold w-10">${smF(r.auc)}</span><div class="w-20 h-1.5 rounded-full bg-[#eee9df] overflow-hidden"><div class="h-1.5 bg-burgundy" style="width:${((r.auc - .5) / .3 * 100).toFixed(0)}%"></div></div><span class="text-[10px] text-textMuted font-mono">${smF(r.lo)}–${smF(r.hi)}</span></div></td><td class="text-right font-mono">${smF(r.ap)}</td><td class="text-right font-mono">${smF(r.lift, 2)}×</td><td class="text-right font-mono">${smF(r.rec * 100, 1)} %</td></tr>`).join('');
-            document.getElementById('sm-ref').textContent = `n de prueba = ${rows[0].n.toLocaleString('es-CO')} · Referencia: azar = AUC 0,500, AP ${smF(rows[0].prev)}, lift 1,00. Etapa ${s === 1 ? '1: entrena 2015–2021' : '2: entrena 2015–2024, sin ajustar nada'}. «Perfil» = variables sociodemográficas y del hecho; «+ empleo» agrega la GEIH de la ciudad.`;
+            document.getElementById('sm-ref').textContent = `n de prueba = ${rows[0].n.toLocaleString('es-CO')} · Referencia: azar = AUC 0,500, AP ${smF(rows[0].prev)}, lift 1,00. Etapa ${s === 1 ? '1: entrena 2015–2021' : '2: entrena 2015–2024, sin ajustar nada'}. «Perfil» = variables sociodemográficas y del hecho; «+ empleo» agrega la GEIH de la ciudad. Al agregar el empleo de la ciudad (GEIH) el AUC no mejora en ninguna de las 8 comparaciones realizadas; el detalle está en la sección 9 del notebook.`;
         }
 
         function smPerfil(k) {
@@ -3959,10 +2387,238 @@
             wrap.style.height = wrap.style.minHeight = (horiz ? Math.max(260, d.length * 20 + 30) : 260) + 'px';
             if (smPerfC) smPerfC.destroy();
             smPerfC = new Chart(document.getElementById('smPerfilChart'), { type: 'bar',
-                data: { labels: d.map(x => x.c), datasets: [{ data: d.map(x => x.p), backgroundColor: d.map(x => x.p >= SISMEL.prev ? '#9B2C2C' : '#e6c3c3'), borderRadius: 4 }] },
+                data: { labels: d.map(x => x.c), datasets: [{ data: d.map(x => x.p), backgroundColor: d.map(x => x.p >= SISMEL.prev ? '#9b2c2c' : '#e6c3c3'), borderRadius: 4 }] },
                 options: { indexAxis: horiz ? 'y' : 'x', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${smF(c.raw, 1)} % de ${d[c.dataIndex].n.toLocaleString('es-CO')} casos` } } }, scales: { [horiz ? 'x' : 'y']: { grid: { color: '#eee8dc' }, ticks: { callback: v => v + '%', font: { size: 9 } } }, [horiz ? 'y' : 'x']: { grid: { display: false }, ticks: { font: { size: 9 } } } } } });
         }
 
+        // ===== SIMULADOR =====
+        
+        const simEdades = [
+            { key: "10 14", label: "10–14" }, { key: "15 17", label: "15–17" }, { key: "18 19", label: "18–19" },
+            { key: "20 24", label: "20–24" }, { key: "25 29", label: "25–29" }, { key: "30 34", label: "30–34" },
+            { key: "35 39", label: "35–39" }, { key: "40 44", label: "40–44" }, { key: "45 49", label: "45–49" },
+            { key: "50 54", label: "50–54" }, { key: "55 59", label: "55–59" }, { key: "60 64", label: "60–64" },
+            { key: "65 69", label: "65–69" }, { key: "70 74", label: "70–74" }, { key: "75 79", label: "75–79" },
+            { key: "80", label: "80+" }
+        ];
+
+        let simPerfil = {
+            edad: "25 29",
+            sexo: "hombre",
+            estado_civil: "soltero a",
+            escolaridad: "media",
+            zona: "cabecera municipal"
+        };
+
+        function calcProb(perfil) {
+            let logit = SIMULADOR.intercepto;
+            for (const [key, val] of Object.entries(perfil)) {
+                const nivel = SIMULADOR.variables[key].niveles[val];
+                if (nivel) logit += nivel.coef;
+                else if (SIMULADOR.infrecuente[key] !== null) logit += SIMULADOR.infrecuente[key];
+            }
+            return 1 / (1 + Math.exp(-logit));
+        }
+
+        function initSimulador() {
+            const slider = document.getElementById('sim-edad');
+            slider.max = simEdades.length - 1;
+            
+            // Cargar opciones
+            const selectEst = document.getElementById('sim-estado-civil');
+            selectEst.innerHTML = Object.entries(SIMULADOR.variables.estado_civil.niveles).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join('');
+            
+            const selectEsc = document.getElementById('sim-escolaridad');
+            selectEsc.innerHTML = Object.entries(SIMULADOR.variables.escolaridad.niveles).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join('');
+            
+            const selectZona = document.getElementById('sim-zona');
+            selectZona.innerHTML = Object.entries(SIMULADOR.variables.zona.niveles).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join('');
+
+            // Eventos
+            slider.addEventListener('input', (e) => {
+                const idx = +e.target.value;
+                simPerfil.edad = simEdades[idx].key;
+                document.getElementById('sim-edad-label').textContent = simEdades[idx].label;
+                document.getElementById('sim-ciclo-label').textContent = SIMULADOR.ciclo_vital_por_edad[simPerfil.edad] || '';
+                updateSimulador();
+            });
+
+            selectEst.addEventListener('change', (e) => { simPerfil.estado_civil = e.target.value; updateSimulador(); });
+            selectEsc.addEventListener('change', (e) => { simPerfil.escolaridad = e.target.value; updateSimulador(); });
+            selectZona.addEventListener('change', (e) => { simPerfil.zona = e.target.value; updateSimulador(); });
+            
+            document.getElementById('sim-factor-select').addEventListener('change', (e) => { currentSimMode = e.target.value; drawSimBarChart(); });
+
+            // Inicializar
+            resetSimPerfil();
+            drawSimTornadoChart();
+        }
+
+        function setSimSexo(sexo) {
+            simPerfil.sexo = sexo;
+            updateSimulador();
+        }
+
+        function updateSimulador() {
+            // Actualizar botones de sexo
+            document.getElementById('sim-btn-sexo-hombre').className = simPerfil.sexo === 'hombre' ? 'flex-1 py-1.5 text-xs font-medium rounded-lg border border-[#9b2c2c] bg-[#9b2c2c] text-white transition-colors' : 'flex-1 py-1.5 text-xs font-medium rounded-lg border border-[#d6cdbd] bg-white text-textDark hover:bg-gray-50 transition-colors';
+            document.getElementById('sim-btn-sexo-mujer').className = simPerfil.sexo === 'mujer' ? 'flex-1 py-1.5 text-xs font-medium rounded-lg border border-[#9b2c2c] bg-[#9b2c2c] text-white transition-colors' : 'flex-1 py-1.5 text-xs font-medium rounded-lg border border-[#d6cdbd] bg-white text-textDark hover:bg-gray-50 transition-colors';
+
+            // Calcular y mostrar resultado
+            const p = calcProb(simPerfil);
+            const pct = p * 100;
+            const avg = SIMULADOR.prevalencia * 100;
+            
+            document.getElementById('sim-resultado').innerHTML = `${fmt(pct)}<span class="text-2xl">%</span>`;
+            document.getElementById('sim-bar-fill').style.width = `${Math.min(100, pct)}%`;
+            
+            const ratio = pct / avg;
+            let relativeText = `Igual al promedio general (${fmt(avg)} %)`;
+            if (ratio > 1.05) relativeText = `${fmt(ratio)} veces el promedio general (${fmt(avg)} %)`;
+            else if (ratio < 0.95) relativeText = `${fmt(ratio)} veces el promedio general (${fmt(avg)} %)`;
+            document.getElementById('sim-relative-text').textContent = relativeText;
+
+            // Actualizar soporte
+            const soporte = SIMULADOR.soporte[simPerfil.sexo]?.[simPerfil.edad];
+            const elSoporte = document.getElementById('sim-soporte');
+            if (soporte && soporte.n >= 30) {
+                elSoporte.innerHTML = `Casos históricos de <strong>${simPerfil.sexo}s</strong> de <strong>${simEdades.find(e=>e.key===simPerfil.edad).label}</strong>: <strong>${soporte.n.toLocaleString('es-CO')}</strong> casos.<br>De ellos, el <strong>${fmt(soporte.pct)} %</strong> fueron de causa laboral o económica.`;
+            } else {
+                elSoporte.innerHTML = `<span class="italic text-amber-800">Muestra pequeña: estimación poco estable (menos de 30 casos históricos).</span>`;
+            }
+
+            // Redibujar gráficos
+            drawSimBarChart();
+            drawSimTornadoChart();
+        }
+
+        function resetSimPerfil() {
+            simPerfil = {
+                edad: "25 29", // Promedio aprox
+                sexo: "hombre",
+                estado_civil: "casado a",
+                escolaridad: "media",
+                zona: "cabecera municipal"
+            };
+            // Sincronizar UI
+            const idx = simEdades.findIndex(e => e.key === simPerfil.edad);
+            document.getElementById('sim-edad').value = idx;
+            document.getElementById('sim-edad-label').textContent = simEdades[idx].label;
+            document.getElementById('sim-ciclo-label').textContent = SIMULADOR.ciclo_vital_por_edad[simPerfil.edad] || '';
+            document.getElementById('sim-estado-civil').value = simPerfil.estado_civil;
+            document.getElementById('sim-escolaridad').value = simPerfil.escolaridad;
+            document.getElementById('sim-zona').value = simPerfil.zona;
+            updateSimulador();
+        }
+
+        function loadSimExample(type) {
+            if (type === 'hombre 55') {
+                simPerfil = { edad: "55 59", sexo: "hombre", estado_civil: "casado a", escolaridad: "media", zona: "cabecera municipal" };
+            } else if (type === 'mujer 20') {
+                simPerfil = { edad: "20 24", sexo: "mujer", estado_civil: "soltero a", escolaridad: "media", zona: "cabecera municipal" };
+            } else if (type === 'adolescente') {
+                simPerfil = { edad: "15 17", sexo: "hombre", estado_civil: "soltero a", escolaridad: "basica secundaria", zona: "cabecera municipal" };
+            }
+            
+            const idx = simEdades.findIndex(e => e.key === simPerfil.edad);
+            document.getElementById('sim-edad').value = idx;
+            document.getElementById('sim-edad-label').textContent = simEdades[idx].label;
+            document.getElementById('sim-ciclo-label').textContent = SIMULADOR.ciclo_vital_por_edad[simPerfil.edad] || '';
+            document.getElementById('sim-estado-civil').value = simPerfil.estado_civil;
+            document.getElementById('sim-escolaridad').value = simPerfil.escolaridad;
+            document.getElementById('sim-zona').value = simPerfil.zona;
+            updateSimulador();
+        }
+
+        function drawSimBarChart() {
+            const ctx = document.getElementById('simBarChart').getContext('2d');
+            if (simBarChartInstance) simBarChartInstance.destroy();
+
+            const factor = currentSimMode;
+            const niveles = SIMULADOR.variables[factor].niveles;
+            
+            const labels = Object.values(niveles).map(n => n.label);
+            const data = [];
+            
+            for (const key of Object.keys(niveles)) {
+                const tempPerfil = { ...simPerfil, [factor]: key };
+                data.push(calcProb(tempPerfil) * 100);
+            }
+
+            simBarChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: labels.map((_, i) => Object.keys(niveles)[i] === simPerfil[factor] ? '#9b2c2c' : '#e6c3c3'),
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: c => `${fmt(c.raw)} %` } }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { size: 8 }, maxRotation: 45, minRotation: 45 } },
+                        y: { 
+                            grid: { color: '#eee8dc' }, 
+                            ticks: { callback: v => v + '%', font: { size: 9 } },
+                            suggestedMin: 0
+                        }
+                    }
+                }
+            });
+        }
+
+        function drawSimTornadoChart() {
+            const ctx = document.getElementById('simTornadoChart').getContext('2d');
+            if (simTornadoChartInstance) simTornadoChartInstance.destroy();
+
+            const variables = ['edad', 'sexo', 'estado_civil', 'escolaridad', 'zona'];
+            const results = variables.map(v => {
+                const niveles = Object.keys(SIMULADOR.variables[v].niveles);
+                let minP = 1, maxP = 0;
+                for (const key of niveles) {
+                    const tempPerfil = { ...simPerfil, [v]: key };
+                    const p = calcProb(tempPerfil);
+                    if (p < minP) minP = p;
+                    if (p > maxP) maxP = p;
+                }
+                return { label: SIMULADOR.variables[v].etiqueta, spread: maxP - minP, minP: minP*100, maxP: maxP*100 };
+            }).sort((a, b) => b.spread - a.spread);
+
+            simTornadoChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: results.map(r => r.label),
+                    datasets: [{
+                        label: 'Rango de probabilidad',
+                        data: results.map(r => r.spread * 100),
+                        backgroundColor: '#9b2c2c',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: c => `Rango: ${fmt(results[c.dataIndex].minP)} % a ${fmt(results[c.dataIndex].maxP)} %` } }
+                    },
+                    scales: {
+                        x: { grid: { color: '#eee8dc' }, ticks: { callback: v => v + ' pp', font: { size: 9 } } },
+                        y: { grid: { display: false }, ticks: { font: { size: 9 } } }
+                    }
+                }
+            });
+        }
+
+        // ===== DESCARGAS =====
         function dlCSV(name, head, rows) {
             const q = v => { const t = String(v ?? ''); return /[",\n;]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
             const txt = '\ufeff' + [head, ...rows].map(r => r.map(q).join(',')).join('\r\n');
