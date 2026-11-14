@@ -44,7 +44,7 @@
             color: #1c1917;
         }
         .nav-item.active {
-            background-color: #9b2c2c;
+            background-color: #7B1E3A;
             color: #ffffff;
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(155, 44, 44, 0.25);
@@ -72,7 +72,7 @@
         }
 
         .badge-paradoja {
-            background-color: #9b2c2c;
+            background-color: #7B1E3A;
             color: #ffffff;
             font-size: 0.65rem;
             padding: 0.15rem 0.5rem;
@@ -3593,12 +3593,12 @@
                 label: 'Suicidios anuales',
                 data: hist.suicidios,
                 backgroundColor: hist.anios.map((a, i) => i === last ? 'rgba(155, 44, 44, 0.08)' : 'rgba(155, 44, 44, 0.25)'),
-                borderColor: '#9b2c2c',
+                borderColor: '#7B1E3A',
                 borderWidth: 1.5,
                 borderRadius: 4,
                 yAxisID: mode === 'general' ? 'y1' : 'y'
             };
-            const dTD = { type: 'line', label: 'Desocupación (TD %)', data: hist.td, borderColor: '#9b2c2c', backgroundColor: '#9b2c2c', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
+            const dTD = { type: 'line', label: 'Desocupación (TD %)', data: hist.td, borderColor: '#7B1E3A', backgroundColor: '#7B1E3A', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
             const dTO = { type: 'line', label: 'Ocupación (TO %)', data: hist.to, borderColor: '#1c1917', backgroundColor: '#1c1917', borderWidth: 2.5, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
             const dPrec = { type: 'line', label: 'Precarización (%)', data: hist.precarizacion, borderColor: '#d97706', backgroundColor: '#d97706', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
             const dFormal = { type: 'line', label: 'Asalariados formales (%)', data: hist.formal, borderColor: '#686259', backgroundColor: '#686259', borderWidth: 2, tension: 0.3, segment: { borderDash: parcial }, yAxisID: 'y' };
@@ -3643,7 +3643,7 @@
             const sortedEntries = Object.entries(causas).sort((a, b) => b[1] - a[1]);
             const labels = sortedEntries.map(e => e[0]);
             const data = sortedEntries.map(e => e[1]);
-            const colors = ['#9b2c2c', '#d97706', '#b45309', '#78350f', '#524c42', '#822323', '#c2410c', '#a8a29e'];
+            const colors = ['#7B1E3A', '#d97706', '#b45309', '#78350f', '#524c42', '#822323', '#c2410c', '#a8a29e'];
 
             if (causasChartInstance) causasChartInstance.destroy();
 
@@ -3758,7 +3758,7 @@
 
                 const marker = L.circleMarker([c.lat, c.lng], {
                     radius: radius,
-                    fillColor: mode === 'clusters' ? clusterInfo[c.cluster].colorHex : '#9b2c2c',
+                    fillColor: mode === 'clusters' ? clusterInfo[c.cluster].colorHex : '#7B1E3A',
                     color: '#ffffff',
                     weight: 1,
                     fillOpacity: 0.8
@@ -3793,13 +3793,13 @@
             if (mode === 'heat_abs') {
                 leg.innerHTML = `
                     <p class="font-bold text-textDark mb-1">Casos económico-laborales</p>
-                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#9b2c2c] mb-1"></div>
+                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#7B1E3A] mb-1"></div>
                     <div class="flex justify-between text-textMuted w-32"><span>Menor</span><span>Mayor</span></div>
                 `;
             } else if (mode === 'heat_pct') {
                 leg.innerHTML = `
                     <p class="font-bold text-textDark mb-1">% sobre causas conocidas</p>
-                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#9b2c2c] mb-1"></div>
+                    <div class="w-32 h-2 rounded bg-gradient-to-r from-[#fde0b4] to-[#7B1E3A] mb-1"></div>
                     <div class="flex justify-between text-textMuted w-32"><span>Menor</span><span>Mayor</span></div>
                 `;
             } else {
@@ -3910,13 +3910,13 @@
             const V = SISMEL.val, lastV = V.length - 1;
             smValC = new Chart(document.getElementById('smValChart'), { type: 'line',
                 data: { labels: V.map((v, i) => i === lastV ? v.y + '*' : v.y), datasets: [
-                    { label: 'AUC', data: V.map(v => v.auc), borderColor: '#9b2c2c', backgroundColor: '#9b2c2c', tension: .3, borderWidth: 2.5, pointRadius: 4, segment: { borderDash: c => c.p1DataIndex === lastV ? [5, 4] : undefined } },
+                    { label: 'AUC', data: V.map(v => v.auc), borderColor: '#7B1E3A', backgroundColor: '#7B1E3A', tension: .3, borderWidth: 2.5, pointRadius: 4, segment: { borderDash: c => c.p1DataIndex === lastV ? [5, 4] : undefined } },
                     { label: 'Umbral de estabilidad (0,60)', data: V.map(() => 0.60), borderColor: '#686259', borderDash: [4, 4], borderWidth: 1.5, pointRadius: 0 }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { font: { size: 10 }, usePointStyle: true } } }, scales: { y: { min: 0.5, max: 0.8, grid: { color: '#eee8dc' } }, x: { grid: { display: false } } } } });
 
             const I = SISMEL.imp;
             smImpC = new Chart(document.getElementById('smImpChart'), { type: 'bar',
-                data: { labels: I.map(i => i.v), datasets: [{ label: 'Caída del AUC', data: I.map(i => i.d), backgroundColor: I.map((i, k) => i.d <= 0.001 ? '#d6cdbd' : (k < 4 ? '#9b2c2c' : '#c98a8a')), borderRadius: 4 }] },
+                data: { labels: I.map(i => i.v), datasets: [{ label: 'Caída del AUC', data: I.map(i => i.d), backgroundColor: I.map((i, k) => i.d <= 0.001 ? '#d6cdbd' : (k < 4 ? '#7B1E3A' : '#c98a8a')), borderRadius: 4 }] },
                 options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `Caída del AUC: ${smF(c.raw)} (± ${smF(I[c.dataIndex].s)})` } } }, scales: { x: { grid: { color: '#eee8dc' }, title: { display: true, text: 'Δ ROC-AUC', font: { size: 10 } } }, y: { grid: { display: false }, ticks: { font: { size: 10 } } } } } });
 
             const sel = document.getElementById('sm-perfil-select');
@@ -3959,7 +3959,7 @@
             wrap.style.height = wrap.style.minHeight = (horiz ? Math.max(260, d.length * 20 + 30) : 260) + 'px';
             if (smPerfC) smPerfC.destroy();
             smPerfC = new Chart(document.getElementById('smPerfilChart'), { type: 'bar',
-                data: { labels: d.map(x => x.c), datasets: [{ data: d.map(x => x.p), backgroundColor: d.map(x => x.p >= SISMEL.prev ? '#9b2c2c' : '#e6c3c3'), borderRadius: 4 }] },
+                data: { labels: d.map(x => x.c), datasets: [{ data: d.map(x => x.p), backgroundColor: d.map(x => x.p >= SISMEL.prev ? '#7B1E3A' : '#e6c3c3'), borderRadius: 4 }] },
                 options: { indexAxis: horiz ? 'y' : 'x', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${smF(c.raw, 1)} % de ${d[c.dataIndex].n.toLocaleString('es-CO')} casos` } } }, scales: { [horiz ? 'x' : 'y']: { grid: { color: '#eee8dc' }, ticks: { callback: v => v + '%', font: { size: 9 } } }, [horiz ? 'y' : 'x']: { grid: { display: false }, ticks: { font: { size: 9 } } } } } });
         }
 
