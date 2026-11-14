@@ -416,29 +416,34 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    <!-- Gráfico de barras cambiado aquí -->
                     <div class="lg:col-span-6 card-editorial p-5 space-y-4 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-bold text-sm text-textDark mb-1">Desglose acumulado de desencadenantes</h3>
-                            <p class="text-xs text-textMuted">Distribución porcentual en la ciudad seleccionada</p>
+                            <h3 class="font-bold text-sm text-textDark mb-1">Distribución de causas registradas</h3>
+                            <p class="text-xs text-textMuted">Desglose de casos de suicidio acumulados (2015-2026)</p>
                         </div>
 
-                        <div class="chart-container my-auto max-h-[260px]">
+                        <div class="chart-container my-auto min-h-[320px]">
                             <canvas id="pieSuicideChart"></canvas>
                         </div>
 
                         <p class="text-[11px] text-textMuted text-center border-t border-[#eee8dc] pt-2" id="pie-summary-caption"></p>
                     </div>
 
+                    <!-- Texto reflexivo cambiado aquí -->
                     <div class="lg:col-span-6 card-editorial p-6 space-y-5 bg-amber-50/60 border-amber-200/80 flex flex-col justify-between">
                         <div class="space-y-3">
                             <span class="badge-pill bg-amber-200 text-amber-900 font-bold uppercase tracking-wider text-[10px]">
                                 <i data-lucide="zap" class="w-3 h-3 text-burgundy"></i> HALLAZGO · SPEARMAN (23 CIUDADES)
                             </span>
 
-                            <h3 class="font-serif text-2xl font-bold text-burgundy">Sin asociación detectable</h3>
+                            <h3 class="font-serif text-2xl font-bold text-burgundy">Reflexión y recomendaciones</h3>
 
                             <p class="text-xs text-textDark leading-relaxed">
-                                Entre las 23 ciudades, el <strong>porcentaje de casos económico-laborales</strong> (sobre causas conocidas) no se ordena según la precarización, la desocupación ni la ocupación de cada ciudad. Es coherente con el clasificador del módulo 5: el empleo agregado no ayuda a distinguir la causa.
+                                <strong>Reflexión:</strong> Aunque los indicadores agregados de empleo (desocupación, precarización) no muestran una correlación estadística directa en el modelo, los desencadenantes económicos y laborales siguen siendo una realidad que requiere atención. La alta proporción de casos <strong>"Sin información"</strong> (frecuentemente superior al 50% en las ciudades) sugiere un subregistro sistemático que oculta la verdadera magnitud del problema y limita el alcance de las políticas públicas.
+                            </p>
+                            <p class="text-xs text-textDark leading-relaxed mt-2">
+                                <strong>Recomendaciones:</strong> 1. Fortalecer el registro forense y la caracterización de causas, incluyendo el contexto ocupacional. 2. Implementar programas de salud mental enfocados en trabajadores informales y precarizados, desvinculando la autoestima de la productividad económica. 3. Generar redes de apoyo comunitario en las zonas con mayor incidencia.
                             </p>
                         </div>
 
@@ -3231,7 +3236,7 @@
 
         let pcaChartInstance = null;
         let comboChartInstance = null;
-        let pieChartInstance = null;
+        let causasChartInstance = null;
         let mapInstance = null;
         let mapLayerGroup = null;
         let heatLayerInstance = null;
@@ -3499,7 +3504,7 @@
 
             safeRun('ranking', () => renderTopCitiesRanking(currentMapMode));
             safeRun('grafico evolucion', () => { if (window.Chart) updateComboChart(city, currentComboMode); });
-            safeRun('grafico causas', () => { if (window.Chart) updatePieChart(city); });
+            safeRun('grafico causas', () => { if (window.Chart) updateCausasChart(city); }); // Cambiado el nombre de la función
         }
 
         function initPcaChart() {
@@ -3629,23 +3634,52 @@
             });
         }
 
-        function updatePieChart(city) {
+        // Nueva función: Gráfico de barras horizontales en lugar de Doughnut
+        function updateCausasChart(city) {
             const ctx = document.getElementById('pieSuicideChart').getContext('2d');
             const causas = city.causas;
 
-            const labels = Object.keys(causas);
-            const data = Object.values(causas);
+            // Ordenar de mayor a menor para mejor visualización
+            const sortedEntries = Object.entries(causas).sort((a, b) => b[1] - a[1]);
+            const labels = sortedEntries.map(e => e[0]);
+            const data = sortedEntries.map(e => e[1]);
             const colors = ['#9b2c2c', '#d97706', '#b45309', '#78350f', '#524c42', '#822323', '#c2410c', '#a8a29e'];
 
-            if (pieChartInstance) pieChartInstance.destroy();
+            if (causasChartInstance) causasChartInstance.destroy();
 
-            pieChartInstance = new Chart(ctx, {
-                type: 'doughnut',
-                data: { labels, datasets: [{ data, backgroundColor: colors, borderWidth: 2, borderColor: '#ffffff' }] },
+            causasChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors.slice(0, labels.length),
+                        borderRadius: 4,
+                        barThickness: 20 // Controla el grosor de las barras
+                    }]
+                },
                 options: {
+                    indexAxis: 'y', // Hace que las barras sean horizontales
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { color: '#1c1917', font: { size: 10 } } } }
+                    plugins: {
+                        legend: { display: false }, // Ocultar leyenda porque los nombres están en el eje Y
+                        tooltip: {
+                            callbacks: {
+                                label: c => `${c.raw} casos (${fmt(c.raw / city.suicidios_totales * 100)} %)`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: '#eee8dc' },
+                            title: { display: true, text: 'Número de casos', font: { size: 10 } }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { font: { size: 11, weight: 'bold' }, color: '#1c1917' }
+                        }
+                    }
                 }
             });
 
